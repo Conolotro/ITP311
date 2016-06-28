@@ -1,0 +1,26 @@
+#lock-icon {
+    position: relative;
+    bottom: 14px;
+    float: right;
+}
+
+.row {
+    vertical-align: middle;
+}
+
+.span6 {
+    text-align: center;
+}
+
+body {
+    padding-top: 200px;
+    padding-bottom: 40px;
+    vertical-align: middle;
+    background: #eee;
+}
+
+#box{
+    -webkit-box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.6);
+    box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.6);
+}
