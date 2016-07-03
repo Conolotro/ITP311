@@ -15,8 +15,7 @@ namespace ITP311
         {
             string emailVerified = Request.QueryString["verified"];
             string email = Request.QueryString["email"];
-            string code = Request.QueryString["
-                "];
+            string code = Request.QueryString["code"];
 
             if(email != null && code != null)
             {

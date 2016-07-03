@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="login-register.aspx.cs" Inherits="ITP311.login_register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeBehind="login-register.aspx.cs" Inherits="ITP311.login_register" %>
 
 <!DOCTYPE html>
 

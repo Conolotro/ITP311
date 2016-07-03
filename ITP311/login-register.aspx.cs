@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -40,7 +41,7 @@ namespace ITP311
             }
         }
 
-        protected void signUp_Click(object sender, EventArgs e)
+        protected async void signUp_Click(object sender, EventArgs e)
         {
             string nric = formNRIC.Text.Trim();
             string firstName = formFN.Text.Trim();
@@ -52,14 +53,7 @@ namespace ITP311
             PatientBLL patient = new PatientBLL();
             if (patient.createPatient(nric, firstName, lastName, contactNo, email) == true)
             {
-                try
-                {
-                    sendEmail(nric);
-                }
-                catch (Exception E)
-                {
-
-                }
+                    await sendEmail(nric); 
                 
                 Response.Redirect("registered.aspx");
             }
@@ -71,7 +65,7 @@ namespace ITP311
 
         }
 
-        protected async void sendEmail(string nric)
+        protected async Task sendEmail(string nric)
         {
             PatientBLL p = new PatientBLL();
             PatientDAL p2 = p.retrievePatientByNric(nric);
@@ -79,6 +73,7 @@ namespace ITP311
             MailMessage mailMessage = new MailMessage();
             mailMessage.To.Add(p2.Email);
             mailMessage.From = new MailAddress("silverwoodmedical311@gmail.com");
+            mailMessage.SubjectEncoding = System.Text.Encoding.UTF8;
             mailMessage.Subject = "Account Activation - Silverwood Medical Portal‏";
 
             string bodyMessage = "Hello " + p2.FirstName + " " + p2.LastName + ",";
@@ -93,7 +88,7 @@ namespace ITP311
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
             smtpClient.Credentials = new NetworkCredential("silverwoodmedical311@gmail.com", "aspitp311");
             smtpClient.EnableSsl = true;
-            smtpClient.SendMailAsync(mailMessage);
+            await smtpClient.SendMailAsync(mailMessage);
         }
 
 
