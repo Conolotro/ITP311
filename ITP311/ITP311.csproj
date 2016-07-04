@@ -118,9 +118,9 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\BLL\appointmentBLL.cs" />
+    <Compile Include="App_Code\BLL\appointmentBLL.cs" />
     <Compile Include="App_Code\DAL\AccountDAL.cs" />
-    <Content Include="App_Code\DAL\appointmentDAL.cs" />
+    <Compile Include="App_Code\DAL\appointmentDAL.cs" />
     <Compile Include="confirmEmail.aspx.cs">
       <DependentUpon>confirmEmail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,12 +156,14 @@
     <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment.aspx.cs">
       <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="patientportal-appoinment.aspx.designer.cs">
       <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
     </Compile>
     <Compile Include="patientportal-dashboard.aspx.cs">
       <DependentUpon>patientportal-dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="patientportal-dashboard.aspx.designer.cs">
       <DependentUpon>patientportal-dashboard.aspx</DependentUpon>
