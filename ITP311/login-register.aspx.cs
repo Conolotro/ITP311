@@ -44,23 +44,41 @@ namespace ITP311
         protected async void signUp_Click(object sender, EventArgs e)
         {
             string nric = formNRIC.Text.Trim();
+            string password = formPassword.Text.Trim();
             string firstName = formFN.Text.Trim();
             string lastName = formLN.Text.Trim();
             int contactNo = Int32.Parse(formPhone.Text.Trim());
             string email = formEmail.Text.Trim();
+            string confirmEmail = formCEmail.Text.Trim();
 
 
-            PatientBLL patient = new PatientBLL();
-            if (patient.createPatient(nric, firstName, lastName, contactNo, email) == true)
+            if (email.Equals(confirmEmail,StringComparison.OrdinalIgnoreCase))
             {
-                    await sendEmail(nric); 
-                
-                Response.Redirect("registered.aspx");
+                PatientBLL patient = new PatientBLL();
+                if (patient.createPatient(nric, password, firstName, lastName, contactNo, email) == true)
+                {
+                    try
+                    {
+                        await sendEmail(nric);
+                    }
+                    catch (SmtpException ex)
+                    {
+                       
+                    }
+                    
+
+                    Response.Redirect("registered.aspx");
+                }
+                else
+                {
+                    Response.Redirect("error.aspx");
+                }
             }
             else
             {
-                Response.Redirect("error.aspx");
+                errorMessage.Text = "The Confirmation Email must match your Email Address";
             }
+           
 
 
         }

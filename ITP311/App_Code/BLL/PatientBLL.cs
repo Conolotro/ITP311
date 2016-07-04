@@ -14,11 +14,11 @@ namespace ITP311
 
         }
 
-        public bool createPatient(string nric, string firstName, string lastName, int contactNo, string email)
+        public bool createPatient(string nric, string password, string firstName, string lastName, int contactNo, string email)
         {
             bool result = false;
             string salt = generateSalt();
-            string passwordHash = generatePasswordHash(contactNo.ToString(), salt);
+            string passwordHash = generatePasswordHash(password, salt);
 
             PatientDAL patient = new PatientDAL();
 

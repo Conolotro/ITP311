@@ -96,6 +96,7 @@
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff2" />
     <Content Include="font-awesome-4.6.3\fonts\FontAwesome.otf" />
+    <Content Include="patientportal-updateparticulars.aspx" />
     <Content Include="patientportal.aspx" />
     <Content Include="registered.aspx" />
   </ItemGroup>
@@ -146,6 +147,13 @@
     </Compile>
     <Compile Include="App_Code\BLL\PatientBLL.cs" />
     <Compile Include="App_Code\DAL\PatientDAL.cs" />
+    <Compile Include="patientportal-updateparticulars.aspx.cs">
+      <DependentUpon>patientportal-updateparticulars.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patientportal-updateparticulars.aspx.designer.cs">
+      <DependentUpon>patientportal-updateparticulars.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patientportal.aspx.cs">
       <DependentUpon>patientportal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

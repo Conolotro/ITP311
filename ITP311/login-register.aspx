@@ -69,55 +69,57 @@
 
         <div class="inner-bg">
             <div class="container">
-
                 <form runat="server">
-
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="form-box">
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h3>Login to our site</h3>
-                                    <p>Enter username and password to log on:</p>
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Login to our site</h3>
+                                        <p>Enter username and password to log on:</p>
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-key"></i>
+                                    </div>
                                 </div>
-                                <div class="form-top-right">
-                                    <i class="fa fa-key"></i>
-                                </div>
-                            </div>
-                            <div class="form-bottom">
+                                <div class="form-bottom">
                                     <div class="form-group">
                                         <label class="sr-only" for="formUsername">Username</label>
                                         <asp:TextBox ID="loginUsername" placeholder="Username..." class="form-username form-control" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formPassword">Password</label>
-                                       <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-password form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-password form-control" runat="server"></asp:TextBox>
                                     </div>
-                                    <asp:button Text="Sign In" ID="signIn" class="btn btn-default" runat="server" OnClick="signIn_Click"/>
+                                    <asp:Button Text="Sign In" ID="signIn" class="btn btn-default" runat="server" OnClick="signIn_Click" />
+                                </div>
                             </div>
+
                         </div>
 
-                    </div>
+                        <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
 
-                    <div class="col-sm-1 middle-border"></div>
-                    <div class="col-sm-1"></div>
+                        <div class="col-sm-5">
 
-                    <div class="col-sm-5">
-
-                        <div class="form-box">
-                            <div class="form-top">
-                                <div class="form-top-left">
-                                    <h3>Sign up now</h3>
-                                    <p>Fill in the form below to get instant access:</p>
+                            <div class="form-box">
+                                <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Sign up now</h3>
+                                        <p>Fill in the form below to get instant access:</p>
+                                    </div>
+                                    <div class="form-top-right">
+                                        <i class="fa fa-pencil"></i>
+                                    </div>
                                 </div>
-                                <div class="form-top-right">
-                                    <i class="fa fa-pencil"></i>
-                                </div>
-                            </div>
-                            <div class="form-bottom">
+                                <div class="form-bottom">
                                     <div class="form-group">
                                         <label class="sr-only" for="formNRIC">NRIC</label>
                                         <asp:TextBox name="formNRIC" placeholder="NRIC..." class="form-NRIC form-control" ID="formNRIC" runat="server" Width="300px" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="formNRIC">Password</label>
+                                        <asp:TextBox name="formPassword" TextMode="Password" placeholder="Password..." class="form-password form-control" ID="formPassword" runat="server" Width="300px" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formFN">First name</label>
@@ -129,19 +131,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formPhone">Phone Number</label>
-                                        <asp:TextBox TextMode="Number" name="formPhone" placeholder="Phone Number..." class="form-phonenumber form-control" id="formPhone" runat="server" Width="300px" />
+                                        <asp:TextBox TextMode="Number" name="formPhone" placeholder="Phone Number..." class="form-phonenumber form-control" ID="formPhone" runat="server" Width="300px" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formEmail">Email</label>
-                                        <asp:TextBox TextMode="Email" name="formEmail" placeholder="Email..." class="form-email form-control" id="formEmail" runat="server" Width="300px" />
+                                        <asp:TextBox TextMode="Email" name="formEmail" placeholder="Email..." class="form-email form-control" ID="formEmail" runat="server" Width="300px" />
                                     </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="formEmail">Confirm Email</label>
+                                        <asp:TextBox TextMode="Email" name="formCEmail" placeholder="Confirm Email..." class="form-email form-control" ID="formCEmail" runat="server" Width="300px" />
+                                    </div>
+                                    <div>
+                                        <asp:Label runat="server" id="errorMessage"/>
+                                    </div>
+                                    
                                     <asp:Button ID="signUp" class="btn btn-default" Text="Sign me up!" runat="server" Width="300px" OnClick="signUp_Click" />
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
             </div>
         </div>
 

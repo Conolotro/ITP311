@@ -49,6 +49,15 @@ namespace ITP311 {
         protected global::System.Web.UI.WebControls.TextBox formNRIC;
         
         /// <summary>
+        /// formPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox formPassword;
+        
+        /// <summary>
         /// formFN control.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,24 @@ namespace ITP311 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox formEmail;
+        
+        /// <summary>
+        /// formCEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox formCEmail;
+        
+        /// <summary>
+        /// errorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorMessage;
         
         /// <summary>
         /// signUp control.
