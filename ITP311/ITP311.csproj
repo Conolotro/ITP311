@@ -63,10 +63,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\medicalportalconnectionstring.mdf" />
-    <Content Include="App_Data\medicalportalconnectionstring_log.ldf">
-      <DependentUpon>medicalportalconnectionstring.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\medicalportal.mdf" />
+    <Content Include="App_Data\medicalportal_log.ldf" />
     <Content Include="confirmEmail.aspx">
       <BrowseToURL>~/confirmemail.aspx</BrowseToURL>
     </Content>
@@ -98,6 +96,7 @@
     <Content Include="patientportal-updateparticulars.aspx" />
     <Content Include="patientportal.aspx" />
     <Content Include="registered.aspx" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\adminLogin.css" />
@@ -112,6 +111,13 @@
     <Content Include="adminlogin.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Content Include="App_Code\BLL\appointmentBLL.cs" />
     <Compile Include="App_Code\DAL\AccountDAL.cs" />
     <Content Include="App_Code\DAL\appointmentDAL.cs" />
