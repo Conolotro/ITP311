@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ITP311</RootNamespace>
     <AssemblyName>ITP311</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -49,7 +49,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -58,12 +57,10 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\medicalportalconnectionstring.mdf" />
@@ -96,6 +93,8 @@
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff2" />
     <Content Include="font-awesome-4.6.3\fonts\FontAwesome.otf" />
+    <Content Include="patientportal-appoinment.aspx" />
+    <Content Include="patientportal-dashboard.aspx" />
     <Content Include="patientportal-updateparticulars.aspx" />
     <Content Include="patientportal.aspx" />
     <Content Include="registered.aspx" />
@@ -113,7 +112,9 @@
     <Content Include="adminlogin.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\BLL\appointmentBLL.cs" />
     <Compile Include="App_Code\DAL\AccountDAL.cs" />
+    <Content Include="App_Code\DAL\appointmentDAL.cs" />
     <Compile Include="confirmEmail.aspx.cs">
       <DependentUpon>confirmEmail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,6 +148,18 @@
     </Compile>
     <Compile Include="App_Code\BLL\PatientBLL.cs" />
     <Compile Include="App_Code\DAL\PatientDAL.cs" />
+    <Compile Include="patientportal-appoinment.aspx.cs">
+      <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patientportal-appoinment.aspx.designer.cs">
+      <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patientportal-dashboard.aspx.cs">
+      <DependentUpon>patientportal-dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patientportal-dashboard.aspx.designer.cs">
+      <DependentUpon>patientportal-dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patientportal-updateparticulars.aspx.cs">
       <DependentUpon>patientportal-updateparticulars.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
