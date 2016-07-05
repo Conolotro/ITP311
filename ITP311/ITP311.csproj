@@ -63,6 +63,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adminportal_createDoc.aspx" />
     <Content Include="App_Data\medicalportal.mdf" />
     <Content Include="App_Data\medicalportal_log.ldf" />
     <Content Include="confirmEmail.aspx">
@@ -111,6 +112,12 @@
     <Content Include="adminlogin.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminportal_createDoc.aspx.cs">
+      <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminportal_createDoc.aspx.designer.cs">
+      <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

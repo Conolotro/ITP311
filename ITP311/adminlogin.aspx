@@ -35,15 +35,15 @@
 
                   <form id="form1" runat="server">
                     <label class="sr-only" for="form-username">Username</label>
-                    <asp:TextBox name="username" placeholder="Username..."
+                    <asp:TextBox type="text" name="username" placeholder="Username..."
                            class="form-username form-control" id="formUsername" runat="server" />
 
-                   <br/>
+                   <br>
                     <label class="sr-only" for="form-password">Password</label>
                     <asp:Textbox type="password" name="password" placeholder="Password..."
                            class="form-password form-control" id="formPassword" runat="server"/>
                     
-                    <br/>
+                    <br>
                     
                     
                     <div class = "span6">
