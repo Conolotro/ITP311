@@ -5,7 +5,6 @@ using System.Web;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
-using ITP311.Entity_Class;
 using ITP311.DAL;
 using System.Collections;
 
