@@ -166,7 +166,7 @@ namespace ITP311
             }
         }
 
-        string strConnectionString = ConfigurationManager.ConnectionStrings["medicalportalconnectionstring"].ToString();
+        string strConnectionString = ConfigurationManager.ConnectionStrings["medicalportal"].ToString();
 
         public PatientDAL() { }
 
