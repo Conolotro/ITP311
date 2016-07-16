@@ -10,24 +10,33 @@
 namespace ITP311 {
     
     
-    public partial class doctor_PatientsLog {
+    public partial class CreatePatientsLog {
         
         /// <summary>
-        /// form1 control.
+        /// formSymptomsList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox formSymptomsList;
         
         /// <summary>
-        /// GridView1 control.
+        /// formDoctorsNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.TextBox formDoctorsNotes;
+        
+        /// <summary>
+        /// createNewLog control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button createNewLog;
     }
 }

@@ -1,13 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Web;
+using System.Data;
 
-namespace ITP311.App_Code.DAL
+
+namespace ITP311
 {
-    public class PatientsLog
+    public class PatientsLogDAL
     {
+        private int caseNo;
+        private string nric;
+        private string datetime;
+        private string symptomsList;
+        private int medicineListID;
+        private int receiptID;
+        private int certID;
+        private string doctorsNotes;
 
-        public int caseNo
+        public int _caseNo
         {
             get
             {
@@ -19,8 +31,7 @@ namespace ITP311.App_Code.DAL
                 caseNo = value;
             }
         }
-
-        public string nric
+        public string _nric
         {
             get
             {
@@ -32,33 +43,31 @@ namespace ITP311.App_Code.DAL
                 nric = value;
             }
         }
-        public string date
+        public string _datetime
         {
             get
             {
-                return date;
+                return datetime;
             }
 
             set
             {
-                date = value;
+                datetime = value;
             }
         }
-
-        public int symptomsListID
+        public string _symptomsList
         {
             get
             {
-                return symptomsListID;
+                return symptomsList;
             }
 
             set
             {
-                symptomsListID = value;
+                symptomsList = value;
             }
         }
-
-        public int medicineListID
+        public int _medicineListID
         {
             get
             {
@@ -70,7 +79,7 @@ namespace ITP311.App_Code.DAL
                 medicineListID = value;
             }
         }
-         public int receiptID
+        public int _receiptID
         {
             get
             {
@@ -82,7 +91,7 @@ namespace ITP311.App_Code.DAL
                 receiptID = value;
             }
         }
-         public int certID
+        public int _certID
          {
              get
              {
@@ -94,20 +103,59 @@ namespace ITP311.App_Code.DAL
                  certID = value;
              }
          }
-         public int patientsCondition
+        public string _doctorsNotes
          {
              get
              {
-                 return patientsCondition;
+                 return doctorsNotes;
              }
 
              set
              {
-                 patientsCondition = value;
+                 doctorsNotes = value;
              }
          }
 
+        public PatientsLogDAL() { }
 
+        string strConnectionString = ConfigurationManager.ConnectionStrings["medicalportal"].ToString();
+
+        public PatientsLogDAL(string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes)
+        {
+            this.nric = nric;
+            this.datetime = datetime;
+            this.symptomsList = symptomsList;
+            this.medicineListID = medicineListID;
+            this.receiptID = receiptID;
+            this.certID = certID;
+            this.doctorsNotes = doctorsNotes;
+        }
+
+        public int createPatientsLog(string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes)
+        {
+            int result = 0;
+            string strCommandText = "INSERT INTO PatientsLog(nric, datetime, SymptomsList, MedicineListID, ReceiptID, CertID, DoctorsNotes)"
+                + "values (@nric, @datetime, @symptomsList, @medicineListID, @receiptID, @certID, @doctorsNotes)";
+
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+            cmd.Parameters.AddWithValue("@nric", nric);
+            cmd.Parameters.AddWithValue("@datetime", datetime);
+            cmd.Parameters.AddWithValue("@symptomsList", symptomsList);
+            cmd.Parameters.AddWithValue("@medicineListID", medicineListID);
+            cmd.Parameters.AddWithValue("@receiptID", receiptID);
+            cmd.Parameters.AddWithValue("@certID", certID);
+            cmd.Parameters.AddWithValue("@doctorsNotes", doctorsNotes);
+
+            myConnection.Open();
+
+            result += cmd.ExecuteNonQuery();
+
+            myConnection.Close();
+            myConnection.Dispose();
+
+            return result;
+        }
 
     }
 }

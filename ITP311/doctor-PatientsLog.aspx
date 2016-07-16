@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <title>Admin - Dashboard</title>
 
     <!-- Bootstrap core CSS -->
@@ -26,6 +26,8 @@
 </head>
 
 <body>
+
+    <form id="form1" runat="server">
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -116,7 +118,8 @@
                             <i class="fa fa-plus fa-fw" aria-hidden="true"></i>Create <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>New Log</a>
+                                <a href="CreatePatientsLog.aspx"><i class="fa fa-file-text-o fa-fw" aria-hidden="true" data-toggle="modal" data-target="#formNewPatient">></i>New Log</a>
+
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-file-text-o fa-fw" aria-hidden="true"></i>Generate Medical Certificate</a>
@@ -128,83 +131,11 @@
                     
                     <div class="panel-body" >
                         <div style="margin:1.35%;margin-top:-1.35%;width:25%;float:left; ">
-                            <h3 style="margin-left:3%;">Select Case</h3>
-                            <div style="overflow:auto;height:450px;transparency:50%;padding-right:3%;">
-                            <table class="table" style="margin-bottom:5%;">
-                                <tr>
-                                    <th>Case Number</th>
-                                    <th>NRIC</th>
-                                </tr>
-                                <tr class="active">
-                                    <td>001-01</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-02</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-03</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-04</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                                <tr>
-                                    <td>001-05</td>
-                                    <td>SXXXXXXXXH</td>
-                                </tr>
-                            </table>
-                        </div>
+                            <h3 style="margin-left:3%;">Select Case<asp:GridView ID="GridView1" runat="server">
+                                </asp:GridView>
+                            </h3>
+
+                            
                         </div>
                         <div class="panel panel-default" style="width:65%;overflow:hidden;;padding-left:0%;">
                         
@@ -236,13 +167,12 @@
                     </div>
                     </div>
                     </div>
-                    
+                    </div>
                 </div>
 
-            </div>
 
-        </div>
-
+    </form>
+    
 
 </body>
 
