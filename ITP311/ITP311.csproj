@@ -114,11 +114,12 @@
   <ItemGroup>
     <Compile Include="adminportal_createDoc.aspx.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="adminportal_createDoc.aspx.designer.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\BLL\AccountBLL.cs" />
+    <Compile Include="App_Code\BLL\AccountBLL.cs" />
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
