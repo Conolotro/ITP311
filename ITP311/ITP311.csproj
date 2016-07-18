@@ -69,9 +69,12 @@
     <Content Include="confirmEmail.aspx">
       <BrowseToURL>~/confirmemail.aspx</BrowseToURL>
     </Content>
+    <Content Include="CreatePatientsLog.aspx" />
     <Content Include="css\comfirmation.css" />
     <Content Include="css\login.css" />
     <Content Include="css\small-business.css" />
+    <Content Include="doctor-index.aspx" />
+    <Content Include="doctor-PatientsLog.aspx" />
     <Content Include="error.aspx" />
     <Content Include="font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
@@ -114,11 +117,35 @@
   <ItemGroup>
     <Compile Include="adminportal_createDoc.aspx.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="adminportal_createDoc.aspx.designer.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
     </Compile>
-    <Content Include="App_Code\BLL\AccountBLL.cs" />
+    <Compile Include="App_Code\BLL\AccountBLL.cs" />
+    <Compile Include="App_Code\DAL\PatientsLogDAL.cs" />
+    <Compile Include="App_Code\BLL\PatientsLogBLL.cs" />
+    <Compile Include="CreatePatientsLog.aspx.cs">
+      <DependentUpon>CreatePatientsLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreatePatientsLog.aspx.designer.cs">
+      <DependentUpon>CreatePatientsLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="doctor-index.aspx.cs">
+      <DependentUpon>doctor-index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doctor-index.aspx.designer.cs">
+      <DependentUpon>doctor-index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="doctor-PatientsLog.aspx.cs">
+      <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doctor-PatientsLog.aspx.designer.cs">
+      <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -208,6 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="php\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />

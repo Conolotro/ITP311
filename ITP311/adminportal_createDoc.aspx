@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminportal_createDoc.aspx.cs" Inherits="ITP311.adminportal_createDoc" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminportal_createDoc.aspx.cs" Inherits="ITP311.adminportal_createDoc" Async="true" %>
 
 <!DOCTYPE html>
 
@@ -148,9 +148,9 @@
                                         <label class="col-lg-2 control-label">Account Type</label>
                                         <div class="col-lg-10">
                                        <asp:DropDownList ID="ddlType" runat="server" class="form-control">
-									   <asp:ListItem>Doctor</asp:ListItem>
-                                       <asp:ListItem>Surgeon</asp:ListItem>
-                                       <asp:ListItem>Admin</asp:ListItem>
+									   <asp:ListItem Text ="Doctor" Value ="d"/>
+                                       <asp:ListItem Text ="Surgeon" Value ="s"/>
+                                       <asp:ListItem Text ="admin" Value ="a"/>
                                 </asp:DropDownList>
                                         </div>
                                     </div>
@@ -166,6 +166,7 @@
                             </form>
                         </div>
                     </div>
+                 </div>
                     <!-- /.col-->
                 </div>
                 <!-- /.row -->
