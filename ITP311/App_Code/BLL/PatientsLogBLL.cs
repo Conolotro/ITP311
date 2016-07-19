@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using System.Text;
+using System.Data;
 using System.Web;
 
 namespace ITP311
@@ -27,6 +26,19 @@ namespace ITP311
             }
 
             return result;
+        }
+
+        public DataTable getDTGrid()
+        {
+            PatientsLogDAL plogdal = new PatientsLogDAL();
+            DataTable dt = new DataTable();
+            dt = plogdal.getDTGrid();
+            return dt;
+        }
+        public PatientsLogDAL getPatientsLogByCaseNo(int caseNo)
+        {
+            PatientsLogDAL plogdal = new PatientsLogDAL();
+            return plogdal.getPatientsLogByCaseNo(caseNo);;
         }
     }
 }

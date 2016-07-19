@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Web;
 using System.Data;
+using System.Web.Services;
 
 
 namespace ITP311
@@ -92,45 +93,46 @@ namespace ITP311
             }
         }
         public int _certID
-         {
-             get
-             {
-                 return certID;
-             }
+        {
+            get
+            {
+                return certID;
+            }
 
-             set
-             {
-                 certID = value;
-             }
-         }
+            set
+            {
+                certID = value;
+            }
+        }
         public string _doctorsNotes
-         {
-             get
-             {
-                 return doctorsNotes;
-             }
+        {
+            get
+            {
+                return doctorsNotes;
+            }
 
-             set
-             {
-                 doctorsNotes = value;
-             }
-         }
+            set
+            {
+                doctorsNotes = value;
+            }
+        }
 
         public PatientsLogDAL() { }
 
         string strConnectionString = ConfigurationManager.ConnectionStrings["medicalportal"].ToString();
 
-        public PatientsLogDAL(string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes)
-        {
-            this.nric = nric;
-            this.datetime = datetime;
-            this.symptomsList = symptomsList;
-            this.medicineListID = medicineListID;
-            this.receiptID = receiptID;
-            this.certID = certID;
-            this.doctorsNotes = doctorsNotes;
-        }
 
+        public PatientsLogDAL(string _nric, string _datetime, string _symptomsList, int _medicineListID, int _receiptID, int _certID, string _doctorsNotes)
+        {
+            nric = _nric;
+            datetime = _datetime;
+            symptomsList = _symptomsList;
+            medicineListID = _medicineListID;
+            receiptID = _receiptID;
+            certID = _certID;
+            doctorsNotes = _doctorsNotes;
+        }
+        
         public int createPatientsLog(string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes)
         {
             int result = 0;
@@ -157,5 +159,119 @@ namespace ITP311
             return result;
         }
 
+
+        public PatientsLogDAL retrievePatientsLog(string nric)
+        {
+            PatientsLogDAL p = null;
+            string strCommandText = "Select * from PatientsLog where NRIC = @nric";
+
+            string caseNo;
+            string datetime;
+            string symptomsList;
+            string medicineListID;
+            string receiptID;
+            string certID;
+            string doctorsNotes;
+
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+            cmd.Parameters.AddWithValue("@nric", nric);
+
+
+            try
+            {
+                myConnection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    caseNo = reader["caseNo"].ToString();
+                    datetime = reader["datetime"].ToString();
+                    symptomsList = reader["symptomsList"].ToString();
+                    medicineListID = reader["medicineListID"].ToString();
+                    receiptID = reader["receiptID"].ToString();
+                    certID = reader["certID"].ToString();
+                    doctorsNotes = reader["doctorsNotes"].ToString();
+
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally { myConnection.Close(); }
+            return p;
+        }
+        public DataTable getDTGrid()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+
+            string strCommandText = "SELECT * FROM PatientsLog";
+            SqlDataAdapter myAdapter = new SqlDataAdapter(strCommandText, myConnection);
+            myConnection.Open();
+
+            myAdapter.Fill(dt);
+            myConnection.Dispose();
+
+            return dt;
+        }
+
+        public PatientsLogDAL getPatientsLogByCaseNo(int caseNo)
+        {
+            PatientsLogDAL patientsLog = null;
+            string _nric = "";
+            string _datetime = "";
+            string _symptomsList = "";
+            int _medicineListID;
+            int _receiptID;
+            int _certID;
+            string _doctorsNotes = "";
+
+            string queryStr = "SELECT * FROM PatientsLog where caseNo = @caseNo ";
+
+            SqlConnection conn = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(queryStr, conn);
+            cmd.Parameters.AddWithValue("@caseNo", caseNo);
+
+
+            conn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            try
+            {
+                if (reader.Read())
+                {
+                    _nric = reader["nric"].ToString();
+                    _datetime = reader["datetime"].ToString();
+                    _symptomsList = reader["symptomsList"].ToString();
+                    _medicineListID = Int32.Parse(reader["medicineListID"].ToString());
+                    _receiptID = Int32.Parse(reader["receiptID"].ToString());
+                    _certID = Int32.Parse(reader["certID"].ToString());
+                    _doctorsNotes = reader["doctorsNotes"].ToString();
+
+
+
+                    patientsLog = new PatientsLogDAL(_nric, _datetime, _symptomsList, _medicineListID, _receiptID, _certID, _doctorsNotes);
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                conn.Close();
+                reader.Close();
+                reader.Dispose();
+            }
+
+            return patientsLog;
+        }
+        
     }
 }

@@ -16,25 +16,33 @@ namespace ITP311
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (con.State == System.Data.ConnectionState.Open)
+            if (!IsPostBack)
             {
-                con.Close();
+                PatientsLogBLL plogbll = new PatientsLogBLL();
+                DataTable dt = new DataTable();
+                dt = plogbll.getDTGrid();
+                gvCaseNumber.DataSource = dt;
+                gvCaseNumber.DataBind();
+                gvCaseNumber.Columns[1].Visible = false;
+
             }
-            con.Open();
-
-            SqlCommand cmd = con.CreateCommand();
-            cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "select caseNo from PatientsLog";
-            cmd.ExecuteNonQuery();
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-            GridView1.DataSource = dt;
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        protected void gvCaseNumber_SelectedIndexChanged(object sender, EventArgs e)
+        { 
+            PatientsLogDAL plog = null;
+            PatientsLogBLL plogbll = new PatientsLogBLL();
+            PatientsLogDAL plogdal = new PatientsLogDAL();
+            int caseNo = int.Parse(gvCaseNumber.SelectedRow.Cells[1].Text);
+            plog = plogbll.getPatientsLogByCaseNo(caseNo);
 
+
+            nricLbl.Text = plog._nric;
+            dateOfLogLbl.Text= plog._datetime;
+            symptomsLbl.Text = plog._symptomsList;
+            diagnosisLbl.Text = plog._doctorsNotes;
+            prescriptionLbl.Text = plog._medicineListID.ToString();
         }
+        
     }
 }

@@ -131,8 +131,20 @@
                     
                     <div class="panel-body" >
                         <div style="margin:1.35%;margin-top:-1.35%;width:25%;float:left; ">
-                            <h3 style="margin-left:3%;">Select Case<asp:GridView ID="GridView1" runat="server">
-                                </asp:GridView>
+                            <h3 style="margin-left:3%;">Select Case<asp:GridView ID="gvCaseNumber" style="font-size:15px;width:100%;" runat="server" DataKeyNames="dateTime" SelectedIndex="0"  AutoGenerateColumns="False" PageSize="5" OnSelectedIndexChanged="gvCaseNumber_SelectedIndexChanged">
+                    <Columns>
+                        
+                        <asp:BoundField DataField="dateTime" HeaderText="Date Time" SortExpression="dateTime" />
+
+                        <asp:BoundField DataField="caseNo" HeaderText="Case Number" SortExpression="caseNo"/>
+                        <asp:CommandField ShowSelectButton="True" />
+                    </Columns>
+                    <PagerSettings FirstPageText="First" LastPageText="Last"
+                        Mode="NumericFirstLast" PageButtonCount="5" />
+
+                    <RowStyle BackColor="White" />
+
+                </asp:GridView>
                             </h3>
 
                             
@@ -147,17 +159,26 @@
                             <h3 class="panel-title"><h3 style="padding-bottom:5%;">Patients' Medical History</h3>
                         </div>
                         <div class="panel-body">
-                            <p>Case Number : 001-01</p>
+                            <p>&nbsp;Number :<asp:Label ID="caseNumberLbl" runat="server"></asp:Label>
+                            </p>
                             <br/>
-                            <p>NRIC : SXXXXXXXXH</p>
+                            <p>NRIC : <asp:Label ID="nricLbl" runat="server"></asp:Label>
+                            </p>
                             <br/>
-                            <p>Date of Log : 17-12-2014</p>
+                            <p>Date of Log : 
+                                <asp:Label ID="dateOfLogLbl" runat="server"></asp:Label>
+                            </p>
                             <br/>
-                            <p>Symptoms : &nbsp;&nbsp;&nbsp;39 Degree Celcius<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Fatigue<br/> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Coughing</p>
+                            <p>Symptoms : 
+                                <asp:Label ID="symptomsLbl" runat="server"></asp:Label>
+                            </p>
                             <br/>
                             
-                            <p>Diagnosis : Fever</p><br/>
-<p>Prescription : Acetaminophen - 12 pills</p>
+                            <p>Diagnosis : <asp:Label ID="diagnosisLbl" runat="server"></asp:Label>
+                            </p><br/>
+                            <p>Prescription : 
+                                <asp:Label ID="prescriptionLbl" runat="server"></asp:Label>
+                            </p>
                             <div class="button-group" style="float:right;">
                             <button type="button" class="btn btn-primary">Medical Certificate</button>
                             <button type="button" class="btn btn-primary">Update</button>
