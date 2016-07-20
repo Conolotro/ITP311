@@ -11,13 +11,13 @@ namespace ITP311
     {
         public int id { get; set; }
         public string nric { get; set; }
-        public string key { get; set; }
+        public string Codekey { get; set; }
         public DateTime creationDate { get; set; }
 
-        public PasswordResetDAL(string nric, string key, DateTime creationDate)
+        public PasswordResetDAL(string nric, string CodeKey, DateTime creationDate)
         {
             this.nric = nric;
-            this.key = key;
+            this.Codekey = CodeKey;
             this.creationDate = creationDate;
         }
 
@@ -28,17 +28,17 @@ namespace ITP311
 
         string strConnectionString = ConfigurationManager.ConnectionStrings["medicalportal"].ToString();
 
-        public int CreatePasswordReset(string nric, string key, DateTime creationDate)
+        public int CreatePasswordReset(string nric, string CodeKey, DateTime creationDate)
         {
             int result = 0;
-            string strCommandText = "INSERT INTO PasswordReset(Nric,CreationDate,Key)"
-                + "values (@nric, @createionDate, @key)";
+            string strCommandText = "INSERT INTO PasswordReset(Nric,CreationDate,CodeKey)"
+                + "values (@nric, @creationDate,@Codekey)";
 
             SqlConnection myConnection = new SqlConnection(strConnectionString);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
             cmd.Parameters.AddWithValue("@nric", nric);
             cmd.Parameters.AddWithValue("@creationDate", creationDate);
-            cmd.Parameters.AddWithValue("@key", key);
+            cmd.Parameters.AddWithValue("@Codekey", CodeKey);
 
 
             myConnection.Open();
@@ -54,7 +54,7 @@ namespace ITP311
         public PasswordResetDAL retrievePasswordReset(string enteredKey)
         {
             PasswordResetDAL rr = null;
-            string strCommandText = "Select * from PasswordReset where Key = @key";
+            string strCommandText = "Select * from PasswordReset where Codekey = @key";
             string Nric, Key;
             DateTime creationDate;
 
@@ -72,9 +72,9 @@ namespace ITP311
                 {
                     nric = reader["Nric"].ToString();
                     creationDate = (DateTime)reader["CreationDate"];
-                    key = reader["Key"].ToString();
+                    Codekey = reader["Codekey"].ToString();
 
-                    rr = new PasswordResetDAL(nric, key, creationDate);
+                    rr = new PasswordResetDAL(nric, Codekey, creationDate);
                 }
 
             }
@@ -89,12 +89,11 @@ namespace ITP311
         public int RemovePasswordReset(string key)
         {
             int result = 0;
-            string strCommandText = "DELETE from PasswordReset where Key = @key"
-                + "values (@key)";
+            string strCommandText = "DELETE from PasswordReset where Codekey = @Codekey";
 
             SqlConnection myConnection = new SqlConnection(strConnectionString);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
-            cmd.Parameters.AddWithValue("@key", key);
+            cmd.Parameters.AddWithValue("@Codekey", key);
 
             myConnection.Open();
 
@@ -109,8 +108,7 @@ namespace ITP311
         public int RemovePasswordResetByNRIC(string nric)
         {
             int result = 0;
-            string strCommandText = "DELETE from PasswordReset where Nric = @nric"
-                + "values (@key)";
+            string strCommandText = "DELETE from PasswordReset where Nric = @nric";
 
             SqlConnection myConnection = new SqlConnection(strConnectionString);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);

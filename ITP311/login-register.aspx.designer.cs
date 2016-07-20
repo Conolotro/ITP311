@@ -31,6 +31,24 @@ namespace ITP311 {
         protected global::System.Web.UI.WebControls.TextBox loginPassword;
         
         /// <summary>
+        /// forgetEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox forgetEmail;
+        
+        /// <summary>
+        /// resetPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button resetPassword;
+        
+        /// <summary>
         /// signIn control.
         /// </summary>
         /// <remarks>

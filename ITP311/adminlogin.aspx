@@ -43,7 +43,7 @@
                     <asp:Textbox type="password" name="password" placeholder="Password..."
                            class="form-password form-control" id="formPassword" runat="server"/>
                     
-                    <br>
+                    <br/>
                     
                     
                     <div class = "span6">

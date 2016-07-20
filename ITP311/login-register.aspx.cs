@@ -43,42 +43,58 @@ namespace ITP311
 
         protected async void signUp_Click(object sender, EventArgs e)
         {
-            string nric = formNRIC.Text.Trim();
-            string password = formPassword.Text.Trim();
-            string firstName = formFN.Text.Trim();
-            string lastName = formLN.Text.Trim();
-            int contactNo = Int32.Parse(formPhone.Text.Trim());
-            string email = formEmail.Text.Trim();
-            string confirmEmail = formCEmail.Text.Trim();
-
-
-            if (email.Equals(confirmEmail,StringComparison.OrdinalIgnoreCase))
+            if (formNRIC.Text.Length != 0 && formPassword.Text.Length != 0)
             {
-                PatientBLL patient = new PatientBLL();
-                if (patient.createPatient(nric, password, firstName, lastName, contactNo, email) == true)
+                string nric = formNRIC.Text.Trim();
+                string password = formPassword.Text.Trim();
+                string firstName = formFN.Text.Trim();
+                string lastName = formLN.Text.Trim();
+                int contactNo = 0;
+                try
                 {
-                    try
-                    {
-                        await sendEmail(nric);
-                    }
-                    catch (SmtpException ex)
-                    {
-                       
-                    }
-                    
+                    contactNo = Int32.Parse(formPhone.Text.Trim());
+                }
+                catch (FormatException ex)
+                {
+                    contactNo = 0;
+                }
+                string email = formEmail.Text.Trim();
+                string confirmEmail = formCEmail.Text.Trim();
 
-                    Response.Redirect("registered.aspx");
+
+                if (email.Equals(confirmEmail, StringComparison.OrdinalIgnoreCase))
+                {
+                    PatientBLL patient = new PatientBLL();
+                    if (patient.createPatient(nric, password, firstName, lastName, contactNo, email) == true)
+                    {
+                        try
+                        {
+                            await sendEmail(nric);
+                        }
+                        catch (SmtpException ex)
+                        {
+
+                        }
+
+
+                        Response.Redirect("registered.aspx");
+                    }
+                    else
+                    {
+                        
+                    }
                 }
                 else
                 {
-                    Response.Redirect("error.aspx");
+                    errorMessage.Text = "The Confirmation Email must match your Email Address";
                 }
+           
             }
             else
             {
-                errorMessage.Text = "The Confirmation Email must match your Email Address";
+                Response.Redirect("error.aspx");
             }
-           
+            
 
 
         }
@@ -107,6 +123,22 @@ namespace ITP311
             smtpClient.Credentials = new NetworkCredential("silverwoodmedical311@gmail.com", "aspitp311");
             smtpClient.EnableSsl = true;
             await smtpClient.SendMailAsync(mailMessage);
+        }
+
+        protected void resetPassword_Click(object sender, EventArgs e)
+        {
+            string resetPasswordEmail = forgetEmail.Text.Trim();
+            PatientBLL p = new PatientBLL();
+            if (p.retrievePatientbyEmail(resetPasswordEmail) == true)
+            {
+                PasswordResetBLL pr = new PasswordResetBLL();
+                pr.createPatientPasswordReset(resetPasswordEmail);
+            }
+            else
+            {
+                Response.Redirect("forgetPassword.aspx?email=invalid");
+            }
+
         }
 
 

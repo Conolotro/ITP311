@@ -9,7 +9,7 @@ namespace ITP311
 {
     public class PasswordResetBLL
     {
-        PasswordResetBLL()
+        public PasswordResetBLL()
         {
 
         }

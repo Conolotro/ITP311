@@ -55,6 +55,21 @@ namespace ITP311
             return result;
         }
 
+        public bool retrievePatientbyEmail(string Email)
+        {
+            bool result = false;
+            PatientDAL p = new PatientDAL();
+            if (p.retrievePatientbyEmail(Email) != null)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
+
         public PatientDAL retrievePatientByNric(string nric)
         {
             PatientDAL p = new PatientDAL();

@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" Async="true" CodeBehind="login-register.aspx.cs" Inherits="ITP311.login_register" %>
 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -85,13 +86,41 @@
                                 <div class="form-bottom">
                                     <div class="form-group">
                                         <label class="sr-only" for="formUsername">Username</label>
-                                        <asp:TextBox ID="loginUsername" placeholder="Username..." class="form-username form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="loginUsername" placeholder="Username..." class="form-username form-control" Width="300px" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formPassword">Password</label>
-                                        <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-password form-control" runat="server"></asp:TextBox>
+                                        <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-password form-control" Width="300px" runat="server"></asp:TextBox>
+                                        <!-- Trigger the modal with a button -->
+                                        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Forget your password ?</button>
+
                                     </div>
-                                    <asp:Button Text="Sign In" ID="signIn" class="btn btn-default" runat="server" OnClick="signIn_Click" />
+
+                                    <!-- Modal -->
+                                    <div id="myModal" class="modal fade" role="dialog">
+                                        <div class="modal-dialog modal-mg">
+
+                                            <!-- Modal content-->
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Forget Password</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    To reset your password, enter the email address you used to register with us. 
+                                                    <br />
+                                                    <label class="sr-only" for="forgetEmail">Email:</label>
+                                                    <asp:TextBox ID="forgetEmail" placeholder="Email..." class="form-username form-control" runat="server" Width="300px"></asp:TextBox>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <asp:button type="button" class="btn btn-default" ID="resetPassword" OnClick="resetPassword_Click" runat="server" Text="Submit"/>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <asp:Button Text="Sign In" ID="signIn" class="btn btn-default" runat="server" OnClick="signIn_Click" Width="300px" />
                                 </div>
                             </div>
 
@@ -142,9 +171,9 @@
                                         <asp:TextBox TextMode="Email" name="formCEmail" placeholder="Confirm Email..." class="form-email form-control" ID="formCEmail" runat="server" Width="300px" />
                                     </div>
                                     <div>
-                                        <asp:Label runat="server" id="errorMessage"/>
+                                        <asp:Label runat="server" ID="errorMessage" />
                                     </div>
-                                    
+
                                     <asp:Button ID="signUp" class="btn btn-default" Text="Sign me up!" runat="server" Width="300px" OnClick="signUp_Click" />
                                 </div>
                             </div>
