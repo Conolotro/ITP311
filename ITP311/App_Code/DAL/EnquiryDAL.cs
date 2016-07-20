@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -27,6 +29,8 @@ namespace ITP311
 
         }
 
+        string cn = ConfigurationManager.ConnectionStrings["medicalportal"].ToString();
+
         public int CreateEnquiry(string name, string firstName, string lastName, string passwordHash, string passwordSalt, string email, string contactNo, string type)
         {
             int result = 0;
@@ -35,7 +39,6 @@ namespace ITP311
 
             SqlConnection myConnection = new SqlConnection(cn);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
-            cmd.Parameters.AddWithValue("@nric", nric);
             cmd.Parameters.AddWithValue("@firstname", firstName);
             cmd.Parameters.AddWithValue("@lastname", lastName);
             cmd.Parameters.AddWithValue("@passwordhash", passwordHash);
