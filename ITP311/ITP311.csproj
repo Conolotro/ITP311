@@ -123,6 +123,9 @@
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\AccountBLL.cs" />
+    <Compile Include="App_Code\BLL\PasswordResetBLL.cs" />
+    <Compile Include="App_Code\DAL\EnquiryDAL.cs" />
+    <Compile Include="App_Code\DAL\PasswordResetDAL.cs" />
     <Compile Include="App_Code\DAL\PatientsLogDAL.cs" />
     <Compile Include="App_Code\BLL\PatientsLogBLL.cs" />
     <Compile Include="CreatePatientsLog.aspx.cs">
