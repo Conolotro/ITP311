@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ITP311.BLL;
+using ITP311.NYPSMS;
 
 namespace ITP311
 {
     public partial class patientportal_appoinment : System.Web.UI.Page
     {
         appointmentBLL Abll = new appointmentBLL();
+
+        NYPSMS.SMS appsmsotp= new NYPSMS.SMS();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,6 +32,7 @@ namespace ITP311
             ddlDate.SelectedIndex = 0;
             ddlTime.SelectedIndex = 0;
             ddlLocation.SelectedIndex = 0;
+
 
 
         }
