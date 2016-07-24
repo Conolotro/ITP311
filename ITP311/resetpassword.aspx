@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Silver Medical - reset Password</title>
+    <title>Silver Medical - Forget Password</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -102,7 +102,7 @@
 
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h2>Forget Password</h2>
+                                <h2>Reset Password</h2>
                             </div>
                             <div class="panel-body">
                                 To reset your password, enter the email address you used to register with us. Instructions of resetting your password will be sent to you.<br />
@@ -111,15 +111,22 @@
                                 <form class="form-horizontal" runat="server">
                                     <fieldset>
                                         <div class="form-group">
-                                            <label for="inputEmail" class="col-lg-4 control-label">Email</label>
+                                            <label for="inputPassword" class="col-lg-4 control-label">New Password</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" ID="inputEmail" Width="350px" />
+                                                <asp:TextBox class="form-control" runat="server" ID="inputPassword" Width="350px" />
+                                                <br />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputConfirmPassword" class="col-lg-4 control-label">Confirm Password</label>
+                                            <div class="col-lg-6">
+                                                <asp:TextBox class="form-control" runat="server" ID="inputConfirmPassword" Width="350px" />
                                                 <br />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="col-lg-12">
-                                                <asp:Button runat="server" class="btn btn-default" ID="emailForget" OnClick="emailForget_Click" Text="submit" />
+                                                <asp:Button runat="server" class="btn btn-default" ID="submit" OnClick="submit_Click" Text="submit" />
                                             </div>
                                         </div>
                                     </fieldset>
@@ -152,4 +159,3 @@
 </body>
 
 </html>
-

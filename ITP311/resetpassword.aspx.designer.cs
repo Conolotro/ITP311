@@ -31,21 +31,30 @@ namespace ITP311 {
         protected global::System.Web.UI.WebControls.Literal success;
         
         /// <summary>
-        /// inputEmail control.
+        /// inputPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputEmail;
+        protected global::System.Web.UI.WebControls.TextBox inputPassword;
         
         /// <summary>
-        /// emailForget control.
+        /// inputConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button emailForget;
+        protected global::System.Web.UI.WebControls.TextBox inputConfirmPassword;
+        
+        /// <summary>
+        /// submit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button submit;
     }
 }
