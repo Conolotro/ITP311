@@ -65,13 +65,24 @@
         <!-- /.container -->
     </nav>
 
+
     <!-- Top content -->
     <div class="top-content">
+
+
 
         <div class="inner-bg">
             <div class="container">
                 <form runat="server">
                     <div class="row">
+                        <asp:Literal ID="success" runat="server" Visible="false">
+                            <div class="alert alert-dismissible alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Success!</strong> Please check your inbox to reset your password.
+                            </div>
+
+        </asp:Literal>
+
                         <div class="col-sm-5">
                             <div class="form-box">
                                 <div class="form-top">
@@ -102,6 +113,7 @@
 
                                             <!-- Modal content-->
                                             <div class="modal-content">
+
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                                     <h4 class="modal-title">Forget Password</h4>
@@ -113,7 +125,7 @@
                                                     <asp:TextBox ID="forgetEmail" placeholder="Email..." class="form-username form-control" runat="server" Width="300px"></asp:TextBox>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <asp:button type="button" class="btn btn-default" ID="resetPassword" OnClick="resetPassword_Click" runat="server" Text="Submit"/>
+                                                    <asp:Button type="button" class="btn btn-default" ID="resetPassword" OnClick="resetPassword_Click" runat="server" Text="Submit" />
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                 </div>
                                             </div>

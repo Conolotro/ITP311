@@ -81,6 +81,7 @@
     <Content Include="font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="resetpassword.aspx" />
     <Content Include="forgetpassword.aspx" />
     <Content Include="img\1.jpg" />
     <Content Include="img\2.jpg" />
@@ -151,6 +152,13 @@
     </Compile>
     <Compile Include="doctor-PatientsLog.aspx.designer.cs">
       <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="resetpassword.aspx.cs">
+      <DependentUpon>resetpassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="resetpassword.aspx.designer.cs">
+      <DependentUpon>resetpassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="forgetpassword.aspx.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>

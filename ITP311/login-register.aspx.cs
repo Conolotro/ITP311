@@ -132,7 +132,9 @@ namespace ITP311
             if (p.retrievePatientbyEmail(resetPasswordEmail) == true)
             {
                 PasswordResetBLL pr = new PasswordResetBLL();
-                pr.createPatientPasswordReset(resetPasswordEmail);
+                string nric = p.retrievePatientNRICbyEmail(resetPasswordEmail);
+                pr.createPatientPasswordReset(nric);
+                success.Visible = true;
             }
             else
             {

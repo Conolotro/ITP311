@@ -13,6 +13,15 @@ namespace ITP311 {
     public partial class login_register {
         
         /// <summary>
+        /// success control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal success;
+        
+        /// <summary>
         /// loginUsername control.
         /// </summary>
         /// <remarks>

@@ -14,13 +14,28 @@ namespace ITP311
             string email = Request.QueryString["email"];
             if (email != null)
             {
-                Literal1.Visible = true;
+                error.Visible = true;
             }
         }
 
         protected void emailForget_Click(object sender, EventArgs e)
         {
-            
+            string resetPasswordEmail = inputEmail.Text.Trim();
+            PatientBLL p = new PatientBLL();
+            if (p.retrievePatientbyEmail(resetPasswordEmail) == true)
+            {
+                PasswordResetBLL pr = new PasswordResetBLL();
+                string nric = p.retrievePatientNRICbyEmail(resetPasswordEmail);
+                pr.createPatientPasswordReset(nric);
+                success.Visible = true;
+                error.Visible = false;
+            }
+            else
+            {
+                Response.Redirect("forgetPassword.aspx?email=invalid");
+                
+            }
+
         }
     }
 }
