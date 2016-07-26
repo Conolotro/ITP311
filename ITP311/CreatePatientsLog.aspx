@@ -61,34 +61,74 @@
                 <li>
                     <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
                 </li>
-                <li class="active">Create new log</li>s
+                <li class="active">Create new log</li>
+               
             </ol>
         </div>
         <!--/.row-->
     </div>
-    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-    <form runat="server">
-        <div class="modal-body">
-
-            <div class="form-group">
-                <label for="formSymptomsList">SymptomsList</label>
-                <asp:TextBox name="formSymptomsList" placeholder="Symptoms..." class="formSymptomsList form-control " ID="formSymptomsList" runat="server" Width="300px" />
-
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2">
+        <div class="main panel panel-default" style="width: 100%; height: 100%;">
+            <div class="panel-heading" style="padding-left: 3%; padding-bottom: 5%;">
+                <h2>Create Patients' Log</h2>
             </div>
-            <div class="form-group">
-                <label for="formDoctorsNotes">Doctor's Notes</label>
-                <asp:TextBox name="formDoctorsNotes" placeholder="Doctor's Notes..." class="formDoctorsNotes form-control " ID="formDoctorsNotes" runat="server" Width="300px" />
+            <form runat="server">
+                <div class="modal-body panel-body">
+                    <div style="float:left;width:100%;">
+                        <div class="form-group" style="float:left;">
+                            <h3 style="margin-left: 3%;">Select Symptoms</h3>
+                            <div style="height: 434px; overflow: scroll; width: 305px;">
+                                <asp:GridView ID="gvSymptoms" ShowHeader="False" Height="500px" CssClass="table table-hover table-striped" Style="font-size: 15px; margin: 2%; margin-top: 3%;" runat="server" SelectedIndex="0" PageSize="5" OnSelectedIndexChanged="gvSymptoms_SelectedIndexChanged" Width="270px">
+                                    <RowStyle Height="20px" />
+                                    <AlternatingRowStyle Height="20px" />
+                                    <Columns>
+                                        <asp:CommandField ShowSelectButton="True">
+                                            <ItemStyle HorizontalAlign="Right" />
+                                        </asp:CommandField>
+                                    </Columns>
+                                    <EditRowStyle Height="25px" />
+                                    <PagerSettings FirstPageText="First" LastPageText="Last"
+                                        Mode="NumericFirstLast" PageButtonCount="5" />
 
-            </div>
-            
-            <div class="modal-footer">
-                <asp:Button ID="createNewLog" class="btn btn-default" Text="Sign me up!" runat="server" OnClick="createNewLog_Click" />
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
+                                    <RowStyle BackColor="White" />
 
+                                </asp:GridView>
+                            </div>
+                         </div>
+                        <div style="float:left;">
+                            <h1><i class="fa fa-arrow-right" aria-hidden="true" style="font-size:100px;margin-top:220%;margin-left:30%;margin-right:20%;"></i></h1>
+                        </div>
+                        <div class="form-group" style="float:left;margin-left:5%;">
+                            <h3 style="margin-left: 3%; width: 239px;">Selected Symptoms</h3>
+                            <div style="height: 434px; overflow: scroll; width: 305px;">
+                                <asp:GridView ID="gvSelectedSymptoms" ShowHeader="False" Height="500px" CssClass="table table-hover table-striped" AutoGenerateColumns="true" Style="font-size: 15px; margin: 2%; margin-top: 3%;" SelectedIndex="0" runat="server" Width="279px">
+
+                                    <RowStyle BackColor="White" />
+
+                                    <EditRowStyle Height="25px" />
+                                    <PagerSettings FirstPageText="First" LastPageText="Last"
+                                        Mode="NumericFirstLast" PageButtonCount="5" />
+
+                                    <PagerStyle Height="25px" />
+                                    <RowStyle Height="20px" />
+
+                                </asp:GridView>
+                            </div>
+                        </div>
+                        </div>
+                    
+                    <div class="form-group">
+                        <label for="formDoctorsNotes">Doctor's Notes</label>
+                        <asp:TextBox name="formDoctorsNotes" placeholder="Doctor's Notes..." class="formDoctorsNotes form-control " ID="formDoctorsNotes" runat="server" Width="300px" />
+                    </div>
+                    <div class="modal-footer">
+                        <asp:Button ID="createNewLog" class="btn btn-default" Text="Sign me up!" runat="server" OnClick="createNewLog_Click" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                 </div>
+            </form>
         </div>
-    </form>
-        </div>
+     </div>  
 </body>
 
 </html>

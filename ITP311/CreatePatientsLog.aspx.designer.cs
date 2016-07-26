@@ -13,13 +13,22 @@ namespace ITP311 {
     public partial class CreatePatientsLog {
         
         /// <summary>
-        /// formSymptomsList control.
+        /// gvSymptoms control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox formSymptomsList;
+        protected global::System.Web.UI.WebControls.GridView gvSymptoms;
+        
+        /// <summary>
+        /// gvSelectedSymptoms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSelectedSymptoms;
         
         /// <summary>
         /// formDoctorsNotes control.
