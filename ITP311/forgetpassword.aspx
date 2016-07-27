@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forgetpassword.aspx.cs" Inherits="ITP311.forgetpassword" %>
+﻿l<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forgetpassword.aspx.cs" Inherits="ITP311.forgetpassword" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,21 +47,21 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="/index.aspx">Home</a>
                     </li>
                     <li>
-                        <a href="#about">About</a>
+                        <a href="/index.aspx#about">About</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="/index.aspx#services">Services</a>
                     </li>
                     <li>
-                        <a href="#contact-us">Contact Us</a>
+                        <a href="/index.aspx/#contact-us">Contact Us</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="adminLogin.html">Log In</a>
+                        <a href="login-register.aspx">Log In</a>
                     </li>
                 </ul>
             </div>

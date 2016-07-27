@@ -112,7 +112,7 @@ namespace ITP311
 
             string bodyMessage = "Hello " + p2.FirstName + " " + p2.LastName + ",";
             bodyMessage += "<br /><br />Please click the following link to activate your account";
-            bodyMessage += "<br /><a href = '" + "http://localhost:54660/confirmemail.aspx?email=" + p2.Email + "&" + "code=" + p2.Salt + "'>Click here to activate your account.</a>";
+            bodyMessage += "<br /><a href = '" + "http://localhost:54660/confirmemail.aspx?email=" + Server.UrlEncode(p2.Email) + "&" + "code=" + Server.UrlEncode(p2.Salt) + "'>Click here to activate your account.</a>";
             bodyMessage += "<br /><br /> Your username will be : " + p2.Nric;
             bodyMessage += "<br /> Your Password will be : " + p2.ContactNo;
             bodyMessage += "<br /><br /> <b> Please change your password after you have logged in for the first time </b>";

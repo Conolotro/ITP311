@@ -57,7 +57,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="adminLogin.html">Log In</a>
+                        <a href="login-register.aspx">Log In</a>
                     </li>
                 </ul>
             </div>

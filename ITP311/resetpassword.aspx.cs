@@ -17,6 +17,22 @@ namespace ITP311
         protected void submit_Click(object sender, EventArgs e)
         {
 
+            string password = inputPassword.Text.Trim();
+            string confirmPassword = inputConfirmPassword.Text.Trim();
+
+            if (password.Equals(confirmPassword))
+            {
+                success.Visible = true;
+                error.Visible = false;
+
+
+            }
+            else
+            {
+                success.Visible = false;
+                error.Visible = true;
+            }
+
         }
     }
 }

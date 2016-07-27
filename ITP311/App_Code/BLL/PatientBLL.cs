@@ -90,6 +90,8 @@ namespace ITP311
 
             PatientDAL p = new PatientDAL();
             PatientDAL p2 = p.retrievePatientbyEmail(email);
+            
+            
 
             if (p2 != null) {
                 if (p2.Salt.Equals(code))
