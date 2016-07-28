@@ -191,6 +191,44 @@
             <br />
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" Font-Size="Large" />
            
+            <br />
+            <br />
+            <br />
+            <br />
+           
+<table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <asp:DropDownList ID="ddlLength" runat="server">
+                <asp:ListItem Text="5" Value="5" />
+                <asp:ListItem Text="8" Value="8" />
+                <asp:ListItem Text="10" Value="10" />
+            </asp:DropDownList>
+        </td>
+        <td>
+            <asp:RadioButtonList ID="rbType" runat="server" RepeatDirection="Horizontal">
+                <asp:ListItem Text="Alphanumeric" Value="1" Selected="True" />
+                <asp:ListItem Text="Numeric" Value="2" />
+            </asp:RadioButtonList>
+        &nbsp;&nbsp;
+        </td>
+        <td>
+            <asp:Button ID="btnGenerate" Text="Generate OTP" runat="server" OnClick="GenerateOTP" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            OTP:
+            <asp:Label ID="lblOTP" runat="server" />
+        </td>
+    </tr>
+</table>
+
             </form>
 
 </body>
