@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ITP311.BLL;
 using ITP311.NYPSMS;
-using ITP311.NYPSMS.SMS;
 
 namespace ITP311
 {
@@ -15,7 +14,7 @@ namespace ITP311
         appointmentBLL Abll = new appointmentBLL();
 
         //SMS (?)
-        NYPSMS.SMS appsmsotp = new NYPSMS.SMS();
+        NYPSMS.SMS appsms = new SMS();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -36,10 +35,23 @@ namespace ITP311
             ddlTime.SelectedIndex = 0;
             ddlLocation.SelectedIndex = 0;
 
-            appsmsotp.message = "Your appointment has been scheduled on this day";
+            appsms.message = "Your appointment has been scheduled on this day";
 
 
         }//Submit button
+
+        public string sendMessage(string MobileNo, string Message, string SMSAccount, string SMSPassword)
+        {
+            NYPSMS.SMS appsms2 = new SMS();
+            MobileNo = "90304831";
+            Message = "Your appointment has been scheduled on this day" + ddlDate.SelectedItem.Text;
+            SMSAccount = "ASPJ40";
+            SMSPassword = "635033";
+
+            return sendMessage(MobileNo, Message, SMSAccount, SMSPassword);
+        }
+
+
 
 
 
