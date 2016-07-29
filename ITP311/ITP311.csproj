@@ -100,22 +100,25 @@
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff2" />
     <Content Include="font-awesome-4.6.3\fonts\FontAwesome.otf" />
+    <Content Include="patientportal-appoinment-viewmeds.aspx" />
     <Content Include="patientportal-appoinment.aspx" />
     <Content Include="patientportal-dashboard.aspx" />
     <Content Include="patientportal-updateparticulars.aspx" />
     <Content Include="patientportal.aspx" />
     <Content Include="registered.aspx" />
     <Content Include="resetpassword.aspx" />
-    <Content Include="Service References\NYPSMS\ITP311.NYPSMS.SMS.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\NYPSMS\sms.disco" />
-    <None Include="Service References\NYPSMS\configuration91.svcinfo" />
-    <None Include="Service References\NYPSMS\configuration.svcinfo" />
-    <None Include="Service References\NYPSMS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Web References\NYPSMS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\NYPSMS\SMS.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\NYPSMS\sms.disco" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +175,18 @@
     <Compile Include="forgetpassword.aspx.designer.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="patientportal-appoinment-viewmeds.aspx.cs">
+      <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patientportal-appoinment-viewmeds.aspx.designer.cs">
+      <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="resetpassword.aspx.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -179,10 +194,10 @@
     <Compile Include="resetpassword.aspx.designer.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Service References\NYPSMS\Reference.cs">
+    <Compile Include="Web References\NYPSMS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
+      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -277,7 +292,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
-    <None Include="Service References\NYPSMS\sms.wsdl" />
+    <None Include="Web References\NYPSMS\sms.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -289,7 +304,20 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\NYPSMS\" />
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://172.20.128.62/SMSWebService/sms.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NYPSMS\</RelPath>
+      <UpdateFromURL>http://172.20.128.62/SMSWebService/sms.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ITP311_NYPSMS_SMSService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

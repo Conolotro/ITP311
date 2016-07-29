@@ -15,7 +15,8 @@ namespace ITP311
         appointmentBLL Abll = new appointmentBLL();
 
         //SMS (?)
-        NYPSMS.SMS appsms = new SMS();
+        //NYPSMS.SMS appsms = new SMS();
+        NYPSMS.SMSService appsms = new SMSService();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -36,55 +37,46 @@ namespace ITP311
             ddlTime.SelectedIndex = 0;
             ddlLocation.SelectedIndex = 0;
 
-            appsms.message = "Your appointment has been scheduled on this day";
+            string MobileNo = "90304831";
+            string Message = "Your appointment has been scheduled on this day: ";
+            string SMSAccount = "ASPJ40";
+            string SMSPassword = "635033";
+
+            string yay = appsms.sendMessage(MobileNo, Message, SMSAccount, SMSPassword);
 
 
-        }//Submit button
 
-        public string sendMessage(string MobileNo, string Message, string SMSAccount, string SMSPassword)
-        {
-            NYPSMS.SMS appsms2 = new SMS();
-            MobileNo = "90304831";
-            Message = "Your appointment has been scheduled on this day" + ddlDate.SelectedItem.Text;
-            SMSAccount = "ASPJ40";
-            SMSPassword = "635033";
-
-            return sendMessage(MobileNo, Message, SMSAccount, SMSPassword);
         }
 
 
 
 
 
+        //protected void GenerateOTP(object sender, EventArgs e)
+        //{
+        //    string alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        //    string small_alphabets = "abcdefghijklmnopqrstuvwxyz";
+        //    string numbers = "1234567890";
 
-
-
-
-        protected void GenerateOTP(object sender, EventArgs e)
-        {
-            string alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            string small_alphabets = "abcdefghijklmnopqrstuvwxyz";
-            string numbers = "1234567890";
-
-            string characters = numbers;
-            if (rbType.SelectedItem.Value == "1")
-            {
-                characters += alphabets + small_alphabets + numbers;
-            }
-            int length = int.Parse(ddlLength.SelectedItem.Value);
-            string otp = string.Empty;
-            for (int i = 0; i < length; i++)
-            {
-                string character = string.Empty;
-                do
-                {
-                    int index = new Random().Next(0, characters.Length);
-                    character = characters.ToCharArray()[index].ToString();
-                } while (otp.IndexOf(character) != -1);
-                otp += character;
-            }
-            lblOTP.Text = otp;
-        }
+        //    string characters = numbers;
+        //    if (rbType.SelectedItem.Value == "1")
+        //    {
+        //        characters += alphabets + small_alphabets + numbers;
+        //    }
+        //    int length = int.Parse(ddlLength.SelectedItem.Value);
+        //    string otp = string.Empty;
+        //    for (int i = 0; i < length; i++)
+        //    {
+        //        string character = string.Empty;
+        //        do
+        //        {
+        //            int index = new Random().Next(0, characters.Length);
+        //            character = characters.ToCharArray()[index].ToString();
+        //        } while (otp.IndexOf(character) != -1);
+        //        otp += character;
+        //    }
+        //    lblOTP.Text = otp;
+        //}
 
         
     }
