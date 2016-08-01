@@ -25,7 +25,7 @@ namespace ITP311
 
 
 
-
+        //Generate a random key
         private void GenKey()
         {
             SymmetricAlgorithm sa = new RijndaelManaged(); 
