@@ -6,6 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ITP311.BLL;
 
+using System.Security.Cryptography;
+using System.IO;
+using System.Text;
+using System.Security.Authentication;
+
 namespace ITP311
 {
     public partial class patientportal_dashboard : System.Web.UI.Page
@@ -21,6 +26,10 @@ namespace ITP311
             }
         }
 
+
+
+
+
         public void GridViewAppinding()
         {
             //Data Bind 
@@ -30,5 +39,17 @@ namespace ITP311
             gvApp.DataBind();
 
         }
+
+
+
+
+        protected void btnView_Click(object sender, EventArgs e)
+        {
+
+         Response.Redirect("~/patientportal-appoinment-viewmeds.aspx");
+
+        }
+
+
     }
 }

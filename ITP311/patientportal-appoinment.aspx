@@ -141,18 +141,18 @@
             &nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlMonth" runat="server" Font-Size="Large">
                 <asp:ListItem>Select month</asp:ListItem>
-                <asp:ListItem>Jan (01)</asp:ListItem>
-                <asp:ListItem>Feb (02)</asp:ListItem>
-                <asp:ListItem>Mar (03)</asp:ListItem>
-                <asp:ListItem>Apr (04)</asp:ListItem>
-                <asp:ListItem>May (05)</asp:ListItem>
-                <asp:ListItem>June (06)</asp:ListItem>
-                <asp:ListItem>July (07)</asp:ListItem>
-                <asp:ListItem>Aug (08)</asp:ListItem>
-                <asp:ListItem>Sep (09)</asp:ListItem>
-                <asp:ListItem>Oct (10)</asp:ListItem>
-                <asp:ListItem>Nov (11)</asp:ListItem>
-                <asp:ListItem>Dec (12)</asp:ListItem>
+                <asp:ListItem>Jan</asp:ListItem>
+                <asp:ListItem>Feb</asp:ListItem>
+                <asp:ListItem>Mar</asp:ListItem>
+                <asp:ListItem>Apr</asp:ListItem>
+                <asp:ListItem>May</asp:ListItem>
+                <asp:ListItem>June</asp:ListItem>
+                <asp:ListItem>July</asp:ListItem>
+                <asp:ListItem>Aug</asp:ListItem>
+                <asp:ListItem>Sep</asp:ListItem>
+                <asp:ListItem>Oct</asp:ListItem>
+                <asp:ListItem>Nov</asp:ListItem>
+                <asp:ListItem>Dec</asp:ListItem>
             </asp:DropDownList>
             <br />
             <br />
@@ -191,6 +191,44 @@
             <br />
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" Font-Size="Large" />
            
+            <br />
+            <br />
+            <br />
+            <br />
+           
+<table border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <asp:DropDownList ID="ddlLength" runat="server">
+                <asp:ListItem Text="5" Value="5" />
+                <asp:ListItem Text="8" Value="8" />
+                <asp:ListItem Text="10" Value="10" />
+            </asp:DropDownList>
+        </td>
+        <td>
+            <asp:RadioButtonList ID="rbType" runat="server" RepeatDirection="Horizontal">
+                <asp:ListItem Text="Alphanumeric" Value="1" Selected="True" />
+                <asp:ListItem Text="Numeric" Value="2" />
+            </asp:RadioButtonList>
+        &nbsp;&nbsp;
+        </td>
+        <td>
+            <asp:Button ID="btnGenerate" Text="Generate OTP" runat="server" OnClick="GenerateOTP" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            OTP:
+            <asp:Label ID="lblOTP" runat="server" />
+        </td>
+    </tr>
+</table>
+
             </form>
 
 </body>
