@@ -213,7 +213,7 @@
         &nbsp;&nbsp;
         </td>
         <td>
-            <asp:Button ID="btnGenerate" Text="Generate OTP" runat="server" OnClick="GenerateOTP" />
+            <asp:Button ID="btnGenerate" Text="Generate OTP" runat="server" />
         </td>
     </tr>
     <tr>
