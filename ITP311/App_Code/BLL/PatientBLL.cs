@@ -55,7 +55,8 @@ namespace ITP311
             return result;
         }
 
-        public bool retrievePatientbyEmail(string Email)
+
+        public bool checkPatientbyEmail(string Email)
         {
             bool result = false;
             PatientDAL p = new PatientDAL();
@@ -72,11 +73,17 @@ namespace ITP311
 
         public string retrievePatientNRICbyEmail(string Email)
         {
-            bool result = false;
             PatientDAL p = new PatientDAL();
             p = p.retrievePatientbyEmail(Email);
             return p.Nric;
         }
+
+        public PatientDAL retrievePatientByEmail(string email)
+        {
+            PatientDAL p = new PatientDAL();
+            return p.retrievePatientbyEmail(email);
+        }
+
 
         public PatientDAL retrievePatientByNric(string nric)
         {
@@ -110,6 +117,25 @@ namespace ITP311
                 result = false;
             }
 
+
+
+            return result;
+        }
+
+        public bool updatePassword(string nric,string password)
+        {
+            bool result = false;
+            PatientDAL p = new PatientDAL();
+            string salt = generateSalt();
+            string hashedpassword = generatePasswordHash(password, salt);
+            if (p.updatePatientPassword(nric, hashedpassword, salt) == 1)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
 
 
             return result;

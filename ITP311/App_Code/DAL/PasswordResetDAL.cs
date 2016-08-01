@@ -51,11 +51,47 @@ namespace ITP311
             return result;
         }
 
+        public PasswordResetDAL retrievePasswordResetByNric(string nric)
+        {
+            PasswordResetDAL rr = null;
+            string strCommandText = "Select * from PasswordReset where Nric = @nric";
+            string Codekey;
+            DateTime creationDate;
+
+
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+            cmd.Parameters.AddWithValue("@nric", nric);
+
+            try
+            {
+                myConnection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    nric = reader["Nric"].ToString();
+                    creationDate = (DateTime)reader["CreationDate"];
+                    Codekey = reader["Codekey"].ToString();
+
+                    rr = new PasswordResetDAL(nric, Codekey, creationDate);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally { myConnection.Close(); }
+            return rr;
+        }
+
+
         public PasswordResetDAL retrievePasswordReset(string enteredKey)
         {
             PasswordResetDAL rr = null;
             string strCommandText = "Select * from PasswordReset where Codekey = @key";
-            string Nric, Key;
+            string nric, Codekey;
             DateTime creationDate;
 
 

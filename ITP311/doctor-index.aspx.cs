@@ -58,7 +58,7 @@ namespace ITP311
         protected void sendEmail(string nric)
         {
             PatientBLL p = new PatientBLL();
-            PatientDAL p2 = p.retrievePatientByNric(nric);
+            PatientDAL p2 = p.retrievePatientByEmail(nric);
 
             string email = p2.Email;
    

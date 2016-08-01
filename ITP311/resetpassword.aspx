@@ -75,6 +75,7 @@
     <!-- Top content -->
     <div class="top-content">
 
+
         <asp:Literal ID="error" runat="server" Text="
         &lt;div class=&quot;alert alert-dismissible alert-danger&quot;&gt;
             &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
@@ -82,6 +83,26 @@
         &lt;/div&gt;
         "
             Visible="False"></asp:Literal>
+
+        <asp:Literal ID="networkError" runat="server" Visible="false">
+
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Network error, please try again later.
+
+            </div>
+
+        </asp:Literal>
+
+        <asp:Literal ID="keyExpired" runat="server" Visible="false">
+
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Sorry but your link has expired.
+
+            </div>
+
+        </asp:Literal>
 
         <asp:Literal ID="success" runat="server" Visible="false">
 
@@ -113,14 +134,14 @@
                                         <div class="form-group">
                                             <label for="inputPassword" class="col-lg-4 control-label">New Password</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" TextMode="Password" ID="inputPassword" Width="350px" />
+                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="inputPassword" Width="350px" />
                                                 <br />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputConfirmPassword" class="col-lg-4 control-label">Confirm Password</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" TextMode="Password" ID="inputConfirmPassword" Width="350px" />
+                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="inputConfirmPassword" Width="350px" />
                                                 <br />
                                             </div>
                                         </div>
