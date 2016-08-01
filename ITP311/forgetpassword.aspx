@@ -1,6 +1,6 @@
-﻿l<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forgetpassword.aspx.cs" Inherits="ITP311.forgetpassword" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="forgetpassword.aspx.cs" Inherits="ITP311.forgetpassword" Async="true" %>
 
-<!DOCTYPE html>
+<!DOCTYPE htm>
 <html lang="en">
 
 <head>

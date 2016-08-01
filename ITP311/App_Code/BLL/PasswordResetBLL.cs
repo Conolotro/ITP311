@@ -24,7 +24,7 @@ namespace ITP311
 
             PasswordResetDAL pr = new PasswordResetDAL();
 
-            if (pr.CreatePasswordReset(nric,key,creationDate) == 1)
+            if (pr.CreatePasswordReset(nric, key, creationDate) == 1)
             {
                 result = true;
             }
@@ -36,6 +36,49 @@ namespace ITP311
             return result;
         }
 
+        public string retrieveKeybyNRIC(string nric)
+        {
+            PasswordResetDAL pr = new PasswordResetDAL();
+            pr = pr.retrievePasswordResetByNric(nric);
+            return pr.Codekey;
+        }
+
+        public string retrieveKey(string enteredkey)
+        {
+            PasswordResetDAL pr = new PasswordResetDAL();
+            pr = pr.retrievePasswordReset(enteredkey);
+            if (pr != null)
+            {
+                return pr.Codekey;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public PasswordResetDAL retrievePasswordReset(string key)
+        {
+            PasswordResetDAL pr = new PasswordResetDAL();
+            return pr.retrievePasswordReset(key);
+        }
+
+        public bool removePasswordReset(string key)
+        {
+            bool result = false;
+            PasswordResetDAL pr = new PasswordResetDAL();
+            if (pr.RemovePasswordReset(key) == 1)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+
+        }
 
         public static string generateKey()
         {
@@ -56,6 +99,7 @@ namespace ITP311
             }
             return result.ToString();
         }
+
 
     }
 }
