@@ -80,7 +80,7 @@ namespace ITP311
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                rr = null;
             }
             finally { myConnection.Close(); }
             return rr;
@@ -140,6 +140,7 @@ namespace ITP311
 
             return result;
         }
+
 
         public int RemovePasswordResetByNRIC(string nric)
         {

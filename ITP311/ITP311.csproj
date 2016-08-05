@@ -51,6 +51,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -67,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminportal_createDoc.aspx" />
+    <Content Include="adminPortal_enquiry.aspx" />
     <Content Include="App_Data\medicalportal.mdf" />
     <Content Include="App_Data\medicalportal_log.ldf" />
     <Content Include="confirmEmail.aspx">
@@ -90,6 +95,7 @@
     <Content Include="img\4.jpg" />
     <Content Include="img\banner-high-heartbeat%401x.png" />
     <Content Include="index.aspx" />
+    <Content Include="js\password.js" />
     <Content Include="login-register.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
@@ -119,7 +125,6 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\NYPSMS\sms.disco" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\adminLogin.css" />
@@ -140,6 +145,13 @@
     </Compile>
     <Compile Include="adminportal_createDoc.aspx.designer.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminPortal_enquiry.aspx.cs">
+      <DependentUpon>adminPortal_enquiry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminPortal_enquiry.aspx.designer.cs">
+      <DependentUpon>adminPortal_enquiry.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\AccountBLL.cs" />
     <Compile Include="App_Code\BLL\PasswordResetBLL.cs" />
@@ -168,6 +180,7 @@
     <Compile Include="doctor-PatientsLog.aspx.designer.cs">
       <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EnquiryBLL.cs" />
     <Compile Include="forgetpassword.aspx.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,13 +211,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\appointmentBLL.cs" />
     <Compile Include="App_Code\DAL\AccountDAL.cs" />

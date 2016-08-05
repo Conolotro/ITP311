@@ -39,7 +39,7 @@ namespace ITP311
             AccountBLL acc = new AccountBLL();
             if (acc.CreateAccount(nric, firstName, lastName, password, email, contactNo, type) == true)
             {
-                sendEmail(nric, password);
+                await sendEmail(nric, password);
             }
 
 

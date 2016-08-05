@@ -41,16 +41,23 @@ namespace ITP311
             PatientDAL p = new PatientDAL();
             PatientDAL p2 = p.retrievePatient(username);
 
-            string userPasswordHash = generatePasswordHash(password, p2.Salt);
-
-            if (userPasswordHash.Equals(p2.PasswordHash)){
-                result = true;
-            }
-            else
+            if (p2 != null)
             {
-                result = false;
-            }
+                string userPasswordHash = generatePasswordHash(password, p2.Salt);
+
+
+                if (userPasswordHash.Equals(p2.PasswordHash))
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
            
+            }
+
+            
 
             return result;
         }

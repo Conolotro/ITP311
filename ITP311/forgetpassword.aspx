@@ -91,6 +91,16 @@
 
         </asp:Literal>
 
+                <asp:Literal ID="errorMsg" runat="server" Visible="false">
+
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Database Error!</strong> Please try again later.
+
+            </div>
+
+        </asp:Literal>
+
 
 
         <div class="inner-bg">
@@ -111,7 +121,7 @@
                                         <div class="form-group">
                                             <label for="inputEmail" class="col-lg-4 control-label">Email</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" ID="inputEmail" Width="350px" />
+                                                <asp:TextBox class="form-control" runat="server" ID="inputEmail" Width="100%" />
                                                 <br />
                                             </div>
                                         </div>
