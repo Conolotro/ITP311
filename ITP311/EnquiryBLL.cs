@@ -64,7 +64,8 @@ namespace ITP311
             //Initialize instance for decryption
             SymmetricAlgorithm sa = new RijndaelManaged();
             sa.Key = Convert.FromBase64String(e.SK);
-            sa.IV = Convert.FromBase64String(e.IV);
+            sa.IV = Convert.FromBase64String(e.IV);
+
 
             ICryptoTransform cryptTransform = sa.CreateDecryptor();
             byte[] cipherText = Convert.FromBase64String(encryptedMessage);
