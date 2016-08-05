@@ -159,7 +159,7 @@
             <asp:Label ID="lblTime" runat="server" Text="Time:" Font-Size="Large"></asp:Label>
             &nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlTime" runat="server" Font-Size="Large">
-                <asp:ListItem>Select time</asp:ListItem>
+                <asp:ListItem Selected="True">Select time</asp:ListItem>
                 <asp:ListItem>9:00am</asp:ListItem>
                 <asp:ListItem>9:30am</asp:ListItem>
                 <asp:ListItem>10:00am</asp:ListItem>
@@ -193,41 +193,9 @@
            
             <br />
             <br />
+            <asp:Label ID="lblError" runat="server" BackColor="#FF99FF" Font-Bold="True" Font-Italic="True" Font-Size="Medium" ForeColor="Red" Visible="False"></asp:Label>
             <br />
-            <br />
-           
-<table border="0" cellpadding="0" cellspacing="0">
-    <tr>
-        <td>
-            <asp:DropDownList ID="ddlLength" runat="server">
-                <asp:ListItem Text="5" Value="5" />
-                <asp:ListItem Text="8" Value="8" />
-                <asp:ListItem Text="10" Value="10" />
-            </asp:DropDownList>
-        </td>
-        <td>
-            <asp:RadioButtonList ID="rbType" runat="server" RepeatDirection="Horizontal">
-                <asp:ListItem Text="Alphanumeric" Value="1" Selected="True" />
-                <asp:ListItem Text="Numeric" Value="2" />
-            </asp:RadioButtonList>
-        &nbsp;&nbsp;
-        </td>
-        <td>
-            <asp:Button ID="btnGenerate" Text="Generate OTP" runat="server" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            &nbsp;
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            OTP:
-            <asp:Label ID="lblOTP" runat="server" />
-        </td>
-    </tr>
-</table>
+          
 
             </form>
 
