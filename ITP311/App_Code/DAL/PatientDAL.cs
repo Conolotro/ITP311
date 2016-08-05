@@ -247,28 +247,6 @@ namespace ITP311
 
         }
 
-
-        public int updatePatientPassword(string nric ,string hashedPassword, string salt)
-        {
-            int result = 0;
-            string strCommandText = "UPDATE Patient SET PasswordHash = @passwordhash, PasswordSalt = @salt where NRIC = @nric";
-
-            SqlConnection myConnection = new SqlConnection(strConnectionString);
-            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
-            cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
-            cmd.Parameters.AddWithValue("@PasswordSalt", salt);
-            cmd.Parameters.AddWithValue("@nric", nric);
-
-            myConnection.Open();
-
-            result += cmd.ExecuteNonQuery();
-
-            myConnection.Close();
-
-            return result;
-
-        }
-
         public PatientDAL retrievePatient(string nric)
         {
             PatientDAL p = null;
@@ -370,6 +348,38 @@ namespace ITP311
             return p;
         }
 
+        public List<PatientDAL> retrieveUpdateLog()
+        {
+            List<PatientDAL> udallist = new List<PatientDAL>();
+
+            string strCommandText = "Select nric, FirstName, LastName, ContactNo, Email from Patient";
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+
+            try
+            {
+                myConnection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PatientDAL a = new PatientDAL();
+                    a.nric = reader["nric"].ToString();
+                    a.firstName = reader["FirstName"].ToString();
+                    a.lastName = reader["LastName"].ToString();
+                    a.contactNo = (int)reader["ContactNo"];
+                    a.email = reader["Email"].ToString();
+                    udallist.Add(a);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally { myConnection.Close(); }
+            return udallist;
+        }
 
     }
 

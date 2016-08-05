@@ -14,8 +14,7 @@ namespace ITP311
     {
         appointmentBLL Abll = new appointmentBLL();
 
-        //SMS (?)
-        //NYPSMS.SMS appsms = new SMS();
+        //SMS
         NYPSMS.SMSService appsms = new SMSService();
 
 
@@ -26,24 +25,42 @@ namespace ITP311
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            Abll.appDate = (ddlDate.SelectedItem.Text + "-" + ddlMonth.SelectedItem.Text);
-            Abll.appTime = ddlTime.SelectedItem.Text;
-            Abll.appLocation = ddlLocation.SelectedItem.Text;
-            Abll.insertNewAppointmentRecord();
 
-            Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('You have successfully entered a new entry');</script>");
+            if (ddlDate.SelectedIndex == 0 || ddlMonth.SelectedIndex == 0 || ddlTime.SelectedIndex == 0 || ddlLocation.SelectedIndex == 0)
+            {
+                lblError.Visible = true;
+                lblError.Text = "You did not make a selection in one or more drop down lists!";
+            }
 
-            ddlDate.SelectedIndex = 0;
-            ddlTime.SelectedIndex = 0;
-            ddlLocation.SelectedIndex = 0;
+            else
+            {
+                Abll.appDate = (ddlDate.SelectedItem.Text + "-" + ddlMonth.SelectedItem.Text);
+                Abll.appTime = ddlTime.SelectedItem.Text;
+                Abll.appLocation = ddlLocation.SelectedItem.Text;
+                Abll.insertNewAppointmentRecord();
 
-            string MobileNo = "90304831";
-            string Message = "Your appointment has been scheduled on this day: ";
-            string SMSAccount = "ASPJ40";
-            string SMSPassword = "635033";
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('You have successfully entered a new entry');</script>");
 
-            string yay = appsms.sendMessage(MobileNo, Message, SMSAccount, SMSPassword);
 
+                //SMS
+                string MobileNo = "90304831";
+                string Message = "Your appointment has been scheduled on this day: " + ddlDate.SelectedItem.Text + "-"
+                    + ddlMonth.SelectedItem.Text + " " + "at" + " " + ddlTime.SelectedItem.Text + " " + "at" + " " 
+                    + ddlLocation.SelectedItem.Text;
+                string SMSAccount = "ASPJ40";
+                string SMSPassword = "635033";
+
+                string sendSMS = appsms.sendMessage(MobileNo, Message, SMSAccount, SMSPassword);
+
+                //Reset the DDLs
+                ddlDate.SelectedIndex = 0;
+                ddlMonth.SelectedIndex = 0;
+                ddlLocation.SelectedIndex = 0;
+
+                //Remove a timing so that it can't be used in new appointments
+                ddlTime.Items.Remove(ddlTime.SelectedItem.ToString());
+
+            }
 
 
         }

@@ -94,39 +94,12 @@ namespace ITP311 {
         protected global::System.Web.UI.WebControls.Button btnSubmit;
         
         /// <summary>
-        /// ddlLength control.
+        /// lblError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlLength;
-        
-        /// <summary>
-        /// rbType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbType;
-        
-        /// <summary>
-        /// btnGenerate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGenerate;
-        
-        /// <summary>
-        /// lblOTP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOTP;
+        protected global::System.Web.UI.WebControls.Label lblError;
     }
 }

@@ -15,15 +15,13 @@ namespace ITP311
     public partial class patientportal_appoinment_viewmeds : System.Web.UI.Page
     {
 
-        static byte[] Key;
-        static byte[] IV; 
-
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-
+        static byte[] Key;
+        static byte[] IV; 
 
         //Generate a random key
         private void GenKey()
@@ -33,11 +31,13 @@ namespace ITP311
             Key = sa.Key;
             IV = sa.IV;
             BitConverter.ToString(Key);
+            lblKey.Text = BitConverter.ToString(Key);
         }
 
 
         private void encrypt()
         {
+            GenKey();
             //Initialize instance for encryption 
             SymmetricAlgorithm sa = new RijndaelManaged();
             sa.Key = Key;
@@ -47,39 +47,22 @@ namespace ITP311
             byte[] plainText = Encoding.UTF8.GetBytes(lblEnMeds.Text);
             byte[] cipherText = cryptTransform.TransformFinalBlock(plainText, 0, plainText.Length);
             lblCipher.Text = Convert.ToBase64String(cipherText);
-
-
         }
 
         protected void btnDecrypt_Click(object sender, EventArgs e)
         {
-                //Initialize instance for decryption 
-                SymmetricAlgorithm sa = new RijndaelManaged(); 
-                sa.Key = Key; 
-                sa.IV = IV;
+            encrypt();
+            //Initialize instance for decryption 
+            SymmetricAlgorithm sa = new RijndaelManaged(); 
+            sa.Key = Key; 
+            sa.IV = IV;
 
-                ICryptoTransform cryptTransform = sa.CreateDecryptor();
-                byte[] cipherText = Convert.FromBase64String(lblCipher.Text); 
-                byte[] plainText = cryptTransform.TransformFinalBlock(cipherText, 0, cipherText.Length);
+            ICryptoTransform cryptTransform = sa.CreateDecryptor();
+            byte[] cipherText = Convert.FromBase64String(lblCipher.Text); 
+            byte[] plainText = cryptTransform.TransformFinalBlock(cipherText, 0, cipherText.Length);
 
-                lblShowMeds.Text = Encoding.UTF8.GetString(plainText); 
-
+            lblShowMeds.Text = Encoding.UTF8.GetString(plainText); 
         }
-
-        //private void btnDecrypt_Click(object sender, EventArgs e)
-        //{
-        //    //Initialize instance for decryption 
-        //    SymmetricAlgorithm sa = new RijndaelManaged(); 
-        //    sa.Key = Key; 
-        //    sa.IV = IV;
-
-        //    ICryptoTransform cryptTransform = sa.CreateDecryptor(); 
-        //    byte[] cipherText = Convert.FromBase64String(txtCipher.Text); 
-        //    byte[] plainText = cryptTransform.TransformFinalBlock(cipherText, 0, cipherText.Length);
-
-        //    txtOrg.Text = Encoding.UTF8.GetString(plainText); 
-        //    btnDecrypt.Enabled = false;
-        //}
 
 
     }
