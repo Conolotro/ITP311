@@ -10,52 +10,34 @@
 namespace ITP311 {
     
     
-    public partial class index {
+    public partial class adminPortal_enquiry {
         
         /// <summary>
-        /// form1 control.
+        /// name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Literal name;
         
         /// <summary>
-        /// inputName control.
+        /// email control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputName;
+        protected global::System.Web.UI.WebControls.Literal email;
         
         /// <summary>
-        /// inputEmail control.
+        /// messageEnquiry control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputEmail;
-        
-        /// <summary>
-        /// tbEnquiry control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEnquiry;
-        
-        /// <summary>
-        /// reset control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button reset;
+        protected global::System.Web.UI.WebControls.Literal messageEnquiry;
         
         /// <summary>
         /// submit control.

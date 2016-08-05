@@ -24,6 +24,7 @@
 
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/password.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -81,7 +82,15 @@
                 <strong>Success!</strong> Please check your inbox to reset your password.
                             </div>
 
-        </asp:Literal>
+                        </asp:Literal>
+
+                        <asp:Literal ID="errorMsg" runat="server" Visible="false">
+                            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Database Error!</strong> Please try again later.
+                            </div>
+
+                        </asp:Literal>
 
                         <div class="col-sm-5">
                             <div class="form-box">
@@ -97,11 +106,11 @@
                                 <div class="form-bottom">
                                     <div class="form-group">
                                         <label class="sr-only" for="formUsername">Username</label>
-                                        <asp:TextBox ID="loginUsername" placeholder="Username..." class="form-username form-control" Width="300px" runat="server"></asp:TextBox>
+                                        <asp:TextBox ID="loginUsername" placeholder="Username..." class="form-username form-control" Width="100%" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formPassword">Password</label>
-                                        <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-password form-control" Width="300px" runat="server"></asp:TextBox>
+                                        <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-password form-control" Width="100%" runat="server"></asp:TextBox>
                                         <!-- Trigger the modal with a button -->
                                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Forget your password ?</button>
 
@@ -122,7 +131,7 @@
                                                     To reset your password, enter the email address you used to register with us. 
                                                     <br />
                                                     <label class="sr-only" for="forgetEmail">Email:</label>
-                                                    <asp:TextBox ID="forgetEmail" placeholder="Email..." class="form-username form-control" runat="server" Width="300px"></asp:TextBox>
+                                                    <asp:TextBox ID="forgetEmail" placeholder="Email..." class="form-username form-control" runat="server" Width="100%"></asp:TextBox>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <asp:Button type="button" class="btn btn-default" ID="resetPassword" OnClick="resetPassword_Click" runat="server" Text="Submit" />
@@ -132,7 +141,7 @@
 
                                         </div>
                                     </div>
-                                    <asp:Button Text="Sign In" ID="signIn" class="btn btn-default" runat="server" OnClick="signIn_Click" Width="300px" />
+                                    <asp:Button Text="Sign In" ID="signIn" class="btn btn-default" runat="server" OnClick="signIn_Click" Width="100%" />
                                 </div>
                             </div>
 
@@ -156,37 +165,38 @@
                                 <div class="form-bottom">
                                     <div class="form-group">
                                         <label class="sr-only" for="formNRIC">NRIC</label>
-                                        <asp:TextBox name="formNRIC" placeholder="NRIC..." class="form-NRIC form-control" ID="formNRIC" runat="server" Width="300px" />
+                                        <asp:TextBox name="formNRIC" placeholder="NRIC..." class="form-NRIC form-control" ID="formNRIC" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formNRIC">Password</label>
-                                        <asp:TextBox name="formPassword" TextMode="Password" placeholder="Password..." class="form-password form-control" ID="formPassword" runat="server" Width="300px" />
+                                        <asp:TextBox name="formPassword" TextMode="Password" placeholder="Password..." class="form-password form-control" ID="formPassword" runat="server" Width="100%" />
+                                        <div class="pwstrength_viewport_progress"></div>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formFN">First name</label>
-                                        <asp:TextBox name="formFN" placeholder="First name..." class="form-first-name form-control" ID="formFN" runat="server" Width="300px" />
+                                        <asp:TextBox name="formFN" placeholder="First name..." class="form-first-name form-control" ID="formFN" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formLN">Last name</label>
-                                        <asp:TextBox name="formLN" placeholder="Last name..." class="form-last-name form-control" ID="formLN" runat="server" Width="300px" />
+                                        <asp:TextBox name="formLN" placeholder="Last name..." class="form-last-name form-control" ID="formLN" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formPhone">Phone Number</label>
-                                        <asp:TextBox TextMode="Number" name="formPhone" placeholder="Phone Number..." class="form-phonenumber form-control" ID="formPhone" runat="server" Width="300px" />
+                                        <asp:TextBox TextMode="Number" name="formPhone" placeholder="Phone Number..." class="form-phonenumber form-control" ID="formPhone" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formEmail">Email</label>
-                                        <asp:TextBox TextMode="Email" name="formEmail" placeholder="Email..." class="form-email form-control" ID="formEmail" runat="server" Width="300px" />
+                                        <asp:TextBox TextMode="Email" name="formEmail" placeholder="Email..." class="form-email form-control" ID="formEmail" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formEmail">Confirm Email</label>
-                                        <asp:TextBox TextMode="Email" name="formCEmail" placeholder="Confirm Email..." class="form-email form-control" ID="formCEmail" runat="server" Width="300px" />
+                                        <asp:TextBox TextMode="Email" name="formCEmail" placeholder="Confirm Email..." class="form-email form-control" ID="formCEmail" runat="server" Width="100%" />
                                     </div>
                                     <div>
                                         <asp:Label runat="server" ID="errorMessage" />
                                     </div>
 
-                                    <asp:Button ID="signUp" class="btn btn-default" Text="Sign me up!" runat="server" Width="300px" OnClick="signUp_Click" />
+                                    <asp:Button ID="signUp" class="btn btn-default" Text="Sign me up!" runat="server" Width="100%" OnClick="signUp_Click" />
                                 </div>
                             </div>
 

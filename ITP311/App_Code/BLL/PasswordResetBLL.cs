@@ -80,6 +80,24 @@ namespace ITP311
 
         }
 
+        public bool removePasswordResetByEmail(string email)
+        {
+            bool result = false;
+            PatientBLL pb = new PatientBLL();
+            PatientDAL pd = pb.retrievePatientByEmail(email);
+            PasswordResetDAL pr = new PasswordResetDAL();
+            if (pr.RemovePasswordResetByNRIC(pd.Nric) == 1)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+
+        }
+
         public static string generateKey()
         {
             char[] chars = new char[62];
@@ -98,6 +116,25 @@ namespace ITP311
                 result.Append(chars[b % (chars.Length)]);
             }
             return result.ToString();
+        }
+
+        public bool checkPasswordReset(string email)
+        {
+            bool result = false;
+            PatientBLL p = new PatientBLL();
+            PatientDAL p2 = p.retrievePatientByEmail(email);
+            PasswordResetDAL pr = new PasswordResetDAL();
+            pr = pr.retrievePasswordResetByNric(p2.Nric);
+            if (pr == null)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+
+            return result;
         }
 
 

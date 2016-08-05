@@ -28,15 +28,31 @@ namespace ITP311
             if (p.checkPatientbyEmail(resetPasswordEmail) == true)
             {
                 PasswordResetBLL pr = new PasswordResetBLL();
-                string nric = p.retrievePatientNRICbyEmail(resetPasswordEmail);
-                pr.createPatientPasswordReset(nric);
-                success.Visible = true;
-                error.Visible = false;
-                await sendForgetPasswordEmail(resetPasswordEmail);
+                if (pr.checkPasswordReset(resetPasswordEmail) == true)
+                {
+                    string nric = p.retrievePatientNRICbyEmail(resetPasswordEmail);
+                    pr.createPatientPasswordReset(nric);
+                    success.Visible = true;
+                    await sendForgetPasswordEmail(resetPasswordEmail);
+                }
+                else
+                {
+                    if (pr.removePasswordResetByEmail(resetPasswordEmail) == true)
+                    {
+                        string nric = p.retrievePatientNRICbyEmail(resetPasswordEmail);
+                        pr.createPatientPasswordReset(nric);
+                        success.Visible = true;
+                        await sendForgetPasswordEmail(resetPasswordEmail);
+                    }
+                    else
+                    {
+                        errorMsg.Visible = true;
+                    }
+                }
             }
             else
             {
-                Response.Redirect("/forgetPassword.aspx?email=invalid");
+                Response.Redirect("/forgetPassword.aspx?email=invalid",false);
                 
             }
 
