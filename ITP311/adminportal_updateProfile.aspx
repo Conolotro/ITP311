@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminportal_createDoc.aspx.cs" Inherits="ITP311.adminportal_createDoc" Async="true" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminportal_updateProfile.aspx.cs" EnableEventValidation="false" Inherits="ITP311.adminportal_updateProfile" Async="true" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat ="server">
-    <a href="adminportal_createDoc.aspx">adminportal_createDoc.aspx</a>
 
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -19,11 +18,6 @@
     <!-- Custom styles for this template -->
     <link href="font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
     <link href="css/dashboard.css" rel="stylesheet"/>
-
-    <!-- javascript -->
-    <script src="js/jquery-2.2.4.min.js"></script>
-    <script src="js/adminlogin.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 
 </head>
 
@@ -41,7 +35,7 @@
                 <a class="navbar-brand" href="#"><span>Silverwood</span> Medical</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#"  id="firstOption" class="dropdown-toggle" data-toggle="dropdown" runat="server">
+                        <a href="#" id="firstOption" class="dropdown-toggle" data-toggle="dropdown" runat="server">
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
@@ -52,8 +46,8 @@
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="adminportal.aspx"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
-                            </li>
+                                <a href="adminlogin.aspx"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
+                            </li>  
                         </ul>
                     </li>
                 </ul>
@@ -66,7 +60,7 @@
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
             <li class="active">
-                <a href="adminportal.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home</a>
+                <a href="adminportal.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home</a>
             </li>
             <li>
                 <a href=".."><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Appointment</a>
@@ -74,8 +68,9 @@
             <li>
                 <a href=".."><i class="fa fa-medkit fa-fw" aria-hidden="true"></i> Medicine</a>
             </li>
-            <li>
-                <a href=".."><i class="fa fa-users fa-fw" aria-hidden="true"></i> Accounts</a>
+            <li id="createDocPageLink" runat="server">
+                <a href="adminportal_createDoc.aspx">
+                <i class="fa fa-users fa-fw" aria-hidden="true"></i> Accounts</a>
             </li>
 
             <li role="presentation" class="divider"></li>
@@ -99,7 +94,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Create Doctor Account</h1>
+                <h1 class="page-header">Update Profile</h1>
             </div>
         </div>
         <div class="row">
@@ -113,7 +108,7 @@
                                     <div class="form-group">
                                         <label for="inputNric" class="col-lg-2 control-label">NRIC</label>
                                         <div class="col-lg-10">
-                                            <asp:Textbox ID="tbNric" type="text" class="form-control" autocomplete="off" runat="server"/>
+                                            <asp:Textbox ID="tbNric" ReadOnly="true" type="text" class="form-control" autocomplete="off" runat="server"/>
                                         &nbsp;</div>
                                     </div>
                                     
@@ -146,20 +141,8 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="col-lg-2 control-label">Account Type</label>
-                                        <div class="col-lg-10">
-                                       <asp:DropDownList ID="ddlType" runat="server" class="form-control">
-									   <asp:ListItem Text ="Doctor" Value ="d"/>
-                                       <asp:ListItem Text ="Surgeon" Value ="s"/>
-                                       <asp:ListItem Text ="admin" Value ="a"/>
-                                </asp:DropDownList>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
                                         <div class="col-lg-10 col-lg-offset-2">
-                                            <asp:Button ID="btnCancel" runat="server" type="reset" class="btn btn-default" Text="Cancel" OnClick="btnCancel_Click"/>
+                                            <asp:Button ID="btnCancel" runat="server" type="reset" class="btn btn-default" Text="Cancel" OnClick="btnCancel_Click" />
                                             <asp:Button ID="btnSubmit" runat="server" type="submit" class="btn btn-primary" Text="Submit" OnClick="btnSubmit_Click"/>
                                         </div>
                                     </div>

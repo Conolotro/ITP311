@@ -63,6 +63,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adminportal_updateProfile.aspx" />
+    <Content Include="nricForgotPassword.aspx" />
+    <Content Include="adminReset.aspx" />
+    <Content Include="adminportal.aspx" />
     <Content Include="adminportal_createDoc.aspx" />
     <Content Include="App_Data\medicalportal.mdf" />
     <Content Include="App_Data\medicalportal_log.ldf" />
@@ -84,6 +88,7 @@
     <Content Include="img\3.jpg" />
     <Content Include="img\4.jpg" />
     <Content Include="img\banner-high-heartbeat%401x.png" />
+    <Content Include="img\rolling.gif" />
     <Content Include="index.aspx" />
     <Content Include="login-register.aspx" />
     <Content Include="packages.config" />
@@ -115,6 +120,34 @@
     <Content Include="adminlogin.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminportal_updateProfile.aspx.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal_updateProfile.aspx.designer.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nricForgotPassword.aspx.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nricForgotPassword.aspx.designer.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminReset.aspx.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminReset.aspx.designer.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminportal.aspx.cs">
+      <DependentUpon>adminportal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal.aspx.designer.cs">
+      <DependentUpon>adminportal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="adminportal_createDoc.aspx.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

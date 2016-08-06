@@ -21,7 +21,7 @@ namespace ITP311
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            firstOption.InnerText = (string)(Session["FullName"]);
         }
 
         protected async void btnSubmit_Click(object sender, EventArgs e)
@@ -34,15 +34,47 @@ namespace ITP311
             string type = ddlType.SelectedValue;
 
 
-            string password = Membership.GeneratePassword(10,1);
-
+            string password = "IG"+Membership.GeneratePassword(10,1);
             AccountBLL acc = new AccountBLL();
-            if (acc.CreateAccount(nric, firstName, lastName, password, email, contactNo, type) == true)
+
+            if (IsValidEmail(email))
             {
-                sendEmail(nric, password);
+                if (acc.CreateAccount(nric, firstName, lastName, password, email, contactNo, type) == true)
+                {
+                    sendEmail(nric, password);
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Staff profile successfully created.');</script>");
+
+                    tbNric.Text = "";
+                    tbFname.Text = "";
+                    tbLname.Text = "";
+                    tbContact.Text = "";
+                    tbEmail.Text = "";
+                    ddlType.SelectedValue = "";
+                }
+                else
+                {
+                    Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Duplicated Staff Profile.');</script>");
+                }
+
+            }
+            else
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Duplicated Staff Profile.');</script>");
             }
 
+        }
 
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         protected async Task sendEmail(string nric,string password)
@@ -70,6 +102,21 @@ namespace ITP311
             smtpClient.EnableSsl = true;
             await smtpClient.SendMailAsync(mailMessage);
         }
+
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        protected async void btnCancel_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("adminportal.aspx");
+        }
+
+    
     }
 
 }
