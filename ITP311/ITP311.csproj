@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ITP311</RootNamespace>
     <AssemblyName>ITP311</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -213,6 +213,7 @@
     </Compile>
     <Compile Include="AdvSearch.asmx.cs">
       <DependentUpon>AdvSearch.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="App_Code\BLL\AccountBLL.cs" />
     <Compile Include="App_Code\BLL\PasswordResetBLL.cs" />
@@ -238,12 +239,14 @@
     </Compile>
     <Compile Include="Doctor-PatientCreated.aspx.cs">
       <DependentUpon>Doctor-PatientCreated.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Doctor-PatientCreated.aspx.designer.cs">
       <DependentUpon>Doctor-PatientCreated.aspx</DependentUpon>
     </Compile>
     <Compile Include="doctor-PatientsAdvSearch.aspx.cs">
       <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="doctor-PatientsAdvSearch.aspx.designer.cs">
       <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
@@ -263,6 +266,7 @@
     <Compile Include="forgetpassword.aspx.designer.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment-viewmeds.aspx.cs">
       <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +295,7 @@
     </Compile>
     <Compile Include="UpdateLogDT.asmx.cs">
       <DependentUpon>UpdateLogDT.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UpdatePatientsLog.aspx.cs">
       <DependentUpon>UpdatePatientsLog.aspx</DependentUpon>
@@ -339,7 +344,6 @@
       <DependentUpon>login-register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\PatientBLL.cs" />
-    <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment.aspx.cs">
       <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
