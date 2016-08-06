@@ -76,6 +76,13 @@ namespace ITP311
 
             return e;
         }
+        public List<EnquiryDAL> retrieveAllEnquiry()
+        {
+            List<EnquiryDAL> eList = new List<EnquiryDAL>();
+            EnquiryDAL eDAL = new EnquiryDAL();
+            eList = eDAL.retrieveAllEnquiry();
+            return eList;
+        }
 
 
     }

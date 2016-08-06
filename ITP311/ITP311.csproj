@@ -99,6 +99,7 @@
     <Content Include="Doctor-PatientCreated.aspx" />
     <Content Include="doctor-PatientsAdvSearch.aspx" />
     <Content Include="doctor-PatientsLog.aspx" />
+    <Content Include="Enquiry-MailDt.asmx" />
     <Content Include="error.aspx" />
     <Content Include="font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
@@ -180,6 +181,7 @@
     </Compile>
     <Compile Include="AdvSearch.asmx.cs">
       <DependentUpon>AdvSearch.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="App_Code\BLL\AccountBLL.cs" />
     <Compile Include="App_Code\BLL\PasswordResetBLL.cs" />
@@ -205,6 +207,7 @@
     </Compile>
     <Compile Include="Doctor-PatientCreated.aspx.cs">
       <DependentUpon>Doctor-PatientCreated.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Doctor-PatientCreated.aspx.designer.cs">
       <DependentUpon>Doctor-PatientCreated.aspx</DependentUpon>
@@ -223,6 +226,10 @@
       <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\EnquiryBLL.cs" />
+    <Compile Include="Enquiry-MailDt.asmx.cs">
+      <DependentUpon>Enquiry-MailDt.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="forgetpassword.aspx.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -258,6 +265,7 @@
     </Compile>
     <Compile Include="UpdateLogDT.asmx.cs">
       <DependentUpon>UpdateLogDT.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UpdatePatientsLog.aspx.cs">
       <DependentUpon>UpdatePatientsLog.aspx</DependentUpon>

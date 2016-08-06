@@ -70,7 +70,7 @@
 
                 <div class="main panel panel-default" style="width: 100%; height: 100%">
                     <div class="panel-heading" style=" padding-bottom: 5%;">
-                        <h2>Create Patients' Log</h2>
+                        <h2>Update Patients' Log</h2>
                     </div>
                     <form runat="server">
                         <div class="modal-body panel-body">

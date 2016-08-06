@@ -24,7 +24,34 @@
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/adminlogin.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'Enquiry-MailDT.asmx/getMailDT',
+            type: 'post',
+            dataType: 'json',
+            render: $.fn.dataTable.render.text(),
+            success: function (data) {
 
+                $('#datatable').dataTable({
+                    data: data,
+                    columns: [
+                    { 'data': 'name' },
+                    { 'data': 'id' },
+                    { 'data': 'dateTime' }]
+                });
+                var table = $('#datatable').DataTable();
+
+                $('#datatable tbody').on('click', 'tr', function () {
+                    console.log(table.row(this).data().id);
+                    var myvar = table.row(this).data().id;
+                    window.location = "adminPortal_enquiry.aspx?id=" + myvar;
+                });
+            }
+        });
+
+    </script>
 </head>
 
 <body>
@@ -100,9 +127,24 @@
         </div>
 
         <!--/.row-->
-
-
-
+        <div class="panel panel-primary" style="width: 60%; float: left;">
+                    <div class="panel-body">
+                        <div style="width: 100%; float: left; overflow: hidden;">
+                            <div class="panel-heading" style="margin-top: -3%; padding-bottom: 12%;">
+                                <h2>MailBox</h2>
+                            </div>
+                            <table class="table" id="datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>ID</th>
+                                        <th>Date-Time</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
 
 
