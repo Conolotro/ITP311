@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ITP311</RootNamespace>
     <AssemblyName>ITP311</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -81,6 +81,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adminportal_updateProfile.aspx" />
+    <Content Include="nricForgotPassword.aspx" />
+    <Content Include="adminReset.aspx" />
+    <Content Include="adminportal.aspx" />
     <Content Include="adminportal_createDoc.aspx" />
     <Content Include="adminPortal_enquiry.aspx" />
     <Content Include="adminportal_mail.aspx" />
@@ -110,6 +114,7 @@
     <Content Include="img\3.jpg" />
     <Content Include="img\4.jpg" />
     <Content Include="img\banner-high-heartbeat%401x.png" />
+    <Content Include="img\rolling.gif" />
     <Content Include="index.aspx" />
     <Content Include="js\password.js" />
     <Content Include="login-register.aspx" />
@@ -158,6 +163,34 @@
     <Content Include="adminlogin.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminportal_updateProfile.aspx.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal_updateProfile.aspx.designer.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="nricForgotPassword.aspx.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nricForgotPassword.aspx.designer.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminReset.aspx.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminReset.aspx.designer.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminportal.aspx.cs">
+      <DependentUpon>adminportal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal.aspx.designer.cs">
+      <DependentUpon>adminportal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="adminportal_createDoc.aspx.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,6 +247,7 @@
     </Compile>
     <Compile Include="doctor-PatientsAdvSearch.aspx.cs">
       <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="doctor-PatientsAdvSearch.aspx.designer.cs">
       <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
@@ -237,6 +271,7 @@
     <Compile Include="forgetpassword.aspx.designer.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment-viewmeds.aspx.cs">
       <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -314,7 +349,6 @@
       <DependentUpon>login-register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\PatientBLL.cs" />
-    <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment.aspx.cs">
       <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

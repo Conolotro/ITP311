@@ -10,7 +10,7 @@
 namespace ITP311 {
     
     
-    public partial class adminportal_createDoc {
+    public partial class adminportal_updateProfile {
         
         /// <summary>
         /// firstOption control.
@@ -20,6 +20,15 @@ namespace ITP311 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor firstOption;
+        
+        /// <summary>
+        /// createDocPageLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl createDocPageLink;
         
         /// <summary>
         /// form1 control.
@@ -74,15 +83,6 @@ namespace ITP311 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbEmail;
-        
-        /// <summary>
-        /// ddlType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlType;
         
         /// <summary>
         /// btnCancel control.
