@@ -170,6 +170,7 @@
     <Compile Include="adminportal_updateProfile.aspx.designer.cs">
       <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\DAL\EnquiryDisplay.cs" />
     <Compile Include="nricForgotPassword.aspx.cs">
       <DependentUpon>nricForgotPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

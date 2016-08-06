@@ -29,8 +29,18 @@ namespace ITP311
             List<EnquiryDAL> eList = new List<EnquiryDAL>();
             EnquiryBLL eBll = new EnquiryBLL();
             eList = eBll.retrieveAllEnquiry();
+            List<EnquiryDisplay> edList = new List<EnquiryDisplay>();
+            EnquiryDisplay ed;
+            for (int i = 0; i < eList.Count; i++)
+            {
+                string format = "g";
+                DateTime dt = eList[i].dateTime;
+                string dt1 = dt.ToString(format);
+                ed = new EnquiryDisplay(eList[i].id, eList[i].name, dt1);
+                edList.Add(ed);
+            }
             JavaScriptSerializer js = new JavaScriptSerializer();
-            Context.Response.Write(js.Serialize(eList));
+            Context.Response.Write(js.Serialize(edList));
         }
     }
 }

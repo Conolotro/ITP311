@@ -43,14 +43,14 @@
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class = "fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
+                                <a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
+                                <a href="#"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -63,18 +63,21 @@
 
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
+            <li>
+                <a href="adminportal.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
+            </li>
             <li class="active">
-                <a href="adminportal.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home</a>
+                <a href="adminportal_mail.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Mail</a>
             </li>
             <li>
-                <a href=""><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Appointment</a>
+                <a href="#"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Appointment</a>
             </li>
             <li>
-                <a href=""><i class="fa fa-medkit fa-fw" aria-hidden="true"></i> Medicine</a>
+                <a href="#"><i class="fa fa-medkit fa-fw" aria-hidden="true"></i>Medicine</a>
             </li>
             <li>
-                <a href="">
-                    <i class="fa fa-users fa-fw" aria-hidden="true"></i> Accounts</a>
+                <a href="#">
+                    <i class="fa fa-users fa-fw" aria-hidden="true"></i>Accounts</a>
             </li>
 
             <li role="presentation" class="divider"></li>
@@ -109,7 +112,8 @@
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <asp:Literal ID="name" runat="server"></asp:Literal></h4> <asp:Literal ID="email" runat="server"></asp:Literal>
+                            <asp:Literal ID="name" runat="server"></asp:Literal></h4>
+                        <asp:Literal ID="email" runat="server"></asp:Literal>
                     </div>
                 </div>
                 <br />
@@ -127,7 +131,7 @@
 
                     <div class="form-group">
                         <div class="col-lg-12">
-                            <asp:Button runat="server" class="btn btn-default btn-block" Text="Send" ID="submit" OnClick="submit_Click"/>
+                            <asp:Button runat="server" class="btn btn-default btn-block" Text="Send" ID="submit" OnClick="submit_Click" />
                         </div>
                     </div>
                 </form>

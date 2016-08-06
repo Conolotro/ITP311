@@ -92,8 +92,11 @@
 
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
+            <li>
+                <a href="adminportal.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
+            </li>
             <li class="active">
-                <a href="adminportal.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
+                <a href="adminportal_mail.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Mail</a>
             </li>
             <li>
                 <a href=""><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Appointment</a>
@@ -127,7 +130,7 @@
         </div>
 
         <!--/.row-->
-        <div class="panel panel-primary" style="width: 60%; float: left;">
+        <div class="panel panel-primary" style="width: 80%; float: left;">
                     <div class="panel-body">
                         <div style="width: 100%; float: left; overflow: hidden;">
                             <div class="panel-heading" style="margin-top: -3%; padding-bottom: 12%;">
