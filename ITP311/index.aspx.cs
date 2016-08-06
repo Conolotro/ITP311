@@ -14,9 +14,20 @@ namespace ITP311
 
         }
 
-        protected void Unnamed2_Click(object sender, EventArgs e)
+        protected void submit_Click(object sender, EventArgs e)
         {
+            string name = inputName.Text.Trim();
+            string email = inputEmail.Text.Trim();
+            string enquiry = tbEnquiry.Text.Trim();
 
+            EnquiryBLL eb = new EnquiryBLL();
+            eb.createEnquiry(name, email, enquiry);
+
+        }
+
+        protected void reset_Click(object sender, EventArgs e)
+        {
+            tbEnquiry.Text = "";
         }
     }
 }

@@ -141,25 +141,25 @@
             &nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlMonth" runat="server" Font-Size="Large">
                 <asp:ListItem>Select month</asp:ListItem>
-                <asp:ListItem>Jan (01)</asp:ListItem>
-                <asp:ListItem>Feb (02)</asp:ListItem>
-                <asp:ListItem>Mar (03)</asp:ListItem>
-                <asp:ListItem>Apr (04)</asp:ListItem>
-                <asp:ListItem>May (05)</asp:ListItem>
-                <asp:ListItem>June (06)</asp:ListItem>
-                <asp:ListItem>July (07)</asp:ListItem>
-                <asp:ListItem>Aug (08)</asp:ListItem>
-                <asp:ListItem>Sep (09)</asp:ListItem>
-                <asp:ListItem>Oct (10)</asp:ListItem>
-                <asp:ListItem>Nov (11)</asp:ListItem>
-                <asp:ListItem>Dec (12)</asp:ListItem>
+                <asp:ListItem>Jan</asp:ListItem>
+                <asp:ListItem>Feb</asp:ListItem>
+                <asp:ListItem>Mar</asp:ListItem>
+                <asp:ListItem>Apr</asp:ListItem>
+                <asp:ListItem>May</asp:ListItem>
+                <asp:ListItem>June</asp:ListItem>
+                <asp:ListItem>July</asp:ListItem>
+                <asp:ListItem>Aug</asp:ListItem>
+                <asp:ListItem>Sep</asp:ListItem>
+                <asp:ListItem>Oct</asp:ListItem>
+                <asp:ListItem>Nov</asp:ListItem>
+                <asp:ListItem>Dec</asp:ListItem>
             </asp:DropDownList>
             <br />
             <br />
             <asp:Label ID="lblTime" runat="server" Text="Time:" Font-Size="Large"></asp:Label>
             &nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlTime" runat="server" Font-Size="Large">
-                <asp:ListItem>Select time</asp:ListItem>
+                <asp:ListItem Selected="True">Select time</asp:ListItem>
                 <asp:ListItem>9:00am</asp:ListItem>
                 <asp:ListItem>9:30am</asp:ListItem>
                 <asp:ListItem>10:00am</asp:ListItem>
@@ -191,6 +191,12 @@
             <br />
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" Font-Size="Large" />
            
+            <br />
+            <br />
+            <asp:Label ID="lblError" runat="server" BackColor="#FF99FF" Font-Bold="True" Font-Italic="True" Font-Size="Medium" ForeColor="Red" Visible="False"></asp:Label>
+            <br />
+          
+
             </form>
 
 </body>

@@ -115,7 +115,9 @@
             <tr>
               <td>23rd Sept 2015</td>
               <td>David Washington</td>
-                <td><font color="red">Click to view</font></td>
+                <td>
+                    <asp:Button ID="btnView" runat="server" Text="View" OnClick="btnView_Click" />
+                    </font></td>
               <td>
                   <a href="user.html"><i class="icon-pencil"></i></a>
                   <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
@@ -141,6 +143,8 @@
             </tr>
           </tbody>
         </table>
+
+        <asp:Label ID="lblKey" runat="server" Text=""></asp:Label>
 
         <asp:GridView ID="gvApp" runat="server" Width="1022px">
         </asp:GridView>

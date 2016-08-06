@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -14,7 +15,7 @@ namespace ITP311
         protected void Page_Load(object sender, EventArgs e)
         {
             this.AsyncMode = true;
-
+            Session["search"] = null;
         }
         protected void signUp_Click(object sender, EventArgs e)
         {
@@ -41,7 +42,7 @@ namespace ITP311
                     }
 
 
-                    Response.Redirect("registered.aspx");
+                    Response.Redirect("Doctor-PatientCreated.aspx");
                 }
                 else
                 {
@@ -85,6 +86,22 @@ namespace ITP311
             mail.IsBodyHtml = true;
             mail.Body = bodyMessage;
             smtp.Send(mail);
+        }
+
+        protected void search_Click(object sender, EventArgs e)
+        {
+            string searchinfo = searchNric.Text;
+            PatientsLogBLL plogbll = new PatientsLogBLL();
+            DataTable dt = new DataTable();
+            dt = plogbll.getDTGrid(searchinfo);
+            if (dt.Rows.Count > 0)
+            {
+                
+                Session["search"] = searchinfo;
+                Response.Redirect("doctor-PatientsLog.aspx");
+            }else{
+                ErrorMsg.Text = "NRIC Not Available!";
+            }
         }
 
       
