@@ -41,21 +41,45 @@ namespace ITP311
             PatientDAL p = new PatientDAL();
             PatientDAL p2 = p.retrievePatient(username);
 
-            string userPasswordHash = generatePasswordHash(password, p2.Salt);
-
-            if (userPasswordHash.Equals(p2.PasswordHash)){
-                result = true;
-            }
-            else
+            if (p2 != null)
             {
-                result = false;
+                string userPasswordHash = generatePasswordHash(password, p2.Salt);
+
+                if (userPasswordHash.Equals(p2.PasswordHash))
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
             }
-           
+
+                
 
             return result;
         }
 
-        public bool retrievePatientbyEmail(string Email)
+
+
+        public PatientDAL retrievePatientByEmail(string email)
+        {
+            PatientDAL p = new PatientDAL();
+            return p.retrievePatientbyEmail(email);
+        }
+
+    
+
+
+
+        public string retrievePatientNRICbyEmail(string Email)
+        {
+            PatientDAL p = new PatientDAL();
+            p = p.retrievePatientbyEmail(Email);
+            return p.Nric;
+        }
+
+        public bool checkPatientbyEmail(string Email)
         {
             bool result = false;
             PatientDAL p = new PatientDAL();
@@ -70,13 +94,6 @@ namespace ITP311
             return result;
         }
 
-        public string retrievePatientNRICbyEmail(string Email)
-        {
-            bool result = false;
-            PatientDAL p = new PatientDAL();
-            p = p.retrievePatientbyEmail(Email);
-            return p.Nric;
-        }
 
         public PatientDAL retrievePatientByNric(string nric)
         {
@@ -128,6 +145,41 @@ namespace ITP311
             }
             return result;
         }
+
+         public bool updatePassword(string nric,string password)
+         {
+             bool result = false;
+             PatientDAL p = new PatientDAL();
+             string salt = generateSalt();
+             string hashedpassword = generatePasswordHash(password, salt);
+             if (p.updatePatientPassword(nric, hashedpassword, salt) == 1)
+             {
+                 result = true;
+             }
+             else
+             {
+                 result = false;
+             }
+ 
+ 
+             return result;
+        }
+
+         public bool updatePatient(string nric, int contactNo,string dob, string email, string address)
+         {
+             bool result = false;
+             PatientDAL pd = new PatientDAL();
+             if (pd.updatePatient(nric, contactNo, dob, email, address) == 1)
+             {
+                 result = true;
+             }
+             else
+             {
+                 result = false;
+             }
+             return result;
+             
+         }
 
         public static string generateSalt()
         {
