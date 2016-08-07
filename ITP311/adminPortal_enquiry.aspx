@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminPortal_enquiry.aspx.cs" Inherits="ITP311.adminPortal_enquiry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="adminPortal_enquiry.aspx.cs" Inherits="ITP311.adminPortal_enquiry" Async="true" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -102,6 +102,14 @@
 
         <!--/.row-->
 
+        <asp:Literal ID="successMsg" runat="server" Visible ="false">
+
+            <div class="alert alert-dismissible alert-success text-center">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong> Success </strong> Your email has been sent to the user's inbox.
+</div>
+        </asp:Literal>
+
 
         <div class="panel panel-default">
             <div class="panel-heading">Enquiry #000001</div>
@@ -125,7 +133,7 @@
                     <div class="form-group">
                         <label for="textArea" class="col-lg-12 control-label">Reply</label>
                         <div class="col-lg-12">
-                            <asp:TextBox runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3" Width="100%"></asp:TextBox>
+                            <asp:TextBox runat="server" ID="replybox" CssClass="form-control" TextMode="MultiLine" Rows="6" Width="100%"></asp:TextBox>
                         </div>
                     </div>
 

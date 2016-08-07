@@ -7,63 +7,72 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ITP311 {
+namespace WebApplication2 {
     
     
-    public partial class adminPortal_enquiry {
+    public partial class AddXray {
         
         /// <summary>
-        /// successMsg control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal successMsg;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// name control.
+        /// txtPatientIC control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal name;
+        protected global::System.Web.UI.WebControls.TextBox txtPatientIC;
         
         /// <summary>
-        /// email control.
+        /// txtPatientName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal email;
+        protected global::System.Web.UI.WebControls.TextBox txtPatientName;
         
         /// <summary>
-        /// messageEnquiry control.
+        /// txtPatientDOB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal messageEnquiry;
+        protected global::System.Web.UI.WebControls.TextBox txtPatientDOB;
         
         /// <summary>
-        /// replybox control.
+        /// txtDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox replybox;
+        protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// submit control.
+        /// FileUpload1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submit;
+        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        
+        /// <summary>
+        /// btnAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdd;
     }
 }
