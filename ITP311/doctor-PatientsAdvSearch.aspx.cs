@@ -15,6 +15,13 @@ namespace ITP311
             {
                 Response.Redirect("adminlogin.aspx");
             }
+            else
+            {
+                string Nric = Session["userNric"].ToString();
+                AccountBLL a = new AccountBLL();
+                AccountDAL ad = a.retrieveAccountByNric(Nric);
+                name.Text = ad.firstName;
+            }
         }
     }
 }

@@ -34,36 +34,45 @@ namespace ITP311
                 {
                     Response.Redirect("adminlogin.aspx");
                 }
-                Session["caseNo"] = null;
-                if (Request.QueryString.AllKeys.Contains("Nric"))
+                else
                 {
-                    if (Request.QueryString["Nric"].ToString() != null)
+                    string Nric = Session["userNric"].ToString();
+                    AccountBLL a = new AccountBLL();
+                    AccountDAL ad = a.retrieveAccountByNric(Nric);
+                    name.Text = ad.firstName;
+
+                    Session["caseNo"] = null;
+                    if (Request.QueryString.AllKeys.Contains("Nric"))
                     {
-                        Session["search"] = Request.QueryString["Nric"].ToString();
+                        if (Request.QueryString["Nric"].ToString() != null)
+                        {
+                            Session["search"] = Request.QueryString["Nric"].ToString();
+                        }
+                    }
+                    if (Session["search"] != null)
+                    {
+
+                        medicinelist = medicinearr.ToList<string>();
+                        medicineListDDL.DataSource = medicinelist;
+                        medicineListDDL.DataBind();
+                        string search = Session["search"].ToString();
+                        nricLbl.Text = search;
+                        PatientsLogBLL plogbll = new PatientsLogBLL();
+                        DataTable dt = new DataTable();
+                        dt = plogbll.getDTGrid(search);
+                        gvCaseNumber.DataSource = dt;
+                        gvCaseNumber.DataBind();
+                        gvCaseNumber.Columns[2].Visible = false;
+
+
+                        PatientsLogDAL plog = null;
+                        PatientsLogDAL plogdal = new PatientsLogDAL();
+                        plog = plogbll.getPatientsLogByCaseNo(1);
+
+
                     }
                 }
-                if (Session["search"] != null)
-                {
 
-                    medicinelist = medicinearr.ToList<string>();
-                    medicineListDDL.DataSource = medicinelist;
-                    medicineListDDL.DataBind();
-                    string search = Session["search"].ToString();
-                    nricLbl.Text = search;
-                    PatientsLogBLL plogbll = new PatientsLogBLL();
-                    DataTable dt = new DataTable();
-                    dt = plogbll.getDTGrid(search);
-                    gvCaseNumber.DataSource = dt;
-                    gvCaseNumber.DataBind();
-                    gvCaseNumber.Columns[2].Visible = false;
-
-
-                    PatientsLogDAL plog = null;
-                    PatientsLogDAL plogdal = new PatientsLogDAL();
-                    plog = plogbll.getPatientsLogByCaseNo(1);
-
-
-                }
             }
         }
 

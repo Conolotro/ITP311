@@ -169,12 +169,13 @@
                 <a class="navbar-brand" href="#"><span>Medicx</span> Inc</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            <asp:Literal ID="name" runat="server"></asp:Literal> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a> </li>
                             <li><a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a> </li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a> </li>
+                            <li><a href="admin_logout.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a> </li>
                         </ul>
                     </li>
                 </ul>
@@ -182,20 +183,33 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
-        <ul class="nav menu">
-            <li><a href="adminportal.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a> </li>
-            <li><a href=""><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Appointment</a> </li>
-            <li><a href=""><i class="fa fa-medkit fa-fw" aria-hidden="true"></i>Medicine</a> </li>
-            <li>
-                <a href=""><i class="fa fa-users fa-fw" aria-hidden="true"></i>Accounts</a>
-            </li>
-            <li class="active">
-                <a href=""><i class="fa fa-tasks fa-fw" aria-hidden="true"></i>Patients' Log </a>
-            </li>
-            <li role="presentation" class="divider"></li>
-        </ul>
-    </div>
+        <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
+            <ul class="nav menu">
+                <li>
+                    <a href="adminportal.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Appointment</a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-medkit fa-fw" aria-hidden="true"></i>Medicine</a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-users fa-fw" aria-hidden="true"></i>Accounts</a>
+                </li>
+
+                <li class="active">
+                    <a href="doctor-PatientsLog.aspx">
+                        <i class="fa fa-tasks fa-fw" aria-hidden="true"></i>Patients' Log
+                    </a>
+
+                </li>
+                <li role="presentation" class="divider"></li>
+
+            </ul>
+
+        </div>
     <form runat="server" id="form">
         <!--/.sidebar-->
         <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="margin-left: 18%;">

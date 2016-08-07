@@ -42,7 +42,8 @@
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            <asp:Literal ID="name" runat="server"></asp:Literal> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>

@@ -21,12 +21,21 @@ namespace ITP311
         {
             if (!IsPostBack)
             {
-                if (Session["loggedIn"] != null)
+                if (Session["loggedIn"] != null && Session["AuthToken"] != null && Request.Cookies["AuthToken"] != null)
                 {
-                    string nric = Session["loggedIn"].ToString();
-                    PatientBLL p = new PatientBLL();
-                    PatientDAL pd = p.retrievePatientByNric(nric);
-                    name.Text = pd.FirstName + " " + pd.LastName;
+                    if (!Session["AuthToken"].ToString().Equals(Request.Cookies["AuthToken"].Value))
+                    {
+                        Response.Redirect("login-register.aspx", false);
+                    }
+                    else
+                    {
+                        //normal stuff here
+                        string nric = Session["loggedIn"].ToString();
+                        PatientBLL p = new PatientBLL();
+                        PatientDAL pd = p.retrievePatientByNric(nric);
+                        name.Text = pd.FirstName;
+                    }
+
                 }
                 else
                 {

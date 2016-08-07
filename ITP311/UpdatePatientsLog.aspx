@@ -122,7 +122,9 @@
                 <a class="navbar-brand" href="#"><span>Medicx</span> Inc</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            <asp:Literal ID="name" runat="server"></asp:Literal> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a> </li>
                             <li><a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a> </li>

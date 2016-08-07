@@ -25,6 +25,7 @@ namespace ITP311
                         string nric = Session["loggedIn"].ToString();
                         PatientBLL pb = new PatientBLL();
                         PatientDAL pd = pb.retrievePatientByNric(nric);
+                        name.Text = pd.FirstName;
 
                         inputFirstName.Text = pd.FirstName;
                         inputLastName.Text = pd.LastName;

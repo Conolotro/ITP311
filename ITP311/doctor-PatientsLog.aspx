@@ -38,58 +38,46 @@
 
     <form id="form1" runat="server">
 
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><span>Medicx</span> Inc</a>
-                    <ul class="user-menu">
-                        <li class="dropdown pull-right">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
-                                </li>
-                                <li role="separator" class="divider"></li>
-                                <li>
-                                    <a href="#"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <a class="navbar-brand" href="#"><span>Medicx</span> Inc</a>
+                <ul class="user-menu">
+                    <li class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            <asp:Literal ID="name" runat="server"></asp:Literal> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a> </li>
+                            <li><a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a> </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="admin_logout.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a> </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            <!-- /.container-fluid -->
-        </nav>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
 
         <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
             <ul class="nav menu">
                 <li>
-                    <a href="adminportal.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
+                    <a href="adminportal.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Appointment</a>
+                    <a href="#"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Appointment</a>
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-medkit fa-fw" aria-hidden="true"></i>Medicine</a>
+                    <a href="#"><i class="fa fa-medkit fa-fw" aria-hidden="true"></i>Medicine</a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="#">
                         <i class="fa fa-users fa-fw" aria-hidden="true"></i>Accounts</a>
                 </li>
 
                 <li class="active">
-                    <a href="">
+                    <a href="doctor-PatientsLog.aspx">
                         <i class="fa fa-tasks fa-fw" aria-hidden="true"></i>Patients' Log
                     </a>
 

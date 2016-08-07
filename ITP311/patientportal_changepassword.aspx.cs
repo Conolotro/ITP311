@@ -20,6 +20,10 @@ namespace ITP311
                 else
                 {
                     //normal stuff here
+                    string nric = Session["loggedIn"].ToString();
+                    PatientBLL p = new PatientBLL();
+                    PatientDAL pd = p.retrievePatientByNric(nric);
+                    name.Text = pd.FirstName;
                 }
 
             }
