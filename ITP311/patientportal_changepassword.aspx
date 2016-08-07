@@ -96,7 +96,28 @@
         <!--/.rowtop-->
 
         <div class="row">
+            <asp:Literal ID="errorMsg" runat="server" Visible="false">
+                <div class="alert alert-dismissible alert-danger text-center">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Incorrect password</strong> Please try again.
+                </div>
+            </asp:Literal>
 
+            <asp:Literal ID="Passwordmismatch" runat="server" Visible="false">
+                <div class="alert alert-dismissible alert-danger text-center">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    Your new password and confirm password does not match. Please try again.
+                </div>
+            </asp:Literal>
+
+            <asp:Literal ID="successMsg" runat="server" Visible="false">
+                <div class="alert alert-dismissible alert-success text-center">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Password Updated!</strong>
+                </div>
+
+
+            </asp:Literal>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form class="form-horizontal" runat="server">

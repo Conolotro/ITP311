@@ -68,7 +68,7 @@
                 <a href="patientportal-appoinment.aspx"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Book an appointment</a>
             </li>
             <li>
-                <a href="patientportal-updateparticulars.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
+                <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
             </li>
             <li>
                 <a href="index.aspx"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>

@@ -45,7 +45,7 @@
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="PatientPortal_updateProfile.aspx"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class = "fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
@@ -75,7 +75,7 @@
                 <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
             </li>
             <li>
-                <a href="index.html"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
+                <a href="index.aspx"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
             </li>
 
             <li role="presentation" class="divider"></li>
@@ -98,7 +98,7 @@
         </div>
         <!--/.rowtop-->
 
-    <h2>Welcome, (name)</h2>
+    <h2>Welcome,<asp:Literal ID="name" runat="server"></asp:Literal> </h2>
     <h4>Here is a table of your past appointments. To book a new one, simply head over the "Book an appointment".</h4>
         
     <div class="well">

@@ -21,6 +21,17 @@ namespace ITP311
         {
             if (!IsPostBack)
             {
+                if (Session["loggedIn"] != null)
+                {
+                    string nric = Session["loggedIn"].ToString();
+                    PatientBLL p = new PatientBLL();
+                    PatientDAL pd = p.retrievePatientByNric(nric);
+                    name.Text = pd.FirstName + " " + pd.LastName;
+                }
+                else
+                {
+                    Response.Redirect("login-register.aspx", false);
+                }
                //GridViewAppinding();
 
             }
@@ -50,10 +61,6 @@ namespace ITP311
 
         }
 
-        protected void logout_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
     }

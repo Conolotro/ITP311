@@ -13,27 +13,36 @@ namespace ITP311
         {
             if (!IsPostBack)
             {
-
-                if (Session["loggedIn"] != null)
+                if (Session["loggedIn"] != null && Session["AuthToken"] != null && Request.Cookies["AuthToken"] != null)
                 {
-                    string nric = Session["loggedIn"].ToString();
-                    PatientBLL pb = new PatientBLL();
-                    PatientDAL pd = pb.retrievePatientByNric(nric);
+                    if (!Session["AuthToken"].ToString().Equals(Request.Cookies["AuthToken"].Value))
+                    {
+                        Response.Redirect("login-register.aspx", false);
+                    }
+                    else
+                    {
+                        //normal stuff here
+                        string nric = Session["loggedIn"].ToString();
+                        PatientBLL pb = new PatientBLL();
+                        PatientDAL pd = pb.retrievePatientByNric(nric);
 
-                    inputFirstName.Text = pd.FirstName;
-                    inputLastName.Text = pd.LastName;
+                        inputFirstName.Text = pd.FirstName;
+                        inputLastName.Text = pd.LastName;
 
-                    inputFirstName.Enabled = false;
-                    inputLastName.Enabled = false;
-                    inputAddress.Text = pd.Address;
-                    inputContact.Text = pd.ContactNo.ToString();
-                    inputDOB.Text = pd.Dob;
-                    inputEmail.Text = pd.Email;
+                        inputFirstName.Enabled = false;
+                        inputLastName.Enabled = false;
+                        inputAddress.Text = pd.Address;
+                        inputContact.Text = pd.ContactNo.ToString();
+                        inputDOB.Text = pd.Dob;
+                        inputEmail.Text = pd.Email;
+                    }
+
                 }
                 else
                 {
                     Response.Redirect("login-register.aspx", false);
                 }
+
             }
         }
 
@@ -44,7 +53,7 @@ namespace ITP311
             PatientBLL pb = new PatientBLL();
             PatientDAL pd = pb.retrievePatientByNric(nric);
             string password = inputPassword.Text.Trim();
-            string passwordHash = PatientBLL.generatePasswordHash(password,pd.Salt);
+            string passwordHash = PatientBLL.generatePasswordHash(password, pd.Salt);
             if (passwordHash.Equals(pd.PasswordHash))
             {
                 string address = inputAddress.Text.Trim();
@@ -65,7 +74,7 @@ namespace ITP311
                 {
 
                 }
-                
+
             }
             else
             {
@@ -73,7 +82,7 @@ namespace ITP311
 
 
             }
-            
+
 
         }
     }

@@ -20,6 +20,22 @@ namespace ITP311
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["loggedIn"] != null && Session["AuthToken"] != null && Request.Cookies["AuthToken"] != null)
+            {
+                if (!Session["AuthToken"].ToString().Equals(Request.Cookies["AuthToken"].Value))
+                {
+                    Response.Redirect("login-register.aspx", false);
+                }
+                else
+                {
+                    //normal stuff here
+                }
+
+            }
+            else
+            {
+                Response.Redirect("login-register.aspx", false);
+            }
 
         }
 
