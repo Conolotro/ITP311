@@ -181,12 +181,12 @@ namespace ITP311
             enIV = _enIV;
         }
 
-        public int createPatientsLog(string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
+        public int createPatientsLog(string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
         {
             int result = 0;
             SqlConnection myConnection = new SqlConnection(strConnectionString);
-            string strCommandText = "INSERT INTO PatientsLog(nric, datetime, SymptomsList, MedicineListID, ReceiptID, CertID, DoctorsNotes, briefDescription, doctorID, pressure, pulse, temperature, enkey, enIV)"
-                    + "values (@nric, @datetime, @symptomsList, @medicineListID, @receiptID, @certID, @doctorsNotes, @briefDescription, @doctorID, @pressure, @pulse, @temperature, @enkey, @enIV)";
+            string strCommandText = "INSERT INTO PatientsLog(nric, datetime, SymptomsList, ReceiptID, CertID, DoctorsNotes, briefDescription, doctorID, pressure, pulse, temperature, enkey, enIV)"
+                    + "values (@nric, @datetime, @symptomsList, @receiptID, @certID, @doctorsNotes, @briefDescription, @doctorID, @pressure, @pulse, @temperature, @enkey, @enIV)";
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
             try
             {
@@ -194,7 +194,6 @@ namespace ITP311
                 cmd.Parameters.AddWithValue("@nric", nric);
                 cmd.Parameters.AddWithValue("@datetime", datetime);
                 cmd.Parameters.AddWithValue("@symptomsList", symptomsList);
-                cmd.Parameters.AddWithValue("@medicineListID", medicineListID);
                 cmd.Parameters.AddWithValue("@receiptID", receiptID);
                 cmd.Parameters.AddWithValue("@certID", certID);
                 cmd.Parameters.AddWithValue("@doctorsNotes", doctorsNotes);
@@ -365,10 +364,10 @@ namespace ITP311
         }
 
 
-        public int updatePatientsLog(int caseNo, string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
+        public int updatePatientsLog(int caseNo, string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
         {
             int result = 0;
-            string queryStr = "UPDATE PatientsLog SET nric= @nric, datetime=@datetime , SymptomsList=@SymptomsList, MedicineListID=@MedicineListID, ReceiptID=@ReceiptID, CertID=@CertID, DoctorsNotes=@DoctorsNotes, briefDescription=@briefDescription, doctorID=@doctorID, pressure=@pressure, pulse=@pulse, temperature=@temperature, enkey=@enkey, enIV =@enIV where caseNo = @caseNo";
+            string queryStr = "UPDATE PatientsLog SET nric= @nric, datetime=@datetime , SymptomsList=@SymptomsList, ReceiptID=@ReceiptID, CertID=@CertID, DoctorsNotes=@DoctorsNotes, briefDescription=@briefDescription, doctorID=@doctorID, pressure=@pressure, pulse=@pulse, temperature=@temperature, enkey=@enkey, enIV =@enIV where caseNo = @caseNo";
             SqlConnection conn = new SqlConnection(strConnectionString);
             SqlCommand cmd = new SqlCommand(queryStr, conn);
             conn.Open();

@@ -17,6 +17,101 @@
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/adminlogin.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css" />
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"> </script>
+    
+    <script>
+        $(document).ready(function () {
+            $('#form').bootstrapValidator({
+                container: '#messages',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    briefDescriptiontbx: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The NRIC is required and cannot be empty'
+                            },
+                            stringLength: {
+                                message: 'NRIC must contain only 9 characters',
+                                max: function (value, validator, $field) {
+                                    return 250 - (value.match(/\r/g) || []).length;
+                                }
+                            }
+                        }
+                    },
+                    pressuretbx: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Pressure is required and cannot be empty'
+                            },
+                            digits: {
+                                message: 'Pressure should contain numeric values only'
+                            }
+                        }
+                    },
+                    pulsetbx: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Pulse is required and cannot be empty'
+                            },
+                            digits: {
+                                message: 'Pulse should contain numeric values only'
+                            }
+                        }
+                    },
+                    temperaturetbx: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Pulse is required and cannot be empty'
+                            },
+                            numeric: {
+                                message: 'The value is not a number',
+                                // The default separators
+                                thousandsSeparator: '',
+                                decimalSeparator: '.'
+                            },
+                            stringLength: {
+                                message: 'NRIC must contain only 9 characters',
+                                max: function (value, validator, $field) {
+                                    return 4 - (value.match(/\r/g) || []).length;
+                                }
+                            }
+                        }
+                    },
+                    formDoctorsNotes: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Doctors Notes is required and cannot be empty'
+                            },
+                            stringLength: {
+                                message: 'NRIC must contain only 9 characters',
+                                max: function (value, validator, $field) {
+                                    return 250 - (value.match(/\r/g) || []).length;
+                                }
+                            }
+                        }
+                    },
+                    symptomstbx: {
+                        notEmpty: {
+                            message: 'Symptoms List cannot be empty'
+                        },
+                        stringLength: {
+                            message: 'NRIC must contain only 9 characters',
+                            max: function (value, validator, $field) {
+                                return 250 - (value.match(/\r/g) || []).length;
+                            }
+                        }
+                    }
+                    
+                }
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -72,7 +167,7 @@
                     <div class="panel-heading" style=" padding-bottom: 5%;">
                         <h2>Update Patients' Log</h2>
                     </div>
-                    <form runat="server">
+                    <form runat="server" id="form">
                         <div class="modal-body panel-body">
                             <div class="form-group">
                                 <label for="title">Brief Description : </label>
@@ -102,7 +197,9 @@
                                 <label for="formDoctorsNotes">Doctor's Notes</label>
                                 <asp:TextBox name="formDoctorsNotes" class="formDoctorsNotes form-control " ID="formDoctorsNotes" runat="server" Width="637px" Height="96px" TextMode="MultiLine" />
                             </div>
-
+                            <div class="form-group">
+                                <div id="messages"></div>
+                            </div>
                             <div class="modal-footer">
                                 <asp:Button ID="updateLog" class="btn btn-default" Text="Update Log" runat="server" OnClientClick="return confirm('Are you sure?')" OnClick="updateLog_Click" />
                                 <asp:Button ID="cancelUpdate" class="btn btn-default" Text="Cancel" runat="server" OnClick="cancelUpdate_Click" />

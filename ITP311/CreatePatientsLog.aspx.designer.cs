@@ -13,6 +13,15 @@ namespace ITP311 {
     public partial class CreatePatientsLog {
         
         /// <summary>
+        /// form control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
+        
+        /// <summary>
         /// briefDescription control.
         /// </summary>
         /// <remarks>
@@ -20,24 +29,6 @@ namespace ITP311 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox briefDescription;
-        
-        /// <summary>
-        /// gvSymptoms control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSymptoms;
-        
-        /// <summary>
-        /// gvSelectedSymptoms control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvSelectedSymptoms;
         
         /// <summary>
         /// pressuretbx control.
@@ -74,6 +65,24 @@ namespace ITP311 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox formDoctorsNotes;
+        
+        /// <summary>
+        /// gvSymptoms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSymptoms;
+        
+        /// <summary>
+        /// gvSelectedSymptoms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvSelectedSymptoms;
         
         /// <summary>
         /// createNewLog control.

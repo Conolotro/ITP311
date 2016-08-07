@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ITP311.BLL;
-using ITP311.NYPSMS;
+//using ITP311.NYPSMS;
 using System.Net;
 
 namespace ITP311
@@ -15,7 +15,7 @@ namespace ITP311
         appointmentBLL Abll = new appointmentBLL();
 
         //SMS
-        NYPSMS.SMSService appsms = new SMSService();
+        //NYPSMS.SMSService appsms = new SMSService();
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace ITP311
                 string SMSAccount = "ASPJ40";
                 string SMSPassword = "635033";
 
-                string sendSMS = appsms.sendMessage(MobileNo, Message, SMSAccount, SMSPassword);
+                //string sendSMS = appsms.sendMessage(MobileNo, Message, SMSAccount, SMSPassword);
 
                 //Reset the DDLs
                 ddlDate.SelectedIndex = 0;

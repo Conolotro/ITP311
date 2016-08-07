@@ -13,6 +13,15 @@ namespace ITP311 {
     public partial class UpdatePatientsLog {
         
         /// <summary>
+        /// form control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form;
+        
+        /// <summary>
         /// briefDescriptiontbx control.
         /// </summary>
         /// <remarks>
