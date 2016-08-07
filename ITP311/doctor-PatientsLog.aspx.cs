@@ -30,6 +30,10 @@ namespace ITP311
         {
             if (!IsPostBack)
             {
+                if (Session["userNric"] == null)
+                {
+                    Response.Redirect("adminlogin.aspx");
+                }
                 Session["caseNo"] = null;
                 if (Request.QueryString.AllKeys.Contains("Nric"))
                 {
@@ -52,13 +56,35 @@ namespace ITP311
                     gvCaseNumber.DataSource = dt;
                     gvCaseNumber.DataBind();
                     gvCaseNumber.Columns[2].Visible = false;
-                }
-                else
-                {
-                    Response.Redirect("doctor-index.aspx");
 
+
+                    PatientsLogDAL plog = null;
+                    PatientsLogDAL plogdal = new PatientsLogDAL();
+                    plog = plogbll.getPatientsLogByCaseNo(1);
+
+                    //decrypt
+                    string enkey = plog._enkey;
+                    string enIV = plog._enIV;
+                    SymmetricAlgorithm sa = new RijndaelManaged();
+                    sa.Key = Convert.FromBase64String(enkey);
+                    sa.IV = Convert.FromBase64String(enIV);
+
+                    ICryptoTransform cryptTransform = sa.CreateDecryptor();
+                    byte[] ciphertext = Convert.FromBase64String(plog._symptomsList);
+                    byte[] plaintext = cryptTransform.TransformFinalBlock(ciphertext, 0, ciphertext.Length);
+                    string decryptedSymList = Encoding.UTF8.GetString(plaintext);
+
+                    string[] strArray = decryptedSymList.Split(new char[] { ';' });
+                    for (int j = 0; j < strArray.Length; j++)
+                    {
+                        string text = strArray[j];
+                        symptomsLbl.Text += text + "<br/>";
+                    }
+
+                    dateOfLogLbl.Text = plog._datetime;
+                    diagnosisLbl.Text = plog._doctorsNotes;
                 }
-            }
+                }          
         }
 
         protected void gvCaseNumber_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,13 +122,15 @@ namespace ITP311
             dateOfLogLbl.Text = plog._datetime;
             diagnosisLbl.Text = plog._doctorsNotes;
             
-            MedicineListBLL mb = new MedicineListBLL();
-            List<MedicineListDAL> ml = mb.retrieveMedicineList(plog._medicineListID);
+            //MedicineListBLL mb = new MedicineListBLL();
+            
+              //  List<MedicineListDAL> ml = mb.retrieveMedicineList(plog._caseNo);
 
-            for (int i = 0; i < ml.Count; i++)
-            {
-                prescription.Text += ml[i].medicine + "<br/>";
-            }
+                //for (int i = 0; i < ml.Count; i++)
+                //{
+                 //   prescription.Text += ml[i].medicine + "<br/>";
+                //}
+
 
 
         }
@@ -151,23 +179,23 @@ namespace ITP311
             string medicine = "";
             MedicineListBLL mlistBLL = new MedicineListBLL();
             MedicineListDAL mlistDAL = new MedicineListDAL();
-
-            if(medicineListDDL.SelectedValue =="0"){
-                errorMsg.Text = "Please Select a Symptom!";
-            }else{
-                medicine = medicineListDDL.SelectedItem.Text;
-                if (mlistBLL.createMedicineList(medicineListID, medicine) == true)
+            
+                if (medicineListDDL.SelectedValue == "0")
                 {
-                    Response.Redirect("doctor-PatientsLog.aspx");
+                    errorMsg.Text = "Please Select a Symptom!";
                 }
                 else
                 {
-                    Response.Redirect("error.aspx");
+                    medicine = medicineListDDL.SelectedItem.Text;
+                    if (mlistBLL.createMedicineList(plog._caseNo, medicine) == true)
+                    {
+                        Response.Redirect("doctor-PatientsLog.aspx");
+                    }
+                    else
+                    {
+                        Response.Redirect("error.aspx");
+                    }
                 }
             }
-
-            
         }
-
     }
-}

@@ -20,7 +20,7 @@ namespace ITP311
         private int certID;
         private string doctorsNotes;
         private string briefDescription;
-        private int doctorID;
+        private string doctorID;
         private int pressure;
         private int pulse;
         private decimal temperature;
@@ -52,7 +52,7 @@ namespace ITP311
             get { return temperature; }
             set { temperature = value; }
         }
-        public int _doctorID
+        public string _doctorID
         {
             get { return doctorID;}
             set { doctorID = value; }
@@ -163,7 +163,7 @@ namespace ITP311
 
         string strConnectionString = ConfigurationManager.ConnectionStrings["medicalportal"].ToString();
 
-        public PatientsLogDAL(string _nric, string _datetime, string _symptomsList, int _medicineListID, int _receiptID, int _certID, string _doctorsNotes, string _briefDescription, int _doctorID, int _pressure, int _pulse, decimal _temperature, string _enkey,string _enIV)
+        public PatientsLogDAL(string _nric, string _datetime, string _symptomsList, int _medicineListID, int _receiptID, int _certID, string _doctorsNotes, string _briefDescription, string _doctorID, int _pressure, int _pulse, decimal _temperature, string _enkey, string _enIV)
         {
             nric = _nric;
             datetime = _datetime;
@@ -181,7 +181,7 @@ namespace ITP311
             enIV = _enIV;
         }
 
-        public int createPatientsLog(string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
+        public int createPatientsLog(string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, string doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
         {
             int result = 0;
             SqlConnection myConnection = new SqlConnection(strConnectionString);
@@ -306,7 +306,7 @@ namespace ITP311
             int _certID;
             string _doctorsNotes = "";
             string _briefDescription = "";
-            int _doctorID;
+            string _doctorID;
             int _pressure;
             int _pulse;
             decimal _temperature;
@@ -336,7 +336,7 @@ namespace ITP311
                     _certID = Int32.Parse(reader["certID"].ToString());
                     _doctorsNotes = reader["doctorsNotes"].ToString();
                     _briefDescription = reader["briefDescription"].ToString();
-                    _doctorID = Int32.Parse(reader["doctorID"].ToString());
+                    _doctorID = (reader["doctorID"].ToString());
                     _pulse = Int32.Parse(reader["pulse"].ToString());
                     _pressure = Int32.Parse(reader["pressure"].ToString());
                     _temperature = Decimal.Parse(reader["temperature"].ToString());
@@ -364,7 +364,7 @@ namespace ITP311
         }
 
 
-        public int updatePatientsLog(int caseNo, string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
+        public int updatePatientsLog(int caseNo, string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, string doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
         {
             int result = 0;
             string queryStr = "UPDATE PatientsLog SET nric= @nric, datetime=@datetime , SymptomsList=@SymptomsList, ReceiptID=@ReceiptID, CertID=@CertID, DoctorsNotes=@DoctorsNotes, briefDescription=@briefDescription, doctorID=@doctorID, pressure=@pressure, pulse=@pulse, temperature=@temperature, enkey=@enkey, enIV =@enIV where caseNo = @caseNo";

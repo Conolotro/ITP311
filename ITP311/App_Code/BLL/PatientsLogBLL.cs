@@ -12,7 +12,7 @@ namespace ITP311
 
         }
 
-        public bool createPatientsLog(string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
+        public bool createPatientsLog(string nric, string datetime, string symptomsList, int receiptID, int certID, string doctorsNotes, string briefDescription, string doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
         {
             bool result = false;
             PatientsLogDAL plog = new PatientsLogDAL();
@@ -27,7 +27,7 @@ namespace ITP311
 
             return result;
         }
-        public bool updatePatientsLog(int caseNo, string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes, string briefDescription, int doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
+        public bool updatePatientsLog(int caseNo, string nric, string datetime, string symptomsList, int medicineListID, int receiptID, int certID, string doctorsNotes, string briefDescription, string doctorID, int pressure, int pulse, decimal temperature, string enkey, string enIV)
         {
             bool result = false;
             PatientsLogDAL plog = new PatientsLogDAL();

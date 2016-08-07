@@ -19,12 +19,12 @@ namespace ITP311
         private string csymptomsList;
         private int ccertID;
         private decimal ctemperature;
-        private int updatedBy;
+        private string updatedBy;
         private string modifiedAt;
         private string modifiedMethod;
         private string cbriefDescription;
         private string cdoctorsNotes;
-        private int cdoctorID;
+        private string cdoctorID;
         private int cpulse;
         private int cpressure;
 
@@ -73,7 +73,7 @@ namespace ITP311
             get { return cbriefDescription; }
             set { cbriefDescription = value; }
         }
-        public int CdoctorID
+        public string CdoctorID
         {
             get { return cdoctorID; }
             set { cdoctorID = value; }
@@ -108,7 +108,7 @@ namespace ITP311
             get { return modifedMethod; }
             set { modifedMethod = value; }
         }
-        public int UpdatedBy
+        public string UpdatedBy
         {
             get { return updatedBy; }
             set { updatedBy = value; }
@@ -122,7 +122,7 @@ namespace ITP311
             updatedBy = UpdatedBy;
         }
 
-        public UpdateLogDAL(int updatelogId, string cnric,string cdatetime, int medicineListID, int creceiptID, string csymptomsList, int ccertID, decimal ctemperature, int updatedBy, string modifiedAt, string modifiedMethod, string cbriefDescription, string cdoctorsNotes, int cdoctorID, int cpulse, int cpressure)
+        public UpdateLogDAL(int updatelogId, string cnric, string cdatetime, int medicineListID, int creceiptID, string csymptomsList, int ccertID, decimal ctemperature, string updatedBy, string modifiedAt, string modifiedMethod, string cbriefDescription, string cdoctorsNotes, string cdoctorID, int cpulse, int cpressure)
         {
             updatelogId = UpdatelogId;
             cnric = Cnric;
@@ -146,7 +146,7 @@ namespace ITP311
         string strConnectionString = ConfigurationManager.ConnectionStrings["medicalportal"].ToString();
 
         public int createUpdatesLog(string cnric, string cdatetime, int medicineListID, int creceiptID, string csymptomsList, int ccertID, decimal ctemperature,
-            int updatedBy, string modifiedAt, string modifiedMethod, string cbriefDescription, string cdoctorsNotes, int cdoctorID, int cpulse, int cpressure)
+            string updatedBy, string modifiedAt, string modifiedMethod, string cbriefDescription, string cdoctorsNotes, string cdoctorID, int cpulse, int cpressure)
         {
             int result = 0;
             SqlConnection myConnection = new SqlConnection(strConnectionString);
@@ -206,7 +206,7 @@ namespace ITP311
                     a.cnric = reader["cnric"].ToString();
                     a.modifiedAt = reader["modifiedAt"].ToString();
                     a.modifiedMethod = reader["modifiedMethod"].ToString();
-                    a.updatedBy = (int) reader["updatedBy"];
+                    a.updatedBy = reader["updatedBy"].ToString();
                     udallist.Add(a);
                 }
 

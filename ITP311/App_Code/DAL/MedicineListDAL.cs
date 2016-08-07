@@ -30,7 +30,7 @@ namespace ITP311
         public List<MedicineListDAL> retrieveMedicalList(int MedicineListId)
         {
             MedicineListDAL m = null;
-            string strCommandText = "Select * from MedicineList where MedicalListID = @id";
+            string strCommandText = "Select DISTINCT(medicine) from MedicineList where MedicalListID = @id";
             string medicine;
             int id;
             List<MedicineListDAL> MedicalList = new List<MedicineListDAL>();
@@ -50,7 +50,6 @@ namespace ITP311
                     string mdl = reader["MedicalListID"].ToString();
                     MedicineListId = Int32.Parse(mdl);
                     medicine = reader["medicine"].ToString();
-
 
                     m = new MedicineListDAL(id, MedicineListId, medicine);
                     MedicalList.Add(m);

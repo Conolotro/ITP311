@@ -97,7 +97,7 @@ namespace ITP311
             selectedSymptomsList = (List<string>)ViewState["selectedSymptomsList"];
             string symptomsList = "";
             string description = briefDescription.Text;
-            int doctorid = 1;
+            string doctorid = Session["userNric"].ToString();
             int pressure = Int32.Parse(pressuretbx.Text);
             int pulse = Int32.Parse(pulsetbx.Text);
             decimal temperature = Decimal.Parse(temperaturetbx.Text);
