@@ -27,7 +27,15 @@ namespace ITP311
             {
                 if (patient.EmailConfirmed(username) == true)
                 {
-                    Response.Redirect("registered.aspx", false);
+                    Session["loggedIn"] = username;
+
+                    //create a new GUID and save into session
+                    string guid = Guid.NewGuid().ToString();
+                    Session["AuthToken"] = guid;
+                    //create a new cookie with guid value;
+                    Response.Cookies.Add(new HttpCookie("AuthToken", guid));
+
+                    Response.Redirect("patientportal-dashboard.aspx", false);
                 }
                 else
                 {
@@ -37,7 +45,7 @@ namespace ITP311
             }
             else
             {
-                Response.Redirect("error.aspx", false);
+
             }
         }
 

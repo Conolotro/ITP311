@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ITP311</RootNamespace>
     <AssemblyName>ITP311</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -46,6 +46,14 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.9\lib\itextsharp.xmlworker.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -57,6 +65,8 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DataVisualization.Design" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -64,14 +74,21 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adminportal_updateProfile.aspx" />
+    <Content Include="nricForgotPassword.aspx" />
+    <Content Include="adminReset.aspx" />
+    <Content Include="adminportal.aspx" />
     <Content Include="adminportal_createDoc.aspx" />
     <Content Include="adminPortal_enquiry.aspx" />
+    <Content Include="adminportal_mail.aspx" />
+    <Content Include="AdvSearch.asmx" />
     <Content Include="App_Data\medicalportal.mdf" />
     <Content Include="App_Data\medicalportal_log.ldf" />
     <Content Include="confirmEmail.aspx">
@@ -83,7 +100,10 @@
     <Content Include="css\login.css" />
     <Content Include="css\small-business.css" />
     <Content Include="doctor-index.aspx" />
+    <Content Include="Doctor-PatientCreated.aspx" />
+    <Content Include="doctor-PatientsAdvSearch.aspx" />
     <Content Include="doctor-PatientsLog.aspx" />
+    <Content Include="Enquiry-MailDt.asmx" />
     <Content Include="error.aspx" />
     <Content Include="font-awesome-4.6.3\css\font-awesome.min.css" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.svg" />
@@ -94,6 +114,7 @@
     <Content Include="img\3.jpg" />
     <Content Include="img\4.jpg" />
     <Content Include="img\banner-high-heartbeat%401x.png" />
+    <Content Include="img\rolling.gif" />
     <Content Include="index.aspx" />
     <Content Include="js\password.js" />
     <Content Include="login-register.aspx" />
@@ -111,12 +132,15 @@
     <Content Include="patientportal-dashboard.aspx" />
     <Content Include="patientportal-updateparticulars.aspx" />
     <Content Include="patientportal.aspx" />
+    <Content Include="PatientPortal_updateProfile.aspx" />
     <Content Include="registered.aspx" />
     <Content Include="resetpassword.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="UpdateLogDT.asmx" />
+    <Content Include="UpdatePatientsLog.aspx" />
     <Content Include="Web References\NYPSMS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -139,6 +163,35 @@
     <Content Include="adminlogin.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="adminportal_updateProfile.aspx.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal_updateProfile.aspx.designer.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\DAL\EnquiryDisplay.cs" />
+    <Compile Include="nricForgotPassword.aspx.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nricForgotPassword.aspx.designer.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminReset.aspx.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminReset.aspx.designer.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminportal.aspx.cs">
+      <DependentUpon>adminportal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal.aspx.designer.cs">
+      <DependentUpon>adminportal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="adminportal_createDoc.aspx.cs">
       <DependentUpon>adminportal_createDoc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -153,12 +206,25 @@
     <Compile Include="adminPortal_enquiry.aspx.designer.cs">
       <DependentUpon>adminPortal_enquiry.aspx</DependentUpon>
     </Compile>
+    <Compile Include="adminportal_mail.aspx.cs">
+      <DependentUpon>adminportal_mail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal_mail.aspx.designer.cs">
+      <DependentUpon>adminportal_mail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdvSearch.asmx.cs">
+      <DependentUpon>AdvSearch.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="App_Code\BLL\AccountBLL.cs" />
     <Compile Include="App_Code\BLL\PasswordResetBLL.cs" />
+    <Compile Include="App_Code\BLL\UpdateLogBLL.cs" />
     <Compile Include="App_Code\DAL\EnquiryDAL.cs" />
     <Compile Include="App_Code\DAL\PasswordResetDAL.cs" />
     <Compile Include="App_Code\DAL\PatientsLogDAL.cs" />
     <Compile Include="App_Code\BLL\PatientsLogBLL.cs" />
+    <Compile Include="App_Code\DAL\UpdateLogDAL.cs" />
     <Compile Include="CreatePatientsLog.aspx.cs">
       <DependentUpon>CreatePatientsLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -173,6 +239,20 @@
     <Compile Include="doctor-index.aspx.designer.cs">
       <DependentUpon>doctor-index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Doctor-PatientCreated.aspx.cs">
+      <DependentUpon>Doctor-PatientCreated.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor-PatientCreated.aspx.designer.cs">
+      <DependentUpon>Doctor-PatientCreated.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="doctor-PatientsAdvSearch.aspx.cs">
+      <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doctor-PatientsAdvSearch.aspx.designer.cs">
+      <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="doctor-PatientsLog.aspx.cs">
       <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,7 +260,11 @@
     <Compile Include="doctor-PatientsLog.aspx.designer.cs">
       <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EnquiryBLL.cs" />
+    <Compile Include="App_Code\BLL\EnquiryBLL.cs" />
+    <Compile Include="Enquiry-MailDt.asmx.cs">
+      <DependentUpon>Enquiry-MailDt.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="forgetpassword.aspx.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -188,12 +272,20 @@
     <Compile Include="forgetpassword.aspx.designer.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment-viewmeds.aspx.cs">
       <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="patientportal-appoinment-viewmeds.aspx.designer.cs">
       <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatientPortal_updateProfile.aspx.cs">
+      <DependentUpon>PatientPortal_updateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatientPortal_updateProfile.aspx.designer.cs">
+      <DependentUpon>PatientPortal_updateProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -206,6 +298,17 @@
     </Compile>
     <Compile Include="resetpassword.aspx.designer.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateLogDT.asmx.cs">
+      <DependentUpon>UpdateLogDT.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UpdatePatientsLog.aspx.cs">
+      <DependentUpon>UpdatePatientsLog.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpdatePatientsLog.aspx.designer.cs">
+      <DependentUpon>UpdatePatientsLog.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\NYPSMS\Reference.cs">
       <AutoGen>True</AutoGen>
@@ -247,7 +350,6 @@
       <DependentUpon>login-register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\PatientBLL.cs" />
-    <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment.aspx.cs">
       <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

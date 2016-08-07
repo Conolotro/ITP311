@@ -1,4 +1,4 @@
-﻿i<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="confirmEmail.aspx.cs" Inherits="ITP311.confirmation" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="confirmEmail.aspx.cs" Inherits="ITP311.confirmation" %>
 
 <!DOCTYPE html>
 

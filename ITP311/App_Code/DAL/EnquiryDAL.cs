@@ -102,17 +102,15 @@ namespace ITP311
         }
 
 
-        public List<EnquiryDAL> retrieveAllEnquiry(int id)
+        public List<EnquiryDAL> retrieveAllEnquiry()
         {
             EnquiryDAL e = null;
-            string strCommandText = "Select * from Enquiry where Id = @id";
+            string strCommandText = "Select * from Enquiry";
             String name, email, message;
             DateTime dateTime;
             List<EnquiryDAL> enquiryList = new List<EnquiryDAL>();
-
             SqlConnection myConnection = new SqlConnection(strConnectionString);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
-            cmd.Parameters.AddWithValue("@id", id);
 
 
             try

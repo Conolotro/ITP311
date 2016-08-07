@@ -19,7 +19,6 @@ namespace ITP311
 
         }
 
-
         public bool CreateAccount(string NRIC, string fname, string lname, string password, string Email, string ContactNo, string type)
         {
             bool result = false;
@@ -63,8 +62,10 @@ namespace ITP311
 
             //onverts the 64 bytes hash into a string
             string hashedPassword = BitConverter.ToString(hashedBytes);
+            
             return hashedPassword;
         }
+
 
         public AccountDAL retrieveAccountByNric(string nric)
         {
@@ -72,8 +73,19 @@ namespace ITP311
             return a.retrieveAccount(nric);
         }
 
+        public int updatePasswordForUser(string nric, string hashedpass)
+        {
+            AccountDAL acct = new AccountDAL();
+            int result = acct.updatePasswordForUser(nric, hashedpass);
+            return result;
+        }
 
-
+        public int updateUserProfile(string nric, string fName, string lName, string email, string contactNo)
+        {
+            AccountDAL acct = new AccountDAL();
+            int result = acct.updateUserProfile(nric, fName, lName, email, contactNo);
+            return result;
+        }
 
     }
 }
