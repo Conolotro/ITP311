@@ -43,6 +43,10 @@ namespace ITP311
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["search"] == null)
+            {
+                Response.Redirect("doctor-index.aspx");
+            }
             if ((List<string>)ViewState["MyList"] == null)
             {
                 MyList = symlist.ToList<string>();
@@ -87,7 +91,6 @@ namespace ITP311
         {
             string nric = Session["search"].ToString();
             string datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            int medicineListID = 1;
             int receiptID = 1;
             int certID = 1;
             string doctorsNotes = formDoctorsNotes.Text.Trim();
@@ -122,7 +125,7 @@ namespace ITP311
             
             
             PatientsLogBLL patientlog = new PatientsLogBLL();
-            if (patientlog.createPatientsLog(nric, datetime, encryptedSymList, medicineListID, receiptID, certID, doctorsNotes, description, doctorid, pressure, pulse, temperature, enkey, enIV) == true)
+            if (patientlog.createPatientsLog(nric, datetime, encryptedSymList, receiptID, certID, doctorsNotes, description, doctorid, pressure, pulse, temperature, enkey, enIV) == true)
             {
                 Response.Redirect("doctor-PatientsLog.aspx");
             }

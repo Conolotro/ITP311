@@ -40,6 +40,125 @@
 
         });
     </script>
+    
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/css/bootstrapValidator.min.css" />
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"> </script>
+    <script>
+        $(document).ready(function () {
+            $('#form').bootstrapValidator({
+                container: '#messages',
+                feedbackIcons: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    formNRIC: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The NRIC is required and cannot be empty'
+                            },
+                            stringLength: {
+                                message: 'NRIC must contain only 9 characters',
+                                max: function (value, validator, $field) {
+                                    return 9 - (value.match(/\r/g) || []).length;
+                                },
+                                min: function (value, validator, $field) {
+                                    return 9 - (value.match(/\r/g) || []).length;
+                                }
+                            }
+                        }
+                    },
+                    formFN: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The First Name is required and cannot be empty'
+                            },
+                            stringLength: {
+                                message: 'First Name must contain only 3 to 50 characters',
+                                max: function (value, validator, $field) {
+                                    return 50 - (value.match(/\r/g) || []).length;
+                                },
+                                min: function (value, validator, $field) {
+                                    return 3 - (value.match(/\r/g) || []).length;
+                                }
+                            }
+                        }
+                    },
+                    formLN: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The Last Name is required and cannot be empty'
+                            },
+                            stringLength: {
+                                message: 'Last Name must contain only 3 to 50 characters',
+                                max: function (value, validator, $field) {
+                                    return 50 - (value.match(/\r/g) || []).length;
+                                },
+                                min: function (value, validator, $field) {
+                                    return 3 - (value.match(/\r/g) || []).length;
+                                }
+                            }
+                        }
+                    },
+                    formPhone: {
+                        validators: {
+                            notEmpty: {
+                                message: 'Phone number is required and cannot be empty'
+                            },
+                            Phone:{
+                                message:'Phone number is not valid'
+                            },
+                            stringLength: {
+                                message: 'Phone number must contain only 8 digits',
+                                max: function (value, validator, $field) {
+                                    return 8 - (value.match(/\r/g) || []).length;
+                                },
+                                min: function (value, validator, $field) {
+                                    return 8 - (value.match(/\r/g) || []).length;
+                                }
+                            },
+                            digits: {
+                                message:'Phone number should contain numeric values only'
+                            }
+                        }
+                    },
+                    formEmail: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The email address is required and cannot be empty'
+                            },
+                            emailAddress: {
+                                message: 'The email address is not valid'
+                            },
+                            stringLength: {
+                                message: 'Phone number must contain only 8 digits',
+                                max: function (value, validator, $field) {
+                                    return 250 - (value.match(/\r/g) || []).length;
+                                }
+                            }
+                        }
+                    },
+                    formCEmail: {
+                        validators: {
+                            identical: {
+                                field: 'formEmail',
+                                message: 'The password and its confirm are not the same'
+                            },
+                            notEmpty: {
+                                message: 'The email address is required and cannot be empty'
+                            },
+                            emailAddress: {
+                                message: 'The email address is not valid'
+                            },
+
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+
 </head>
 
 <body>
@@ -77,7 +196,7 @@
             <li role="presentation" class="divider"></li>
         </ul>
     </div>
-    <form runat="server">
+    <form runat="server" id="form">
         <!--/.sidebar-->
         <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main" style="margin-left: 18%;">
             <div class="row">
@@ -154,6 +273,9 @@
                                             <asp:TextBox TextMode="Email" name="formCEmail" placeholder="Email..." class="form-cemail form-control" ID="formCEmail" runat="server" Width="300px" />
 
                                         </div>
+                                        <div class="form-group">
+                                            <div id="messages"></div>
+                                        </div>
                                         <div class="modal-footer">
                                             <asp:Button ID="Button1" class="btn btn-default" Text="Sign me up!" runat="server" OnClick="signUp_Click" />
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -170,7 +292,7 @@
                     <div class="panel-heading">Search </div>
                     <div class="panel-body">
                         <p>Search for patient (Enter NRIC):</p>
-                        <asp:TextBox name="searchtbx" placeholder="eg. sXXXXXXXh" class="form-control" ID="searchNric" runat="server" Width="392px" />
+                        <asp:TextBox name="searchtbx" placeholder="eg. sXXXXXXXh" class="form-control" ID="searchNric" runat="server" style="width:100%;   " />
                         <br>
                         <asp:Label ID="ErrorMsg" runat="server" Text=""></asp:Label>
                         <br />

@@ -15,6 +15,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using System.Web.UI.DataVisualization.Charting;
+using ITP311;
 
 namespace ITP311
 {
@@ -22,6 +23,9 @@ namespace ITP311
     {
         SqlConnection con = new SqlConnection(@"Data Source=(localdb)\v11.0;AttachDbFilename=C:\Users\Daniel\Desktop\ITP311\ITP311\ITP311\App_Data\medicalportal.mdf;Integrated Security=True");
         StringBuilder str = new StringBuilder();
+        string[] medicinearr = { "Select Medicine", "Generic Zocor", "Lisinopril", "Amoxicillin", "Glucophage", "Advair Diskus", "Generic Prilosec" };
+        List<string> medicinelist = new List<string>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -36,6 +40,10 @@ namespace ITP311
                 }
                 if (Session["search"] != null)
                 {
+
+                    medicinelist = medicinearr.ToList<string>();
+                    medicineListDDL.DataSource = medicinelist;
+                    medicineListDDL.DataBind();
                     string search = Session["search"].ToString();
                     nricLbl.Text = search;
                     PatientsLogBLL plogbll = new PatientsLogBLL();
@@ -61,7 +69,10 @@ namespace ITP311
             PatientsLogDAL plogdal = new PatientsLogDAL();
             int caseNo = int.Parse(gvCaseNumber.SelectedRow.Cells[2].Text);
             plog = plogbll.getPatientsLogByCaseNo(caseNo);
+
             
+            
+
             Session["caseNo"] = caseNo;
             //decrypt
             string enkey = plog._enkey;
@@ -84,13 +95,28 @@ namespace ITP311
 
             dateOfLogLbl.Text = plog._datetime;
             diagnosisLbl.Text = plog._doctorsNotes;
-            prescriptionLbl.Text = plog._medicineListID.ToString();
+            
+            MedicineListBLL mb = new MedicineListBLL();
+            List<MedicineListDAL> ml = mb.retrieveMedicineList(plog._medicineListID);
+
+            for (int i = 0; i < ml.Count; i++)
+            {
+                prescription.Text += ml[i].medicine + "<br/>";
+            }
+
 
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            Response.Redirect("UpdatePatientsLog.aspx", false);
+            if (Session["caseNo"] != null)
+            {
+                Response.Redirect("UpdatePatientsLog.aspx", false);
+            }
+            else
+            {
+                Response.Redirect("doctor-PatientsLog.aspx");
+            }
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -112,5 +138,36 @@ namespace ITP311
             {
             }
         }
+
+        protected void createPrescription_Click(object sender, EventArgs e)
+        {
+            PatientsLogDAL plog = null;
+            PatientsLogBLL plogbll = new PatientsLogBLL();
+            PatientsLogDAL plogdal = new PatientsLogDAL();
+            int caseNo = int.Parse(gvCaseNumber.SelectedRow.Cells[2].Text);
+            plog = plogbll.getPatientsLogByCaseNo(caseNo);
+
+            int medicineListID = plog._medicineListID;
+            string medicine = "";
+            MedicineListBLL mlistBLL = new MedicineListBLL();
+            MedicineListDAL mlistDAL = new MedicineListDAL();
+
+            if(medicineListDDL.SelectedValue =="0"){
+                errorMsg.Text = "Please Select a Symptom!";
+            }else{
+                medicine = medicineListDDL.SelectedItem.Text;
+                if (mlistBLL.createMedicineList(medicineListID, medicine) == true)
+                {
+                    Response.Redirect("doctor-PatientsLog.aspx");
+                }
+                else
+                {
+                    Response.Redirect("error.aspx");
+                }
+            }
+
+            
+        }
+
     }
 }

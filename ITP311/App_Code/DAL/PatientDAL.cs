@@ -247,7 +247,7 @@ namespace ITP311
 
         }
 
-        public int updatePatient(string nric,string firstName, string lastName, int contactNo, string email, string address)
+        public int updatePatient(string nric, string firstName, string lastName, int contactNo, string email, string address)
         {
             int result = 0;
             string strCommandText = "UPDATE Patient SET ContactNo = @contactNo, FirstName = @firstName, LastName = @lastName, email = @email, Address = @address where NRIC = @nric";
