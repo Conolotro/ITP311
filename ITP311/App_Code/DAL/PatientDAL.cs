@@ -225,20 +225,43 @@ namespace ITP311
 
         }
 
-        public int updatePatient(string nric, int contactNo, string email, string address)
+        public int updatePatient(string nric, int contactNo, string dob, string email, string address)
         {
             int result = 0;
-            string strCommandText = "UPDATE Patient SET ContactNo = @contactNo, email = @email, Address = @address where NRIC = @nric";
+            string strCommandText = "UPDATE Patient SET ContactNo = @contactNo, DOB = @dob, email = @email, Address = @address where NRIC = @nric";
 
             SqlConnection myConnection = new SqlConnection(strConnectionString);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
             cmd.Parameters.AddWithValue("@contactNo", contactNo);
+            cmd.Parameters.AddWithValue("@dob", dob);
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@address", address);
             cmd.Parameters.AddWithValue("@nric", nric);
 
             myConnection.Open();
+            result += cmd.ExecuteNonQuery();
 
+            myConnection.Close();
+
+            return result;
+
+        }
+
+        public int updatePatient(string nric, string firstName, string lastName, int contactNo, string email, string address)
+        {
+            int result = 0;
+            string strCommandText = "UPDATE Patient SET ContactNo = @contactNo, FirstName = @firstName, LastName = @lastName, email = @email, Address = @address where NRIC = @nric";
+
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+            cmd.Parameters.AddWithValue("@contactNo", contactNo);
+            cmd.Parameters.AddWithValue("@firstName", firstName);
+            cmd.Parameters.AddWithValue("@lastName", lastName);
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@address", address);
+            cmd.Parameters.AddWithValue("@nric", nric);
+
+            myConnection.Open();
             result += cmd.ExecuteNonQuery();
 
             myConnection.Close();
@@ -291,11 +314,12 @@ namespace ITP311
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.ToString());
+                p = null;
             }
             finally { myConnection.Close(); }
             return p;
         }
+
 
         public PatientDAL retrievePatientbyEmail(string email)
         {
@@ -346,6 +370,27 @@ namespace ITP311
             }
             finally { myConnection.Close(); }
             return p;
+        }
+
+        public int updatePatientPassword(string nric, string hashedPassword, string salt)
+        {
+            int result = 0;
+            string strCommandText = "UPDATE Patient SET PasswordHash = @passwordhash, PasswordSalt = @salt where NRIC = @nric";
+
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+            cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
+            cmd.Parameters.AddWithValue("@PasswordSalt", salt);
+            cmd.Parameters.AddWithValue("@nric", nric);
+
+            myConnection.Open();
+
+            result += cmd.ExecuteNonQuery();
+
+            myConnection.Close();
+
+            return result;
+
         }
 
         public List<PatientDAL> retrieveUpdateLog()

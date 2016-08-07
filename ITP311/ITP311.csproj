@@ -134,19 +134,8 @@
     <Content Include="patientportal.aspx" />
     <Content Include="registered.aspx" />
     <Content Include="resetpassword.aspx" />
-    <Content Include="Service References\NYPSMS\ITP311.NYPSMS.SMS.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\NYPSMS\sms.disco" />
-    <None Include="Service References\NYPSMS\configuration91.svcinfo" />
-    <None Include="Service References\NYPSMS\configuration.svcinfo" />
-    <None Include="Service References\NYPSMS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="UpdateLogDT.asmx" />
     <Content Include="UpdatePatientsLog.aspx" />
-    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\adminLogin.css" />
@@ -173,6 +162,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="App_Code\BLL\AccountBLL.cs" />
+    <Compile Include="App_Code\BLL\EnquiryBLL.cs" />
     <Compile Include="App_Code\BLL\PasswordResetBLL.cs" />
     <Compile Include="App_Code\DAL\EnquiryDAL.cs" />
     <Compile Include="App_Code\DAL\PasswordResetDAL.cs" />
@@ -229,11 +219,6 @@
     <Compile Include="resetpassword.aspx.designer.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Service References\NYPSMS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="App_Code\BLL\UpdateLogBLL.cs" />
     <Compile Include="App_Code\DAL\UpdateLogDAL.cs" />
     <Compile Include="UpdateLogDT.asmx.cs">
@@ -246,13 +231,6 @@
     </Compile>
     <Compile Include="UpdatePatientsLog.aspx.designer.cs">
       <DependentUpon>UpdatePatientsLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\appointmentBLL.cs" />
     <Compile Include="App_Code\DAL\AccountDAL.cs" />
@@ -340,8 +318,11 @@
     <Folder Include="php\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Web References\NYPSMS\sms.disco" />
     <Content Include="Web.config" />
-    <None Include="Service References\NYPSMS\sms.wsdl" />
+    <Content Include="Web References\NYPSMS\Reference.map" />
+    <Content Include="Web References\NYPSMS\SMS.datasource" />
+    <None Include="Web References\NYPSMS\sms.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -351,9 +332,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\NYPSMS\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
