@@ -161,7 +161,7 @@
                                 <asp:TextBox name="briefDescription" placeholder="Description" class="form-control " ID="briefDescription" runat="server" Width="385px" />
                             </div>
                             <div class="form-group">
-                                <div style="float: left; margin-right: 3%; width: 124px;">
+                                <div style="float: left; margin-right: 3%; ">
                                     <label for="pressure">Select Prescription</label>
                                     <asp:TextBox name="pressure" class=" form-control " ID="pressuretbx" runat="server" Width="90px" />
                                 </div>

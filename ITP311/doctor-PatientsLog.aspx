@@ -171,6 +171,11 @@
                                         </p>
                                         <br />
                                         <p>
+                                            Brief Description : 
+                                                <asp:Label ID="briefDescriptionlbl" runat="server"></asp:Label>
+                                        </p>
+                                        <br />
+                                        <p>
                                             Date of Log : 
                                 <asp:Label ID="dateOfLogLbl" runat="server"></asp:Label>
                                         </p>
