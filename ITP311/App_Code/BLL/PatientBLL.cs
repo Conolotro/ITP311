@@ -156,6 +156,13 @@ namespace ITP311
             string hashedPassword = BitConverter.ToString(hashedBytes);
             return hashedPassword;
         }
+        public List<PatientDAL> advancedSearch()
+        {
+            List<PatientDAL> pList = new List<PatientDAL>();
+            PatientDAL pdal = new PatientDAL();
+            pList = pdal.retrieveUpdateLog();
+            return pList;
+        }
 
     }
 }

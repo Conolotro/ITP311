@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreatePatientsLog.aspx.cs" Inherits="ITP311.CreatePatientsLog" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UpdatePatientsLog.aspx.cs" Inherits="ITP311.UpdatePatientsLog" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@
                     validating: 'glyphicon glyphicon-refresh'
                 },
                 fields: {
-                    briefDescription: {
+                    briefDescriptiontbx: {
                         validators: {
                             notEmpty: {
                                 message: 'The NRIC is required and cannot be empty'
@@ -94,11 +94,24 @@
                                 }
                             }
                         }
+                    },
+                    symptomstbx: {
+                        notEmpty: {
+                            message: 'Symptoms List cannot be empty'
+                        },
+                        stringLength: {
+                            message: 'NRIC must contain only 9 characters',
+                            max: function (value, validator, $field) {
+                                return 250 - (value.match(/\r/g) || []).length;
+                            }
+                        }
                     }
+                    
                 }
             });
         });
     </script>
+
 </head>
 
 <body>
@@ -137,9 +150,9 @@
         </ul>
     </div>
     <!--/.sidebar-->
-    <div style="margin-left: 2%;">
-        <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-            <div class="row">
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div style="margin-left: 0.5%;">
+            <div class="row" style="margin-left:0.05%;">
                 <ol class="breadcrumb">
                     <li>
                         <a href="#"><i class="fa fa-file-text-o" aria-hidden="true"></i></a>
@@ -149,86 +162,54 @@
                 </ol>
             </div>
             <!--/.row-->
-            <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2" style="margin-left: 0%; width:100%;">
-                <div class="main panel panel-default" style="width: 100%; height: 100%; margin-top: 1%; margin-left: 2%;">
-                    <div class="panel-heading" style="padding-bottom: 5%;">
-                        <h2>Create Patients' Log</h2>
+
+                <div class="main panel panel-default" style="width: 100%; height: 100%">
+                    <div class="panel-heading" style=" padding-bottom: 5%;">
+                        <h2>Update Patients' Log</h2>
                     </div>
                     <form runat="server" id="form">
                         <div class="modal-body panel-body">
                             <div class="form-group">
                                 <label for="title">Brief Description : </label>
-                                <asp:TextBox name="briefDescription" placeholder="Description" class="form-control " ID="briefDescription" runat="server" Width="385px" />
+                                <asp:TextBox name="title" class="form-control " ID="briefDescriptiontbx" runat="server" Width="385px" />
                             </div>
                             <div class="form-group">
-                                <div style="float: left; margin-right: 3%; width: 124px;">
-                                    <label for="pressure">Select Prescription</label>
-                                    <asp:TextBox name="pressure" class=" form-control " ID="pressuretbx" runat="server" Width="90px" />
+                                <div style="float: left; margin-right: 3%;">
+                                    <label for="pressure">Pressure (mmHG)</label>
+                                    <asp:TextBox name="pressure" class="formDoctorsNotes form-control " ID="pressuretbx" runat="server" Width="90px" />
                                 </div>
                                 <div style="float: left; margin-right: 3%;">
                                     <label for="pulse">Pulse (BPM)</label>
-                                    <asp:TextBox name="pulse" class=" form-control " ID="pulsetbx" runat="server" Width="90px" />
+                                    <asp:TextBox name="pulse" class="formDoctorsNotes form-control " ID="pulsetbx" runat="server" Width="90px" />
                                 </div>
                                 <div>
                                     <label for="temperature">Temperature (Degree Celcius)</label>
-                                    <asp:TextBox name="temperature" class=" form-control " ID="temperaturetbx" runat="server" Width="90px" />
+                                    <asp:TextBox name="temperature" class="formDoctorsNotes form-control " ID="temperaturetbx" runat="server" Width="90px" />
                                 </div>
+
                             </div>
-                            
-                            
+                            <div class="form-group">
+                                <label for="symptoms">Symptoms</label>
+                                <asp:TextBox name="symptoms" class="formDoctorsNotes form-control " ID="symptomstbx" runat="server" Width="637px" Height="96px" TextMode="MultiLine" />
+                            </div>
+
                             <div class="form-group">
                                 <label for="formDoctorsNotes">Doctor's Notes</label>
-                                <asp:TextBox name="formDoctorsNotes" placeholder="Doctor's Notes..." class="formDoctorsNotes form-control " ID="formDoctorsNotes" runat="server" Width="637px" Height="96px" TextMode="MultiLine" />
+                                <asp:TextBox name="formDoctorsNotes" class="formDoctorsNotes form-control " ID="formDoctorsNotes" runat="server" Width="637px" Height="96px" TextMode="MultiLine" />
                             </div>
-                            <div style="float: left; width: 100%;">
-                                <div class="form-group" style="float: left; height: 361px; width: 290px;">
-                                    <h3 style="margin-left: 3%;">Select Symptoms</h3>
-                                    <div style="height: 309px; overflow: scroll; width: 293px;">
-                                        <asp:GridView ID="gvSymptoms" ShowHeader="False" Height="500px" CssClass="table table-hover table-striped" Style="font-size: 15px; margin: 2%; margin-top: 3%;" runat="server" SelectedIndex="0" PageSize="5" OnSelectedIndexChanged="gvSymptoms_SelectedIndexChanged" Width="270px">
-                                            <RowStyle Height="20px" />
-                                            <AlternatingRowStyle Height="20px" />
-                                            <Columns>
-                                                <asp:CommandField ShowSelectButton="True"></asp:CommandField>
-                                            </Columns>
-                                            <RowStyle BackColor="White" />
-
-                                        </asp:GridView>
-                                    </div>
-                                </div>
-                                <div style="float: left;">
-                                    <h1><i class="fa fa-arrow-right" aria-hidden="true" style="font-size: 100px; margin-top: 190%; margin-left: 30%; margin-right: 20%;"></i></h1>
-                                </div>
-                                <div  style="float: left; margin-left: 5%; height: 361px; width: 285px;">
-                                    <h3 style="margin-left: 3%; width: 239px;">Selected Symptoms</h3>
-                                    <div style="height: 309px; overflow: scroll; width: 296px;">
-                                        <asp:GridView ID="gvSelectedSymptoms" ShowHeader="False" Height="500px" CssClass="table table-hover table-striped" Style="font-size: 15px; margin: 2%; margin-top: 3%;" SelectedIndex="0" runat="server" Width="279px" OnSelectedIndexChanged="gvSelectedSymptoms_SelectedIndexChanged">
-
-
-                                            <RowStyle Height="20px" />
-                                            <AlternatingRowStyle Height="20px" />
-                                            <Columns>
-                                                <asp:CommandField SelectText="Delete" ShowSelectButton="True" />
-                                            </Columns>
-                                            <RowStyle BackColor="White" />
-
-                                        </asp:GridView>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="form-group">
                                 <div id="messages"></div>
                             </div>
-                            <div class="modal-footer" style="padding-bottom:5%;">
-                                <asp:Button ID="createNewLog" class="btn btn-default" Text="Create Log" runat="server" OnClick="createNewLog_Click" />
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <div class="modal-footer">
+                                <asp:Button ID="updateLog" class="btn btn-default" Text="Update Log" runat="server" OnClientClick="return confirm('Are you sure?')" OnClick="updateLog_Click" />
+                                <asp:Button ID="cancelUpdate" class="btn btn-default" Text="Cancel" runat="server" OnClick="cancelUpdate_Click" />
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
     </div>
 </body>
 
 </html>
+

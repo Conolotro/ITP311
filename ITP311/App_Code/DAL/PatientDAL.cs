@@ -348,6 +348,38 @@ namespace ITP311
             return p;
         }
 
+        public List<PatientDAL> retrieveUpdateLog()
+        {
+            List<PatientDAL> udallist = new List<PatientDAL>();
+
+            string strCommandText = "Select nric, FirstName, LastName, ContactNo, Email from Patient";
+            SqlConnection myConnection = new SqlConnection(strConnectionString);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+
+            try
+            {
+                myConnection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    PatientDAL a = new PatientDAL();
+                    a.nric = reader["nric"].ToString();
+                    a.firstName = reader["FirstName"].ToString();
+                    a.lastName = reader["LastName"].ToString();
+                    a.contactNo = (int)reader["ContactNo"];
+                    a.email = reader["Email"].ToString();
+                    udallist.Add(a);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.ToString());
+            }
+            finally { myConnection.Close(); }
+            return udallist;
+        }
 
     }
 

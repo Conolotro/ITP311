@@ -10,7 +10,7 @@
 namespace ITP311 {
     
     
-    public partial class doctor_index {
+    public partial class UpdatePatientsLog {
         
         /// <summary>
         /// form control.
@@ -22,93 +22,75 @@ namespace ITP311 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form;
         
         /// <summary>
-        /// formNRIC control.
+        /// briefDescriptiontbx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox formNRIC;
+        protected global::System.Web.UI.WebControls.TextBox briefDescriptiontbx;
         
         /// <summary>
-        /// formFN control.
+        /// pressuretbx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox formFN;
+        protected global::System.Web.UI.WebControls.TextBox pressuretbx;
         
         /// <summary>
-        /// formLN control.
+        /// pulsetbx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox formLN;
+        protected global::System.Web.UI.WebControls.TextBox pulsetbx;
         
         /// <summary>
-        /// formPhone control.
+        /// temperaturetbx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox formPhone;
+        protected global::System.Web.UI.WebControls.TextBox temperaturetbx;
         
         /// <summary>
-        /// formEmail control.
+        /// symptomstbx control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox formEmail;
+        protected global::System.Web.UI.WebControls.TextBox symptomstbx;
         
         /// <summary>
-        /// formCEmail control.
+        /// formDoctorsNotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox formCEmail;
+        protected global::System.Web.UI.WebControls.TextBox formDoctorsNotes;
         
         /// <summary>
-        /// Button1 control.
+        /// updateLog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button updateLog;
         
         /// <summary>
-        /// searchNric control.
+        /// cancelUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox searchNric;
-        
-        /// <summary>
-        /// ErrorMsg control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ErrorMsg;
-        
-        /// <summary>
-        /// search control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button search;
+        protected global::System.Web.UI.WebControls.Button cancelUpdate;
     }
 }
