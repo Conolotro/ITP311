@@ -50,6 +50,11 @@ namespace ITP311
 
         }
 
+        protected void logout_Click(object sender, EventArgs e)
+        {
+
+        }
+
 
     }
 }

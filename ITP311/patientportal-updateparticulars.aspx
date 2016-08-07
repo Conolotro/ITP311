@@ -25,10 +25,6 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
-
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -45,7 +41,7 @@
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="PatientPortal_updateProfile.aspx"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class = "fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
@@ -75,15 +71,13 @@
                 <a href="patientportal-updateparticulars.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
             </li>
             <li>
-                <a href="index.html"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
+                <a href="index.aspx"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
             </li>
 
             <li role="presentation" class="divider"></li>
         </ul>
     <!--/.sidebar-->
     </div>
-
-
 
     <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
         <div class="row">

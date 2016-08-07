@@ -94,6 +94,20 @@ namespace ITP311
             return result;
         }
 
+        public bool checkPatientbyNRIC(string Nric)
+        {
+            bool result = false;
+            PatientDAL p = new PatientDAL();
+            if (p.retrievePatientbyEmail(Nric) != null)
+            {
+                result = true;
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
+        }
 
         public PatientDAL retrievePatientByNric(string nric)
         {
