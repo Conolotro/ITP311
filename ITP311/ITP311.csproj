@@ -129,6 +129,7 @@
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff2" />
     <Content Include="font-awesome-4.6.3\fonts\FontAwesome.otf" />
     <Content Include="patientportal-appoinment.aspx" />
+    <Content Include="patientportal-appointment-viewmeds.aspx" />
     <Content Include="patientportal-dashboard.aspx" />
     <Content Include="patientportal-updateparticulars.aspx" />
     <Content Include="patientportal.aspx" />
@@ -212,6 +213,13 @@
     </Compile>
     <Compile Include="App_Code\BLL\MedicineListBLL.cs" />
     <Compile Include="App_Code\DAL\MedicineListDAL.cs" />
+    <Compile Include="patientportal-appointment-viewmeds.aspx.cs">
+      <DependentUpon>patientportal-appointment-viewmeds.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patientportal-appointment-viewmeds.aspx.designer.cs">
+      <DependentUpon>patientportal-appointment-viewmeds.aspx</DependentUpon>
+    </Compile>
     <Compile Include="resetpassword.aspx.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
