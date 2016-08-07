@@ -144,8 +144,6 @@
           </tbody>
         </table>
 
-        <asp:Label ID="lblKey" runat="server" Text=""></asp:Label>
-
         <asp:GridView ID="gvApp" runat="server" Width="1022px">
         </asp:GridView>
 </div>

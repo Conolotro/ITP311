@@ -102,6 +102,7 @@
         <br />
         <asp:Label ID="lblShowMeds" runat="server" Text=""></asp:Label>    
         <br />   
+        <br />
         <asp:Button ID="Decrypt" runat="server" Text="Show meds" OnClick="btnDecrypt_Click" />
         <br />
         <asp:Label ID="lblKey" runat="server" Text="" Visible="False"></asp:Label>
