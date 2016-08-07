@@ -19,36 +19,30 @@ namespace ITP311
 {
     public partial class adminportal_updateProfile : System.Web.UI.Page
     {
-        String adminDesignation, nric;
        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["userNric"] != null)
+                if (Session["userNric"] == null)
                 {
+                    Response.Redirect("adminlogin.aspx");
+                }
+                else
+                {
+
                     string nric = Session["userNric"].ToString();
                     AccountBLL a = new AccountBLL();
                     AccountDAL ad = a.retrieveAccountByNric(nric);
+                    name.Text = ad.firstName;
                     tbNric.Text = nric;
                     tbFname.Text = ad.firstName;
                     tbLname.Text = ad.lastName;
                     tbEmail.Text = ad.email;
                     tbContact.Text = ad.contactNo;
                 }
-                else
-                {
-                    Response.Redirect("adminLogin.aspx", false);
-                }
-
-                firstOption.InnerText = (string)(Session["FullName"]);
-                adminDesignation = (string)(Session["userDesignation"]);
-                if (adminDesignation == "d" || adminDesignation == "s")
-                {
-                    createDocPageLink.InnerHtml = "";
-                }
-
             }
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

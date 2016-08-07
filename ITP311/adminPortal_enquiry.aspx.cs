@@ -11,36 +11,52 @@ namespace ITP311
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            string queryId = Request.QueryString["id"];
-            int id;
-            EnquiryDAL ed = null;
-            if (queryId != null)
+            if (!IsPostBack)
             {
-               id = Int32.Parse(queryId);
-            }
-            else
-            {
-                id = 0;
-            }
-            
-            if (id>0){
-                EnquiryBLL eb = new EnquiryBLL();
-                 ed = eb.retrieveEnquiryByID(id);
+                if (Session["userNric"] == null)
+                {
+                    Response.Redirect("adminlogin.aspx");
+                }
+                else
+                {
+                    string Nric = Session["userNric"].ToString();
+                    AccountBLL a = new AccountBLL();
+                    AccountDAL ad = a.retrieveAccountByNric(Nric);
+                    name.Text = ad.firstName;
 
-                 name.Text = ed.name;
-                 email.Text = ed.email;
-                 messageEnquiry.Text = ed.message;
-            }
-            else
-            {
+                    string queryId = Request.QueryString["id"];
+                    int id;
+                    EnquiryDAL ed = null;
+                    if (queryId != null)
+                    {
+                        id = Int32.Parse(queryId);
+                    }
+                    else
+                    {
+                        id = 0;
+                    }
+
+                    if (id > 0)
+                    {
+                        EnquiryBLL eb = new EnquiryBLL();
+                        ed = eb.retrieveEnquiryByID(id);
+
+                        name.Text = ed.name;
+                        email.Text = ed.email;
+                        messageEnquiry.Text = ed.message;
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+
+
+
 
             }
-
-           
-
         }
-
 
         protected void submit_Click(object sender, EventArgs e)
         {

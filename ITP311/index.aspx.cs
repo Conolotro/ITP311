@@ -20,8 +20,13 @@ namespace ITP311
             string email = inputEmail.Text.Trim();
             string enquiry = tbEnquiry.Text.Trim();
 
-            EnquiryBLL eb = new EnquiryBLL();
-            eb.createEnquiry(name, email, enquiry);
+            if (enquiry.Length > 0)
+            {
+                EnquiryBLL eb = new EnquiryBLL();
+                eb.createEnquiry(name, email, enquiry);
+                successmsg.Visible = true;
+            }
+
 
         }
 

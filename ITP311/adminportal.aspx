@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-     <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -39,19 +39,20 @@
                 <a class="navbar-brand" href="#"><span>Silverwood</span> Medical</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#" id="firstOption" class="dropdown-toggle" data-toggle="dropdown" runat="server">
-                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            <asp:Literal ID="name" runat="server"></asp:Literal> <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="adminportal_updateProfile.aspx"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="adminportal_updateProfile.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
-                                <a href="#"><i class = "fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
+                                <a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="adminlogin.aspx"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
-                            </li>  
+                                <a href="admin_logout.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -61,20 +62,21 @@
         <!-- /.container-fluid -->
     </nav>
 
+
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
             <li class="active">
-                <a href="adminportal.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i> Home</a>
+                <a href="adminportal.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Home</a>
             </li>
             <li>
-                <a href=""><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Appointment</a>
+                <a href="adminportal_mail.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Mail</a>
             </li>
             <li>
-                <a href=""><i class="fa fa-medkit fa-fw" aria-hidden="true"></i> Medicine</a>
+                <a href="#"><i class="fa fa-medkit fa-fw" aria-hidden="true"></i>Medicine</a>
             </li>
-            <li id="createDocPageLink" runat="server">
+            <li>
                 <a href="adminportal_createDoc.aspx">
-                    <i class="fa fa-users fa-fw" aria-hidden="true"></i> Accounts</a>
+                    <i class="fa fa-users fa-fw" aria-hidden="true"></i>Accounts</a>
             </li>
 
             <li role="presentation" class="divider"></li>
@@ -238,7 +240,8 @@
                     <div class="panel-heading dark-overlay">
                         <svg class="glyph stroked clipboard-with-paper">
                             <use xlink:href="#stroked-clipboard-with-paper"></use>
-                        </svg>To-do List</div>
+                        </svg>To-do List
+                    </div>
                     <div class="panel-body">
                         <ul class="todo-list">
                             <li class="todo-list-item">
@@ -316,8 +319,8 @@
                         <div class="input-group">
                             <input id="btn-input" type="text" class="form-control input-md" placeholder="Add new task" />
                             <span class="input-group-btn">
-								<button class="btn btn-primary btn-md" id="btn-todo">Add</button>
-							</span>
+                                <button class="btn btn-primary btn-md" id="btn-todo">Add</button>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -325,9 +328,9 @@
 
 
 
-
         </div>
-        <!--/.row-->
+    </div>
+    <!--/.row-->
 
 </body>
 

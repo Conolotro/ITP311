@@ -41,8 +41,10 @@
                 <a class="navbar-brand" href="#"><span>Silverwood</span> Medical</a>
                 <ul class="user-menu">
                     <li class="dropdown pull-right">
-                        <a href="#" id="firstOption" class="dropdown-toggle" data-toggle="dropdown" runat="server">
-                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            <asp:Literal ID="name" runat="server"></asp:Literal>
+                            <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
                                 <a href="adminportal_updateProfile.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
@@ -52,7 +54,7 @@
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="adminportal.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                                <a href="admin_logout.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -63,6 +65,7 @@
         <!-- /.container-fluid -->
     </nav>
 
+
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
             <li class="active">
@@ -72,13 +75,10 @@
                 <a href="adminportal_mail.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Mail</a>
             </li>
             <li>
-                <a href="#"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Appointment</a>
-            </li>
-            <li>
                 <a href="#"><i class="fa fa-medkit fa-fw" aria-hidden="true"></i>Medicine</a>
             </li>
             <li>
-                <a href="#">
+                <a href="adminportal_createDoc.aspx">
                     <i class="fa fa-users fa-fw" aria-hidden="true"></i>Accounts</a>
             </li>
 
@@ -186,10 +186,10 @@
 
 
 
-
-
         </div>
-        <!--/.row-->
+
+    </div>
+    <!--/.row-->
 </body>
 
 </html>

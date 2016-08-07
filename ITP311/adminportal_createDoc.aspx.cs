@@ -21,7 +21,21 @@ namespace ITP311
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            firstOption.InnerText = (string)(Session["FullName"]);
+            if (!IsPostBack)
+            {
+                if (Session["userNric"] == null)
+                {
+                    Response.Redirect("adminlogin.aspx");
+                }
+                else
+                {
+                    string Nric = Session["userNric"].ToString();
+                    AccountBLL a = new AccountBLL();
+                    AccountDAL ad = a.retrieveAccountByNric(Nric);
+                    name.Text = ad.firstName;
+                }
+
+            }
         }
 
         protected async void btnSubmit_Click(object sender, EventArgs e)
@@ -41,7 +55,7 @@ namespace ITP311
             {
                 if (acc.CreateAccount(nric, firstName, lastName, password, email, contactNo, type) == true)
                 {
-                    sendEmail(nric, password);
+                    await sendEmail(nric, password);
                     Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Staff profile successfully created.');</script>");
 
                     tbNric.Text = "";

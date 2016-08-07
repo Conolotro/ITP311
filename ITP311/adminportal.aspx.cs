@@ -9,23 +9,23 @@ namespace ITP311
 {
     public partial class adminportal : System.Web.UI.Page
     {
-        String adminDesignation, nric;
         protected void Page_Load(object sender, EventArgs e)
         {
-            firstOption.InnerText = (string)(Session["FullName"]);
-            adminDesignation = (string)(Session["userDesignation"]);
-            nric = (string)(Session["userNric"]);
-            if (adminDesignation == "d" || adminDesignation == "s")
+            if (!IsPostBack)
             {
-                createDocPageLink.InnerHtml = "";
+                if (Session["userNric"] == null)
+                {
+                    Response.Redirect("adminlogin.aspx");
+                }
+                else
+                {
+                    string Nric = Session["userNric"].ToString();
+                    AccountBLL a = new AccountBLL();
+                    AccountDAL ad =a.retrieveAccountByNric(Nric);
+                    name.Text = ad.firstName;
+                }
             }
-            
-        }
-
-        protected void btnLogoutClick(object sender, EventArgs e)
-        {
-            Session.Clear();
-            Response.Redirect("adminlogin.aspx");
+     
         }
 
     }

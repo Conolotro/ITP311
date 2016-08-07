@@ -65,7 +65,13 @@
         </div>
         <!-- /.container -->
     </nav>
-	
+    <asp:Literal ID="successmsg" runat="server" Visible="false">
+        <div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Well done!</strong> The message has been sent successfully.
+</div>
+
+    </asp:Literal>
     <!-- Page Content -->
     <div class="container">
         <!-- Heading Row -->

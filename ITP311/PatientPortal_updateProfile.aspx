@@ -145,7 +145,7 @@
                             <div class="form-group">
                                 <label for="inputContact" class="col-lg-2 control-label">Contact No.*</label>
                                 <div class="col-lg-9">
-                                    <asp:TextBox ID="inputContact" TextMode="Phone" Width="100%" class="form-control" placeholder="91231230" data-error="that phone number is invalid" MaxLength="8" runat="server" required></asp:TextBox>
+                                    <asp:TextBox ID="inputContact" TextMode="Phone" Width="100%" class="form-control" placeholder="91231230" data-error="that phone number is invalid" data-minlength="8" MaxLength="8" runat="server" required></asp:TextBox>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>

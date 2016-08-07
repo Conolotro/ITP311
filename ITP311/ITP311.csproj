@@ -95,6 +95,7 @@
     <Content Include="adminportal_mail.aspx" />
     <Content Include="adminportal_updateProfile.aspx" />
     <Content Include="adminReset.aspx" />
+    <Content Include="admin_logout.aspx" />
     <Content Include="AdvSearch.asmx" />
     <Content Include="App_Data\medicalportal.mdf" />
     <Content Include="App_Data\medicalportal_log.ldf">
@@ -202,6 +203,13 @@
     </Compile>
     <Compile Include="adminReset.aspx.designer.cs">
       <DependentUpon>adminReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin_logout.aspx.cs">
+      <DependentUpon>admin_logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin_logout.aspx.designer.cs">
+      <DependentUpon>admin_logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdvSearch.asmx.cs">
       <DependentUpon>AdvSearch.asmx</DependentUpon>

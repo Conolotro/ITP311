@@ -66,8 +66,9 @@ namespace ITP311
             {
                 result += cmd.ExecuteNonQuery();
             }
-            catch(Exception e)
+            catch(Exception ex)
             {
+                throw new Exception(ex.ToString());
                 result = 0;
             }
 

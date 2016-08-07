@@ -45,7 +45,13 @@ namespace ITP311
                     Session["userNric"] = aa.nric;
                     Session["FullName"] = aa.lastName + " " + aa.firstName;
                     Session["userDesignation"] = aa.type;
-                    Response.Redirect("adminportal.aspx");
+                    if(aa.type.Equals("d")){
+                        Response.Redirect("doctor-index.aspx",false);
+                    }
+                    else{
+                        Response.Redirect("adminportal.aspx",false);
+                    }
+                    
                 }
                 else
                 {

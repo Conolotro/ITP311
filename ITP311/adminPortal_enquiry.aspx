@@ -43,14 +43,14 @@
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="adminportal_updateProfile.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                                <a href="admin_logout.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
                             </li>
                         </ul>
                     </li>

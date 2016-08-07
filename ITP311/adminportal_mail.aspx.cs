@@ -11,6 +11,20 @@ namespace ITP311
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["userNric"] == null)
+                {
+                    Response.Redirect("adminlogin.aspx");
+                }
+                else
+                {
+                    string Nric = Session["userNric"].ToString();
+                    AccountBLL a = new AccountBLL();
+                    AccountDAL ad = a.retrieveAccountByNric(Nric);
+                    name.Text = ad.firstName;
+                }
+            }
 
         }
     }
