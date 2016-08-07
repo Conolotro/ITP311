@@ -375,12 +375,12 @@ namespace ITP311
         public int updatePatientPassword(string nric, string hashedPassword, string salt)
         {
             int result = 0;
-            string strCommandText = "UPDATE Patient SET PasswordHash = @passwordhash, PasswordSalt = @salt where NRIC = @nric";
+            string strCommandText = "UPDATE Patient SET PasswordHash = @passwordhash, Salt = @salt where NRIC = @nric";
 
             SqlConnection myConnection = new SqlConnection(strConnectionString);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
             cmd.Parameters.AddWithValue("@PasswordHash", hashedPassword);
-            cmd.Parameters.AddWithValue("@PasswordSalt", salt);
+            cmd.Parameters.AddWithValue("@salt", salt);
             cmd.Parameters.AddWithValue("@nric", nric);
 
             myConnection.Open();

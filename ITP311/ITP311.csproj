@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ITP311</RootNamespace>
     <AssemblyName>ITP311</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -46,6 +46,17 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FusionCharts">
+      <HintPath>..\..\asp-net-wrapper\Bin\FusionCharts.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.5.9.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\iTextSharp.5.5.9\lib\itextsharp.dll</HintPath>
       <Private>True</Private>
@@ -59,11 +70,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DataVisualization.Design" />
@@ -81,18 +89,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="adminportal_updateProfile.aspx" />
-    <Content Include="js\changepassword.js" />
-    <Content Include="js\validator.min.js" />
-    <Content Include="nricForgotPassword.aspx" />
-    <Content Include="adminReset.aspx" />
     <Content Include="adminportal.aspx" />
     <Content Include="adminportal_createDoc.aspx" />
     <Content Include="adminPortal_enquiry.aspx" />
     <Content Include="adminportal_mail.aspx" />
+    <Content Include="adminportal_updateProfile.aspx" />
+    <Content Include="adminReset.aspx" />
     <Content Include="AdvSearch.asmx" />
     <Content Include="App_Data\medicalportal.mdf" />
-    <Content Include="App_Data\medicalportal_log.ldf" />
+    <Content Include="App_Data\medicalportal_log.ldf">
+      <DependentUpon>medicalportal.mdf</DependentUpon>
+    </Content>
     <Content Include="confirmEmail.aspx">
       <BrowseToURL>~/confirmemail.aspx</BrowseToURL>
     </Content>
@@ -103,8 +110,8 @@
     <Content Include="css\small-business.css" />
     <Content Include="doctor-index.aspx" />
     <Content Include="Doctor-PatientCreated.aspx" />
-    <Content Include="doctor-PatientsAdvSearch.aspx" />
     <Content Include="doctor-PatientsLog.aspx" />
+    <Content Include="doctor-PatientsAdvSearch.aspx" />
     <Content Include="Enquiry-MailDt.asmx" />
     <Content Include="error.aspx" />
     <Content Include="font-awesome-4.6.3\css\font-awesome.min.css" />
@@ -116,10 +123,9 @@
     <Content Include="img\3.jpg" />
     <Content Include="img\4.jpg" />
     <Content Include="img\banner-high-heartbeat%401x.png" />
-    <Content Include="img\rolling.gif" />
     <Content Include="index.aspx" />
-    <Content Include="js\password.js" />
     <Content Include="login-register.aspx" />
+    <Content Include="nricForgotPassword.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -129,6 +135,7 @@
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff" />
     <Content Include="font-awesome-4.6.3\fonts\fontawesome-webfont.woff2" />
     <Content Include="font-awesome-4.6.3\fonts\FontAwesome.otf" />
+    <Content Include="patient-logout.aspx" />
     <Content Include="patientportal-appoinment-viewmeds.aspx" />
     <Content Include="patientportal-appoinment.aspx" />
     <Content Include="patientportal-dashboard.aspx" />
@@ -138,20 +145,8 @@
     <Content Include="PatientPortal_updateProfile.aspx" />
     <Content Include="registered.aspx" />
     <Content Include="resetpassword.aspx" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <Content Include="UpdateLogDT.asmx" />
     <Content Include="UpdatePatientsLog.aspx" />
-    <Content Include="Web References\NYPSMS\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
-    <Content Include="Web References\NYPSMS\SMS.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <None Include="Web References\NYPSMS\sms.disco" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\adminLogin.css" />
@@ -166,30 +161,6 @@
     <Content Include="adminlogin.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="adminportal_updateProfile.aspx.cs">
-      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="adminportal_updateProfile.aspx.designer.cs">
-      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="App_Code\BLL\MedicineListBLL.cs" />
-    <Compile Include="App_Code\DAL\EnquiryDisplay.cs" />
-    <Compile Include="App_Code\DAL\MedicineListDAL.cs" />
-    <Compile Include="nricForgotPassword.aspx.cs">
-      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="nricForgotPassword.aspx.designer.cs">
-      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="adminReset.aspx.cs">
-      <DependentUpon>adminReset.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="adminReset.aspx.designer.cs">
-      <DependentUpon>adminReset.aspx</DependentUpon>
-    </Compile>
     <Compile Include="adminportal.aspx.cs">
       <DependentUpon>adminportal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -218,18 +189,32 @@
     <Compile Include="adminportal_mail.aspx.designer.cs">
       <DependentUpon>adminportal_mail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="adminportal_updateProfile.aspx.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminportal_updateProfile.aspx.designer.cs">
+      <DependentUpon>adminportal_updateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminReset.aspx.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminReset.aspx.designer.cs">
+      <DependentUpon>adminReset.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdvSearch.asmx.cs">
       <DependentUpon>AdvSearch.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="App_Code\BLL\AccountBLL.cs" />
+    <Compile Include="App_Code\BLL\EnquiryBLL.cs" />
     <Compile Include="App_Code\BLL\PasswordResetBLL.cs" />
-    <Compile Include="App_Code\BLL\UpdateLogBLL.cs" />
     <Compile Include="App_Code\DAL\EnquiryDAL.cs" />
+    <Compile Include="App_Code\DAL\EnquiryDisplay.cs" />
     <Compile Include="App_Code\DAL\PasswordResetDAL.cs" />
     <Compile Include="App_Code\DAL\PatientsLogDAL.cs" />
     <Compile Include="App_Code\BLL\PatientsLogBLL.cs" />
-    <Compile Include="App_Code\DAL\UpdateLogDAL.cs" />
     <Compile Include="CreatePatientsLog.aspx.cs">
       <DependentUpon>CreatePatientsLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -251,13 +236,6 @@
     <Compile Include="Doctor-PatientCreated.aspx.designer.cs">
       <DependentUpon>Doctor-PatientCreated.aspx</DependentUpon>
     </Compile>
-    <Compile Include="doctor-PatientsAdvSearch.aspx.cs">
-      <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="doctor-PatientsAdvSearch.aspx.designer.cs">
-      <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
-    </Compile>
     <Compile Include="doctor-PatientsLog.aspx.cs">
       <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,7 +243,13 @@
     <Compile Include="doctor-PatientsLog.aspx.designer.cs">
       <DependentUpon>doctor-PatientsLog.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\BLL\EnquiryBLL.cs" />
+    <Compile Include="doctor-PatientsAdvSearch.aspx.cs">
+      <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="doctor-PatientsAdvSearch.aspx.designer.cs">
+      <DependentUpon>doctor-PatientsAdvSearch.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Enquiry-MailDt.asmx.cs">
       <DependentUpon>Enquiry-MailDt.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -277,7 +261,22 @@
     <Compile Include="forgetpassword.aspx.designer.cs">
       <DependentUpon>forgetpassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\DAL\PatientDAL.cs" />
+    <Compile Include="App_Code\BLL\MedicineListBLL.cs" />
+    <Compile Include="App_Code\DAL\MedicineListDAL.cs" />
+    <Compile Include="nricForgotPassword.aspx.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="nricForgotPassword.aspx.designer.cs">
+      <DependentUpon>nricForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patient-logout.aspx.cs">
+      <DependentUpon>patient-logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patient-logout.aspx.designer.cs">
+      <DependentUpon>patient-logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="patientportal-appoinment-viewmeds.aspx.cs">
       <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -299,11 +298,6 @@
     <Compile Include="PatientPortal_updateProfile.aspx.designer.cs">
       <DependentUpon>PatientPortal_updateProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="resetpassword.aspx.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -311,6 +305,8 @@
     <Compile Include="resetpassword.aspx.designer.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="App_Code\BLL\UpdateLogBLL.cs" />
+    <Compile Include="App_Code\DAL\UpdateLogDAL.cs" />
     <Compile Include="UpdateLogDT.asmx.cs">
       <DependentUpon>UpdateLogDT.asmx</DependentUpon>
       <SubType>Component</SubType>
@@ -321,11 +317,6 @@
     </Compile>
     <Compile Include="UpdatePatientsLog.aspx.designer.cs">
       <DependentUpon>UpdatePatientsLog.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Web References\NYPSMS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.map</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\appointmentBLL.cs" />
     <Compile Include="App_Code\DAL\AccountDAL.cs" />
@@ -362,6 +353,7 @@
       <DependentUpon>login-register.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Code\BLL\PatientBLL.cs" />
+    <Compile Include="App_Code\DAL\PatientDAL.cs" />
     <Compile Include="patientportal-appoinment.aspx.cs">
       <DependentUpon>patientportal-appoinment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -407,11 +399,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="fusioncharts\" />
     <Folder Include="Models\" />
     <Folder Include="php\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Web References\NYPSMS\sms.disco" />
     <Content Include="Web.config" />
+    <Content Include="Web References\NYPSMS\Reference.map" />
+    <Content Include="Web References\NYPSMS\SMS.datasource" />
     <None Include="Web References\NYPSMS\sms.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -424,20 +420,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferences Include="Web References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WebReferenceUrl Include="http://172.20.128.62/SMSWebService/sms.asmx">
-      <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\NYPSMS\</RelPath>
-      <UpdateFromURL>http://172.20.128.62/SMSWebService/sms.asmx</UpdateFromURL>
-      <ServiceLocationURL>
-      </ServiceLocationURL>
-      <CachedDynamicPropName>
-      </CachedDynamicPropName>
-      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>ITP311_NYPSMS_SMSService</CachedSettingsPropName>
-    </WebReferenceUrl>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

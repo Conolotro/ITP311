@@ -44,11 +44,14 @@
                                 <a href="PatientPortal_updateProfile.aspx"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
+                                <a href="patientportal_changepassword.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Change Password</a>
+                            </li>
+                            <li>
                                 <a href="#"><i class = "fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
+                                <a href="patient-logout.aspx"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -61,13 +64,13 @@
 
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
-            <li class="active">
+            <li>
                 <a href="patientportal-dashboard.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
             </li>
             <li>
                 <a href="patientportal-appoinment.aspx"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Book an appointment</a>
             </li>
-            <li>
+            <li class="active">
                 <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
             </li>
             <li>

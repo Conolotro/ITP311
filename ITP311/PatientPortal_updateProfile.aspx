@@ -44,14 +44,17 @@
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                            </li>
+                            <li>
+                                <a href="patientportal_changepassword.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                                <a href="patient-logout.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -142,7 +145,7 @@
                             <div class="form-group">
                                 <label for="inputContact" class="col-lg-2 control-label">Contact No.*</label>
                                 <div class="col-lg-9">
-                                    <asp:TextBox ID="inputContact" TextMode="Phone" Width="100%" class="form-control" placeholder="91231230" data-error="that phone number is invalid" maxlength="8"  runat="server" required></asp:TextBox>
+                                    <asp:TextBox ID="inputContact" TextMode="Phone" Width="100%" class="form-control" placeholder="91231230" data-error="that phone number is invalid" MaxLength="8" runat="server" required></asp:TextBox>
                                     <div class="help-block with-errors"></div>
                                 </div>
                             </div>
@@ -156,7 +159,7 @@
                                 <label for="inputEmail" class="col-lg-2 control-label">E-Mail*</label>
                                 <div class="col-lg-9">
                                     <asp:TextBox ID="inputEmail" autocomplete="off" TextMode="Email" Width="100%" class="form-control" placeholder="e-mail" runat="server" data-error="that email address is invalid" required></asp:TextBox>
-                                     <div class="help-block with-errors"></div>
+                                    <div class="help-block with-errors"></div>
                                 </div>
                             </div>
                             <div class="form-group">

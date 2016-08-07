@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="patientportal-dashboard.aspx.cs" Inherits="ITP311.patientportal_dashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="patientportal-appoinment-viewmeds.aspx.cs" Inherits="ITP311.patientportal_appoinment_viewmeds" %>
 
 <!DOCTYPE html>
 
@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Patients - Dashboard</title>
+    <title>Patients - Dashboard - View Your Medication</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -25,12 +25,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-    </div>
 
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container-fluid">
+               <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -45,17 +41,14 @@
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="PatientPortal_updateProfile.aspx"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
-                            </li>
-                            <li>
-                                <a href="patientportal_changepassword.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Change Password</a>
+                                <a href="#"><i class = "fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
                                 <a href="#"><i class = "fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="patient-logout.aspx"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
+                                <a href="#"><i class = "fa fa-sign-out fa-fw" aria-hidden="true"></i> Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -78,7 +71,7 @@
                 <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
             </li>
             <li>
-                <a href="index.aspx"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
+                <a href="index.html"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
             </li>
 
             <li role="presentation" class="divider"></li>
@@ -101,58 +94,22 @@
         </div>
         <!--/.rowtop-->
 
-    <h2>Welcome,<asp:Literal ID="name" runat="server"></asp:Literal> </h2>
+    <h2>Welcome, (name)</h2>
     <h4>Here is a table of your past appointments. To book a new one, simply head over the "Book an appointment".</h4>
-        
-    <div class="well">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Doctor</th>
-              <th>Medication Prescribed</th>
-              <th style="width: 36px;"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>23rd Sept 2015</td>
-              <td>David Washington</td>
-                <td>
-                    <asp:Button ID="btnView" runat="server" Text="View" OnClick="btnView_Click" />
-                    </font></td>
-              <td>
-                  <a href="user.html"><i class="icon-pencil"></i></a>
-                  <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>14th March 2016</td>
-              <td>Leonard Church</td>
-              <td><font color="red">Click to view</font></td>
-              <td>
-                  <a href="user.html"><i class="icon-pencil"></i></a>
-                  <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-              </td>
-            </tr>
-            <tr>
-              <td>7th June 2016</td>
-              <td>Annie Jones</td>
-              <td><font color="red">Click to view</font></td>
-              <td>
-                  <a href="user.html"><i class="icon-pencil"></i></a>
-                  <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <asp:GridView ID="gvApp" runat="server" Width="1022px">
-        </asp:GridView>
-</div>
+ 
+        <asp:Label ID="Label1" runat="server" Text="Medication List:" Font-Bold="True" Font-Size="Medium" ForeColor="#000066"></asp:Label>
+        <asp:Label ID="lblEnMeds" runat="server" Text="Lisinopril (a blood pressure drug)" Visible="False" BackColor="#CCFF99" ForeColor="#000066"></asp:Label>
+        <br />
+        <asp:Label ID="lblShowMeds" runat="server" Text=""></asp:Label>    
+        <br />   
+        <br />
+        <asp:Button ID="Decrypt" runat="server" Text="Show meds" OnClick="btnDecrypt_Click" />
+        <br />
+        <asp:Label ID="lblKey" runat="server" Text="" Visible="False"></asp:Label>
+        <br />
+        <asp:Label ID="lblCipher" runat="server" Text=""  Visible="False"></asp:Label>
         </div>
-        
-    </form>
 
-    </body>
+    </form>
+</body>
 </html>

@@ -14,6 +14,22 @@ namespace ITP311
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["loggedIn"] != null && Session["AuthToken"] != null && Request.Cookies["AuthToken"] != null)
+            {
+                if (!Session["AuthToken"].ToString().Equals(Request.Cookies["AuthToken"].Value))
+                {
+                   
+                }
+                else
+                {
+                    Response.Redirect("patientportal-dashboard.aspx", false);
+                }
+
+            }
+            else
+            {
+                
+            }
 
         }
 

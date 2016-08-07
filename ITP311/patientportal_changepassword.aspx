@@ -45,14 +45,17 @@
                             <i class="fa fa-user fa-fw" aria-hidden="true"></i>User <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                            </li>
+                            <li>
+                                <a href="patientportal_changepassword.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Change Password</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
                             </li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                                <a href="patient-logout.aspx"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
                             </li>
                         </ul>
                     </li>
@@ -65,14 +68,17 @@
 
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
-            <li class="active">
-                <a href="patientportal-dashboard.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
+            <li class>
+                <a href="patientportal-dashboard.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
             </li>
             <li>
-                <a href="patientportal-appoinment.html"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i>Book an appointment</a>
+                <a href="patientportal-appoinment.aspx"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Book an appointment</a>
+            </li>   
+            <li class = "active">
+                <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
             </li>
             <li>
-                <a href="index.html"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i>Return to website</a>
+                <a href="index.aspx"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
             </li>
 
             <li role="presentation" class="divider"></li>

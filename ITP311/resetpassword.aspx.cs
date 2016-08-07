@@ -52,9 +52,9 @@ namespace ITP311
                 DateTime keytime = pr2.creationDate;
 
                 TimeSpan timediff = currenttime - keytime;
-                success.Text = timediff.ToString();
+                DateTime timelater = keytime.AddMinutes(30);
 
-                if (keytime.AddMinutes(30) > currenttime)
+                if (currenttime > timelater)
                 {
                     PasswordResetBLL p = new PasswordResetBLL();
                     if (p.removePasswordReset(enteredkey) == true)
@@ -63,6 +63,8 @@ namespace ITP311
                         error.Visible = false;
                         success.Visible = false;
                         networkError.Visible = false;
+                        formPassword.Enabled = false;
+                        inputConfirmPassword.Enabled = false;
                     }
                     else
                     {
@@ -70,6 +72,8 @@ namespace ITP311
                         keyExpired.Visible = false;
                         error.Visible = false;
                         success.Visible = false;
+                        formPassword.Enabled = false;
+                        inputConfirmPassword.Enabled = false;
 
                     }
                 }
@@ -79,10 +83,14 @@ namespace ITP311
                     PatientDAL p2 = p.retrievePatientByNric(pr2.nric);
                     if (p.updatePassword(p2.Nric, password) == true)
                     {
-                        success.Visible = false;
+                        success.Visible = true;
                         networkError.Visible = false;
                         keyExpired.Visible = false;
                         error.Visible = false;
+                        pr.removePasswordReset(enteredkey);
+                        inputConfirmPassword.Enabled = false;
+                        formPassword.Enabled = false;
+                        
                     }
                     else
                     {
