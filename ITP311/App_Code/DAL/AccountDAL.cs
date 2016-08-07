@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using ITP311.BLL;
+using System.Collections;
 
 namespace ITP311
 {
@@ -26,7 +27,7 @@ namespace ITP311
 
         }
 
-        public AccountDAL(string Nric,string passwordHash,string salt,string firstname,string lastname,string contactNo,string email,string type)
+        public AccountDAL(string Nric,string passwordHash,string salt,string firstname,string lastName,string contactNo,string email,string type)
         {
             this.nric = Nric;
             this.passwordHash = passwordHash;
@@ -46,7 +47,7 @@ namespace ITP311
         {
             int result = 0;
             string strCommandText = "INSERT INTO Account(NRIC, FirstName, LastName, PasswordHash, PasswordSalt, Email, ContactNo, Type)"
-                + "values (@nric,@firstname, @lastname, @passwordhash, @salt,  @contactNo, @email,@type)";
+                + "values (@nric,@firstname, @lastname, @passwordhash, @salt, @email, @contactNo,@type)";
 
             SqlConnection myConnection = new SqlConnection(cn);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
@@ -61,7 +62,14 @@ namespace ITP311
 
             myConnection.Open();
 
-            result += cmd.ExecuteNonQuery();
+            try
+            {
+                result += cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                result = 0;
+            }
 
             myConnection.Close();
             myConnection.Dispose();
@@ -69,21 +77,41 @@ namespace ITP311
             return result;
         }
 
+        public int updatePasswordForUser(string nric, string hashedpass)
+        {
+            int result = 0;
+            string strCommandText = "UPDATE Account SET PasswordHash='" + hashedpass + "' WHERE NRIC='"+nric+"'";
+            SqlConnection myConnection = new SqlConnection(cn);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+            myConnection.Open();
+            result = cmd.ExecuteNonQuery();
+            myConnection.Close();
+            return result;
+        }
 
-        
+        public int updateUserProfile(string nric, string fName, string lName, string email, string contactNo)
+        {
+            int result = 0;
+            string strCommandText = "UPDATE Account SET FirstName='"+fName+"', LastName='"+lName+"', Email='"+email+"', ContactNo='"+contactNo
+                +"' WHERE NRIC='" + nric + "'";
+            SqlConnection myConnection = new SqlConnection(cn);
+            SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
+            myConnection.Open();
+            result = cmd.ExecuteNonQuery();
+            myConnection.Close();
+            return result;
+        }
 
         public AccountDAL retrieveAccount(string nric)
         {
             AccountDAL a = null;
-            string strCommandText = "Select * from Account where NRIC = @nric";
+            string strCommandText = "Select * from Account where NRIC = '"+nric+"'";
             string Nric, passwordHash, salt, firstname, lastname, contactNo, email, type;
             
 
             SqlConnection myConnection = new SqlConnection(cn);
             SqlCommand cmd = new SqlCommand(strCommandText, myConnection);
-            cmd.Parameters.AddWithValue("@nric", nric);
-
-
+    
             try
             {
                 myConnection.Open();

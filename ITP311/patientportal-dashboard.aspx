@@ -66,13 +66,13 @@
     <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar">
         <ul class="nav menu">
             <li class="active">
-                <a href="patientportal-dashboard.html"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
+                <a href="patientportal-dashboard.aspx"><i class="fa fa-home fa-fw" aria-hidden="true"></i>Dashboard</a>
             </li>
             <li>
-                <a href="patientportal-appoinment.html"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Book an appointment</a>
+                <a href="patientportal-appoinment.aspx"><i class="fa fa-calendar fa-fw" aria-hidden="true"></i> Book an appointment</a>
             </li>
             <li>
-                <a href="patientportal-updateparticulars.html"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
+                <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-edit fa-fw" aria-hidden="true"></i>Update Particulars</a>
             </li>
             <li>
                 <a href="index.html"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Return to website</a>
@@ -115,7 +115,9 @@
             <tr>
               <td>23rd Sept 2015</td>
               <td>David Washington</td>
-                <td><font color="red">Click to view</font></td>
+                <td>
+                    <asp:Button ID="btnView" runat="server" Text="View" OnClick="btnView_Click" />
+                    </font></td>
               <td>
                   <a href="user.html"><i class="icon-pencil"></i></a>
                   <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
@@ -141,6 +143,8 @@
             </tr>
           </tbody>
         </table>
+
+        <asp:Label ID="lblKey" runat="server" Text=""></asp:Label>
 
         <asp:GridView ID="gvApp" runat="server" Width="1022px">
         </asp:GridView>

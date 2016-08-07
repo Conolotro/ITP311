@@ -57,7 +57,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="adminLogin.html">Log In</a>
+                        <a href="login-register.aspx">Log In</a>
                     </li>
                 </ul>
             </div>
@@ -223,28 +223,27 @@
                             <div class="form-group">
                                 <label for="inputName" class="col-lg-2 control-label">Name</label>
                                 <div class="col-lg-9">
-                                    <asp:TextBox  type="text" class="form-control" id="inputName" placeholder="Name" runat="server" />
+                                    <asp:TextBox  type="text" class="form-control" id="inputName" Width="100%" placeholder="Name" runat="server" />
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                                 <div class="col-lg-9">
-                                    <asp:TextBox  type="text" class="form-control" id="inputEmail" placeholder="Email" runat="server" />
+                                    <asp:TextBox  type="text" class="form-control" id="inputEmail" Width="100%" placeholder="Email" runat="server" />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="textArea" class="col-lg-2 control-label">Enquires</label>
                                 <div class="col-lg-9">
-                                    <asp:TextBox  type="text" class="form-control" id="TextBox1" placeholder="Please enter your enquires here" runat="server" />
+                                    <asp:TextBox  type="text"  class="form-control" TextMode="MultiLine" Width="100%" id="tbEnquiry" placeholder="Please enter your enquires here" runat="server" Rows="5" />
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-lg-9 col-lg-offset-2">
-                                    <asp:button type="reset" class="btn btn-default" runat="server" Text="Cancel" />
-                                    <asp:button type="submit" class="btn btn-primary" runat="server" OnClick="Unnamed2_Click" Text="Submit"/>
+                                    <asp:button ID="reset" class="btn btn-default" runat="server" OnClick="reset_Click" Text="Cancel" />
+                                    <asp:button ID="submit"  class="btn btn-primary" runat="server" OnClick="submit_Click" Text="Submit"/>
                                 </div>
                             </div>
                         </fieldset>

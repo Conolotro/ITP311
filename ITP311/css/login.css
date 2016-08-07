@@ -11,6 +11,10 @@
     padding-right: 10px;
 }
 
+.progress-bar {
+    color: #333;
+} 
+
 
 body {
 	background: url(../img/bg.jpg) left top repeat;

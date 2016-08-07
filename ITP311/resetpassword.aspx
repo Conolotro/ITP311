@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Silver Medical - Forget Password</title>
+    <title>Silver Medical - Reset Password</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -49,21 +49,21 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="/index.aspx">Home</a>
                     </li>
                     <li>
-                        <a href="#about">About</a>
+                        <a href="/index.aspx#about">About</a>
                     </li>
                     <li>
-                        <a href="#services">Services</a>
+                        <a href="/index.aspx#services">Services</a>
                     </li>
                     <li>
-                        <a href="#contact-us">Contact Us</a>
+                        <a href="/index.aspx#contact-us">Contact Us</a>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="adminLogin.html">Log In</a>
+                        <a href="/login-register.aspx">Log In</a>
                     </li>
                 </ul>
             </div>
@@ -75,19 +75,40 @@
     <!-- Top content -->
     <div class="top-content">
 
+
         <asp:Literal ID="error" runat="server" Text="
         &lt;div class=&quot;alert alert-dismissible alert-danger&quot;&gt;
             &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
-            Invalid Email Address, Please Try Again.
+            Password does not match, please try again.
         &lt;/div&gt;
         "
             Visible="False"></asp:Literal>
+
+        <asp:Literal ID="networkError" runat="server" Visible="false">
+
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Network error, please try again later.
+
+            </div>
+
+        </asp:Literal>
+
+        <asp:Literal ID="keyExpired" runat="server" Visible="false">
+
+            <div class="alert alert-dismissible alert-info">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                Sorry but your link has expired.
+
+            </div>
+
+        </asp:Literal>
 
         <asp:Literal ID="success" runat="server" Visible="false">
 
             <div class="alert alert-dismissible alert-success">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Success!</strong> Please check your inbox to reset your password.
+                <strong>Success!</strong> Please <a href="login-register.aspx">click here</a> to log in into your account.
 
             </div>
 
@@ -113,14 +134,14 @@
                                         <div class="form-group">
                                             <label for="inputPassword" class="col-lg-4 control-label">New Password</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" ID="inputPassword" Width="350px" />
+                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="inputPassword" Width="350px" />
                                                 <br />
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputConfirmPassword" class="col-lg-4 control-label">Confirm Password</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" ID="inputConfirmPassword" Width="350px" />
+                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="inputConfirmPassword" Width="350px" />
                                                 <br />
                                             </div>
                                         </div>
