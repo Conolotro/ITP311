@@ -62,29 +62,9 @@ namespace ITP311
                     PatientsLogDAL plogdal = new PatientsLogDAL();
                     plog = plogbll.getPatientsLogByCaseNo(1);
 
-                    //decrypt
-                    string enkey = plog._enkey;
-                    string enIV = plog._enIV;
-                    SymmetricAlgorithm sa = new RijndaelManaged();
-                    sa.Key = Convert.FromBase64String(enkey);
-                    sa.IV = Convert.FromBase64String(enIV);
 
-                    ICryptoTransform cryptTransform = sa.CreateDecryptor();
-                    byte[] ciphertext = Convert.FromBase64String(plog._symptomsList);
-                    byte[] plaintext = cryptTransform.TransformFinalBlock(ciphertext, 0, ciphertext.Length);
-                    string decryptedSymList = Encoding.UTF8.GetString(plaintext);
-
-                    string[] strArray = decryptedSymList.Split(new char[] { ';' });
-                    for (int j = 0; j < strArray.Length; j++)
-                    {
-                        string text = strArray[j];
-                        symptomsLbl.Text += text + "<br/>";
-                    }
-
-                    dateOfLogLbl.Text = plog._datetime;
-                    diagnosisLbl.Text = plog._doctorsNotes;
                 }
-                }          
+            }
         }
 
         protected void gvCaseNumber_SelectedIndexChanged(object sender, EventArgs e)
@@ -118,7 +98,7 @@ namespace ITP311
                 string text = strArray[j];
                 symptomsLbl.Text += text + "<br/>";
             }
-
+            briefDescriptionlbl.Text = plog._briefDescription;
             dateOfLogLbl.Text = plog._datetime;
             diagnosisLbl.Text = plog._doctorsNotes;
             
