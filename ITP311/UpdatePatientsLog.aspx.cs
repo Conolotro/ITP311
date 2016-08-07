@@ -21,6 +21,10 @@ namespace ITP311
         {
             if (!IsPostBack)
             {
+                if (Session["userNric"] == null)
+                {
+                    Response.Redirect("adminlogin.aspx");
+                }
                 if (Session["caseNo"] != null)
                 {
                     int caseNo = (int)Session["caseNo"];
@@ -81,12 +85,12 @@ namespace ITP311
                 string doctorsNotes = formDoctorsNotes.Text.Trim();
                 string symptomsList = symptomstbx.Text.ToString().Replace(",", ";");
                 string description = briefDescriptiontbx.Text;
-                int doctorid = plog._doctorID;
+                string doctorid = plog._doctorID.ToString();
                 int pressure = Int32.Parse(pressuretbx.Text);
                 int pulse = Int32.Parse(pulsetbx.Text);
                 decimal temperature = Decimal.Parse(temperaturetbx.Text);
                 string modifiedMethod = "Updated";
-                int updatedBy = 1;
+                string updatedBy = Session["userNric"].ToString(); ;
                 string modifiedAt = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                 //
 

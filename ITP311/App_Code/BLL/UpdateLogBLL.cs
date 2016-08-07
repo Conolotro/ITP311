@@ -22,7 +22,7 @@ namespace ITP311
         }
 
         public bool createUpdatesLog(string cnric, string cdatetime, int medicineListID, int creceiptID, string csymptomsList, int ccertID, decimal ctemperature,
-            int updatedBy, string modifiedAt, string modifiedMethod, string cbriefDescription, string cdoctorsNotes, int cdoctorID, int cpulse, int cpressure)
+            string updatedBy, string modifiedAt, string modifiedMethod, string cbriefDescription, string cdoctorsNotes, string cdoctorID, int cpulse, int cpressure)
         {
             bool result = false;
             UpdateLogDAL ulog = new UpdateLogDAL();

@@ -11,7 +11,10 @@ namespace ITP311
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userNric"] == null)
+            {
+                Response.Redirect("adminlogin.aspx");
+            }
         }
     }
 }

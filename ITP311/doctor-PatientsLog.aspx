@@ -139,10 +139,10 @@
                         </div>
 
                         <div class="panel-body">
-                            <div style="margin-top: -1.35%; width: 25%; float: left; height: 405px; width: 350px; margin-left: 1%; margin-right: 2%; margin-bottom: 1.35%;">
+                            <div style="margin-top: -1.35%; width: 25%; float: left; height: 464px; width: 339px; margin-left: 1%; margin-right: 2%; margin-bottom: 1.35%;">
                                 <h3>Select Case</h3>
-                                <div style="overflow: scroll; width: 344px; height: 379px;">
-                                    <asp:GridView ID="gvCaseNumber" Style="font-size: 15px; margin-right: 0px;" runat="server" ShowHeader="False" DataKeyNames="dateTime" SelectedIndex="1" AutoGenerateColumns="False" PageSize="5" OnSelectedIndexChanged="gvCaseNumber_SelectedIndexChanged" Height="359px" Width="323px">
+                                <div style="overflow: scroll;">
+                                    <asp:GridView ID="gvCaseNumber" Style="font-size: 15px; margin-right: 0px;" runat="server" ShowHeader="False" DataKeyNames="dateTime" SelectedIndex="1" AutoGenerateColumns="False" PageSize="5" OnSelectedIndexChanged="gvCaseNumber_SelectedIndexChanged" Height="407px" Width="323px">
                                         <Columns>
 
                                             <asp:BoundField DataField="BriefDescription" HeaderText="Brief Description" SortExpression="briefDescription" />
@@ -185,42 +185,13 @@
                                     <asp:Label ID="diagnosisLbl" runat="server"></asp:Label>
                                         </p>
                                         <br />
-                                        <div>
+                                        <!--<div>
                                             <p style="float: left;">
                                                 Prescription :
                                                 <asp:Literal ID="prescription" Visible="true" runat="server"></asp:Literal>
 
                                             </p>
-                                            <!-- Trigger the modal with a button -->
-                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createModal" style="font-size: 15px; width: 100%; height: 10%;">Create Prescription</button>
-
-                                            <!-- Modal -->
-                                            <div id="createModal" class="modal fade" role="dialog">
-                                                <div class="modal-dialog">
-
-                                                    <!-- Modal content-->
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal">x</button>
-                                                            <h4 class="modal-title">Add Prescription</h4>
-                                                        </div>
-                                                        <div class="modal-body" style="width: 100%;">
-                                                            <div class="form-group">
-                                                                <label for="medicineListDDL">Select Prescription</label>
-                                                                <asp:DropDownList ID="medicineListDDL" runat="server">
-                                                                </asp:DropDownList>
-                                                                <asp:Label ID="errorMsg" runat="server"></asp:Label>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <asp:Button ID="create" class="btn btn-default" Text="Create" runat="server" OnClick="createPrescription_Click" />
-                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div id="chart_div" style="width: 70%; float: left;">
                                         <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource1" Height="400px" Width="500px">
@@ -255,8 +226,31 @@
                                     </div>
                                 </div>
                                 <div style="float: right;">
+                                    <!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createModal">Create Prescription</button>-->
                                     <asp:Button ID="btnUpdatePatientsLog" runat="server" Text="Update" class="btn btn-primary" OnClick="btnUpdate_Click" />
                                     <asp:Button ID="btnDeletePatientsLog" runat="server" Text="Delete" class="btn btn-primary" OnClientClick="return confirm('Are you sure?')" OnClick="btnDelete_Click" />
+                                    <!--
+                                            <div id="createModal" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal">x</button>
+                                                            <h4 class="modal-title">Add Prescription</h4>
+                                                        </div>
+                                                        <div class="modal-body" style="width: 100%;">
+                                                            <div class="form-group">
+                                                                <label for="medicineListDDL">Select Prescription</label>
+                                                                <asp:DropDownList ID="medicineListDDL" runat="server">
+                                                                </asp:DropDownList>
+                                                                <asp:Label ID="errorMsg" runat="server"></asp:Label>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <asp:Button ID="create" class="btn btn-default" Text="Create" runat="server" OnClick="createPrescription_Click" />
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        </div>-->
                                 </div>
                             </div>
 
