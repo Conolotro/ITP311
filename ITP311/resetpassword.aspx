@@ -27,6 +27,7 @@
 
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/password.js"></script>
 
 
 
@@ -126,7 +127,7 @@
                                 <h2>Reset Password</h2>
                             </div>
                             <div class="panel-body">
-                                To reset your password, enter the email address you used to register with us. Instructions of resetting your password will be sent to you.<br />
+                                Please enter your new password.<br />
                                 <br />
 
                                 <form class="form-horizontal" runat="server">
@@ -134,15 +135,14 @@
                                         <div class="form-group">
                                             <label for="inputPassword" class="col-lg-4 control-label">New Password</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="inputPassword" Width="350px" />
-                                                <br />
+                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="formPassword" Width="100%" />
+                                                <div class="pwstrength_viewport_progress"></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="inputConfirmPassword" class="col-lg-4 control-label">Confirm Password</label>
                                             <div class="col-lg-6">
-                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="inputConfirmPassword" Width="350px" />
-                                                <br />
+                                                <asp:TextBox class="form-control" runat="server" Enabled="false" TextMode="Password" ID="inputConfirmPassword" Width="100%" />
                                             </div>
                                         </div>
                                         <div class="form-group">

@@ -19,7 +19,7 @@ namespace ITP311
                 if (enteredkey.Equals(key))
                 {
                     inputConfirmPassword.Enabled = true;
-                    inputPassword.Enabled = true;
+                    formPassword.Enabled = true;
                 }
                 else
                 {
@@ -37,7 +37,7 @@ namespace ITP311
         protected void submit_Click(object sender, EventArgs e)
         {
             string enteredkey = Request.QueryString["key"];
-            string password = inputPassword.Text.Trim();
+            string password = formPassword.Text.Trim();
             string confirmPassword = inputConfirmPassword.Text.Trim();
 
             if (password.Equals(confirmPassword))

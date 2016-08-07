@@ -45,14 +45,15 @@ namespace ITP311
             }
             else
             {
-
+                loginError.Visible = true;
             }
         }
 
         protected async void signUp_Click(object sender, EventArgs e)
         {
-            if (formNRIC.Text.Length != 0 && formPassword.Text.Length != 0)
-            {
+            errorMessage.Text = " ";
+            if (formNRIC.Text.Length != 0 && formPassword.Text.Length != 0 && formFN.Text.Length != 0 && formLN.Text.Length !=0 && formPhone.Text.Length != 00)
+            {             
                 string nric = formNRIC.Text.Trim();
                 string password = formPassword.Text.Trim();
                 string firstName = formFN.Text.Trim();
@@ -73,34 +74,33 @@ namespace ITP311
                 if (email.Equals(confirmEmail, StringComparison.OrdinalIgnoreCase))
                 {
                     PatientBLL patient = new PatientBLL();
-                    if (patient.createPatient(nric, password, firstName, lastName, contactNo, email) == true)
+                    if (patient.checkPatientbyNRIC(nric) == true)
                     {
-                        try
-                        {
-                            await sendRegisterEmail(email);
-                        }
-                        catch (SmtpException ex)
-                        {
-
-                        }
-
-
-                        Response.Redirect("registered.aspx",false);
+                        errorMessage.Text = "The nric you have entered has already registered.";
                     }
                     else
                     {
-                        
+                        if (patient.createPatient(nric, password, firstName, lastName, contactNo, email) == true)
+                        {
+                            await sendRegisterEmail(email);
+                            Response.Redirect("registered.aspx", false);
+                        }
+                        else
+                        {
+                            errorMessage.Text = "Database Error";
+                        }
                     }
+                    
                 }
                 else
                 {
-                    errorMessage.Text = "The Confirmation Email must match your Email Address";
+                    errorMessage.Text = "The Confirmation Email must match your Email Address <br />";
                 }
            
             }
             else
             {
-                Response.Redirect("error.aspx",false);
+                errorMessage.Text += "Please fill up all fields";
             }
             
 
@@ -115,7 +115,8 @@ namespace ITP311
             if (p.checkPatientbyEmail(resetPasswordEmail) == true)
             {
                 PasswordResetBLL pr = new PasswordResetBLL();
-                if(pr.checkPasswordReset(resetPasswordEmail) == true){
+                if (pr.checkPasswordReset(resetPasswordEmail) == true)
+                {
                     string nric = p.retrievePatientNRICbyEmail(resetPasswordEmail);
                     pr.createPatientPasswordReset(nric);
                     success.Visible = true;
@@ -135,12 +136,12 @@ namespace ITP311
                         errorMsg.Visible = true;
                     }
                 }
-                    
+
 
             }
             else
             {
-                Response.Redirect("/forgetPassword.aspx?email=invalid",false);
+                Response.Redirect("/forgetPassword.aspx?email=invalid", false);
                 Context.ApplicationInstance.CompleteRequest();
             }
 
@@ -186,10 +187,10 @@ namespace ITP311
 
             string bodyMessage = "Hello " + p2.FirstName + " " + p2.LastName + ",";
             bodyMessage += "<br /><br />You recently requested to reset your password for your Silverwood Medical account.";
-            bodyMessage += "<br /><a href = '" + "http://localhost:54660/resetpassword.aspx?key=" +Server.UrlEncode(code) + "'>Click here to reset your password.</a>";
+            bodyMessage += "<br /><a href = '" + "http://localhost:54660/resetpassword.aspx?key=" + Server.UrlEncode(code) + "'>Click here to reset your password.</a>";
             bodyMessage += "<br /><br /> If you did not request for a password reset, please ignore this email or reply to let us know. This password reset is only valid for the next 30 minutes.";
             bodyMessage += "<br /><br /> Thanks,<br /> Sliverwood Medical Team";
-           
+
             mailMessage.IsBodyHtml = true;
             mailMessage.Body = bodyMessage;
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);

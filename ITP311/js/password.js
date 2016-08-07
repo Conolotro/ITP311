@@ -22,7 +22,7 @@ jQuery(document).ready(function () {
             $('#messages').text('Start typing password');
         }
     };
-    $(':password').pwstrength(options);
+    $('#formPassword').pwstrength(options);
 });
 
 
@@ -68,7 +68,7 @@ jQuery(document).ready(function () {
         };
 
         validation.wordSimilarToUsername = function (options, word, score) {
-            var username = $('#loginUsername').val();
+            var username = $(options.common.usernameField).val();
             if (username && word.toLowerCase().match(username.toLowerCase())) {
                 return score;
             }
@@ -97,7 +97,7 @@ jQuery(document).ready(function () {
                     var sequences = [seq, seq.split('').reverse().join('')];
                     $.each(sequences, function (idx, sequence) {
                         for (j = 0; j < (word.length - 2) ; j += 1) { // iterate the word trough a sliding window of size 3:
-                            if (sequence.indexOf(word.toLowerCase().substring(j, j + 5)) > -1) {
+                            if (sequence.indexOf(word.toLowerCase().substring(j, j + 4)) > -1) {
                                 found = true;
                             }
                         }
@@ -194,7 +194,7 @@ jQuery(document).ready(function () {
 
     defaultOptions.common = {};
     defaultOptions.common.minChar = 6;
-    defaultOptions.common.usernameField = "#username";
+    defaultOptions.common.usernameField = $('#formNRIC');
     defaultOptions.common.userInputs = [
         // Selectors for input fields with user input
     ];
@@ -206,21 +206,21 @@ jQuery(document).ready(function () {
     defaultOptions.rules = {};
     defaultOptions.rules.extra = {};
     defaultOptions.rules.scores = {
-        wordNotEmail: -100,
+        wordNotEmail: -50,
         wordLength: -25,
-        wordSimilarToUsername: -100,
+        wordSimilarToUsername: -50,
         wordSequences: -25,
         wordTwoCharacterClasses: 2,
         wordRepetitions: -25,
         wordLowercase: 1,
-        wordUppercase: 3,
-        wordOneNumber: 3,
+        wordUppercase: 5,
+        wordOneNumber: 5,
         wordThreeNumbers: 5,
         wordOneSpecialChar: 3,
-        wordTwoSpecialChar: 5,
-        wordUpperLowerCombo: 2,
-        wordLetterNumberCombo: 2,
-        wordLetterNumberCharCombo: 2
+        wordTwoSpecialChar: 10,
+        wordUpperLowerCombo: 4,
+        wordLetterNumberCombo: 4,
+        wordLetterNumberCharCombo: 4
     };
     defaultOptions.rules.activated = {
         wordNotEmail: true,
@@ -280,7 +280,7 @@ jQuery(document).ready(function () {
         verdict: undefined,
         errors: undefined
     };
-    defaultOptions.ui.scores = [6, 15, 26, 30];
+    defaultOptions.ui.scores = [14, 26, 38, 50];
 
     // Source: src/ui.js
 

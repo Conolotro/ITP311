@@ -82,6 +82,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="adminportal_updateProfile.aspx" />
+    <Content Include="js\changepassword.js" />
+    <Content Include="js\validator.min.js" />
     <Content Include="nricForgotPassword.aspx" />
     <Content Include="adminReset.aspx" />
     <Content Include="adminportal.aspx" />
@@ -132,6 +134,7 @@
     <Content Include="patientportal-dashboard.aspx" />
     <Content Include="patientportal-updateparticulars.aspx" />
     <Content Include="patientportal.aspx" />
+    <Content Include="patientportal_changepassword.aspx" />
     <Content Include="PatientPortal_updateProfile.aspx" />
     <Content Include="registered.aspx" />
     <Content Include="resetpassword.aspx" />
@@ -279,6 +282,13 @@
     </Compile>
     <Compile Include="patientportal-appoinment-viewmeds.aspx.designer.cs">
       <DependentUpon>patientportal-appoinment-viewmeds.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="patientportal_changepassword.aspx.cs">
+      <DependentUpon>patientportal_changepassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="patientportal_changepassword.aspx.designer.cs">
+      <DependentUpon>patientportal_changepassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="PatientPortal_updateProfile.aspx.cs">
       <DependentUpon>PatientPortal_updateProfile.aspx</DependentUpon>

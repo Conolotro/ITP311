@@ -25,6 +25,12 @@
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/password.js"></script>
+    <script src="js/validator.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#signupbox').validator();
+        });
+    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -104,13 +110,14 @@
                                     </div>
                                 </div>
                                 <div class="form-bottom">
+                                    <asp:Label ID="loginError" runat="server" ForeColor="Red" Text="Invalid username or password" Visible="false"></asp:Label>
                                     <div class="form-group">
                                         <label class="sr-only" for="formUsername">Username</label>
                                         <asp:TextBox ID="loginUsername" placeholder="Username..." class="form-username form-control" Width="100%" runat="server"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formPassword">Password</label>
-                                        <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-password form-control" Width="100%" runat="server"></asp:TextBox>
+                                        <asp:TextBox TextMode="Password" ID="loginPassword" placeholder="Password..." class="form-control" Width="100%" runat="server"></asp:TextBox>
                                         <!-- Trigger the modal with a button -->
                                         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal">Forget your password ?</button>
 
@@ -152,7 +159,7 @@
 
                         <div class="col-sm-5">
 
-                            <div class="form-box">
+                            <div class="form-box" id = "signupbox">
                                 <div class="form-top">
                                     <div class="form-top-left">
                                         <h3>Sign up now</h3>
@@ -165,7 +172,7 @@
                                 <div class="form-bottom">
                                     <div class="form-group">
                                         <label class="sr-only" for="formNRIC">NRIC</label>
-                                        <asp:TextBox name="formNRIC" placeholder="NRIC..." class="form-NRIC form-control" ID="formNRIC" runat="server" Width="100%" />
+                                        <asp:TextBox name="formNRIC" placeholder="NRIC..." class="form-NRIC form-control" AutoComplete="false" ID="formNRIC" data-minlength="9" maxlength="9" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formNRIC">Password</label>
@@ -174,26 +181,27 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formFN">First name</label>
-                                        <asp:TextBox name="formFN" placeholder="First name..." class="form-first-name form-control" ID="formFN" runat="server" Width="100%" />
+                                        <asp:TextBox name="formFN" placeholder="First name..." class="form-first-name form-control" AutoComplete="false" ID="formFN" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formLN">Last name</label>
-                                        <asp:TextBox name="formLN" placeholder="Last name..." class="form-last-name form-control" ID="formLN" runat="server" Width="100%" />
+                                        <asp:TextBox name="formLN" placeholder="Last name..." class="form-last-name form-control" AutoComplete="false" ID="formLN" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formPhone">Phone Number</label>
-                                        <asp:TextBox TextMode="Number" name="formPhone" placeholder="Phone Number..." class="form-phonenumber form-control" ID="formPhone" runat="server" Width="100%" />
+                                        <asp:TextBox TextMode="Phone" name="formPhone" placeholder="Phone Number..." AutoComplete="false" class="form-phonenumber form-control" data-minlength="8" MaxLength="8" ID="formPhone" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formEmail">Email</label>
-                                        <asp:TextBox TextMode="Email" name="formEmail" placeholder="Email..." class="form-email form-control" ID="formEmail" runat="server" Width="100%" />
+                                        <asp:TextBox TextMode="Email" name="formEmail" placeholder="Email..." class="form-email form-control" AutoComplete="false" ID="formEmail" runat="server" Width="100%" />
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="formEmail">Confirm Email</label>
-                                        <asp:TextBox TextMode="Email" name="formCEmail" placeholder="Confirm Email..." class="form-email form-control" ID="formCEmail" runat="server" Width="100%" />
+                                        <asp:TextBox TextMode="Email" name="formCEmail" data-match="#formEmail" placeholder="Confirm Email..." class="form-email form-control" AutoComplete="false" ID="formCEmail" runat="server" Width="100%" data-error="Email not matched" />
+                                        <div class="help-block with-errors"></div>                                    
                                     </div>
                                     <div>
-                                        <asp:Label runat="server" ID="errorMessage" />
+                                        <asp:Label runat="server" ID="errorMessage" ForeColor="Red" />
                                     </div>
 
                                     <asp:Button ID="signUp" class="btn btn-default" Text="Sign me up!" runat="server" Width="100%" OnClick="signUp_Click" />

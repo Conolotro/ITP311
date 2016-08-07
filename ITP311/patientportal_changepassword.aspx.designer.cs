@@ -10,43 +10,16 @@
 namespace ITP311 {
     
     
-    public partial class resetpassword {
+    public partial class patientportal_changepassword {
         
         /// <summary>
-        /// error control.
+        /// inputCurrent control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal error;
-        
-        /// <summary>
-        /// networkError control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal networkError;
-        
-        /// <summary>
-        /// keyExpired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal keyExpired;
-        
-        /// <summary>
-        /// success control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal success;
+        protected global::System.Web.UI.WebControls.TextBox inputCurrent;
         
         /// <summary>
         /// formPassword control.
@@ -58,13 +31,13 @@ namespace ITP311 {
         protected global::System.Web.UI.WebControls.TextBox formPassword;
         
         /// <summary>
-        /// inputConfirmPassword control.
+        /// inputCNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputConfirmPassword;
+        protected global::System.Web.UI.WebControls.TextBox inputCNew;
         
         /// <summary>
         /// submit control.

@@ -22,6 +22,7 @@
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/adminlogin.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/validator.min.js"></script>
 
 </head>
 
@@ -102,83 +103,103 @@
 
             </asp:Literal>
 
+            <asp:Literal ID="errorMsg" runat="server" Visible="false">
 
-            <form runat="server" class="form-horizontal">
-                <fieldset>
-                    <legend>Update Profile</legend>
-                    <div class="form-group">
-                        <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
-                        <div class="col-lg-9">
-                            <asp:TextBox ID="inputFirstName" Width="100%" class="form-control" placeholder="First Name" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
-                        <div class="col-lg-9">
-                            <asp:TextBox ID="inputLastName" Width="100%" class="form-control" placeholder="Last Name" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputAddress" class="col-lg-2 control-label">Address</label>
-                        <div class="col-lg-9">
-                            <asp:TextBox ID="inputAddress" Width="100%" class="form-control" placeholder="Address" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputContact" class="col-lg-2 control-label">Contact No.</label>
-                        <div class="col-lg-9">
-                            <asp:TextBox ID="inputContact" TextMode="Phone" Width="100%" class="form-control" placeholder="91231230" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputDOB" class="col-lg-2 control-label">Date of Birth</label>
-                        <div class="col-lg-9">
-                            <asp:TextBox ID="inputDOB" Width="100%" class="form-control" placeholder="dd/mm/yyyy" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputEmail" class="col-lg-2 control-label">E-Mail</label>
-                        <div class="col-lg-9">
-                            <asp:TextBox ID="inputEmail" TextMode="Email" Width="100%" class="form-control" placeholder="e-mail" runat="server"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-10 col-lg-offset-2">
-                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Update</button>
-                        </div>
-                    </div>
-                </fieldset>
+            <div class="alert alert-dismissible alert-success text-center">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <b>Incorrect password!</b> Please try again.
+            </div>
 
-                <!-- Modal -->
-                <div id="myModal" class="modal fade" role="dialog">
-                    <div class="modal-dialog">
+            </asp:Literal>
 
-                        <!-- Modal content-->
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title">Please enter your password to continue</h4>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form runat="server" class="form-horizontal" data-toggle="validator">
+                        <fieldset>
+                            <legend>Update Profile</legend>
+                            <p>* Required</p>
+                            <div class="form-group">
+                                <label for="inputFirstName" class="col-lg-2 control-label">First Name</label>
+                                <div class="col-lg-9">
+                                    <asp:TextBox ID="inputFirstName" Width="100%" class="form-control" placeholder="First Name" runat="server" required></asp:TextBox>
+                                </div>
                             </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-lg-2 control-label">Password</label>
-                                    <div class="col-lg-10">
-                                        <asp:TextBox ID="inputPassword" TextMode="Password" Width="100%" class="form-control" placeholder="password..." runat="server"></asp:TextBox>
+                            <div class="form-group">
+                                <label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+                                <div class="col-lg-9">
+                                    <asp:TextBox ID="inputLastName" Width="100%" class="form-control" placeholder="Last Name" runat="server" required></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputAddress" class="col-lg-2 control-label">Address</label>
+                                <div class="col-lg-9">
+                                    <asp:TextBox ID="inputAddress" autocomplete="off" Width="100%" class="form-control" placeholder="Address" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputContact" class="col-lg-2 control-label">Contact No.*</label>
+                                <div class="col-lg-9">
+                                    <asp:TextBox ID="inputContact" TextMode="Phone" Width="100%" class="form-control" placeholder="91231230" data-error="that phone number is invalid" maxlength="8"  runat="server" required></asp:TextBox>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDOB" class="col-lg-2 control-label">Date of Birth*</label>
+                                <div class="col-lg-9">
+                                    <asp:TextBox ID="inputDOB" Width="100%" TextMode="Date" class="form-control" placeholder="dd/mm/yyyy" runat="server" required></asp:TextBox>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">E-Mail*</label>
+                                <div class="col-lg-9">
+                                    <asp:TextBox ID="inputEmail" autocomplete="off" TextMode="Email" Width="100%" class="form-control" placeholder="e-mail" runat="server" data-error="that email address is invalid" required></asp:TextBox>
+                                     <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">Update</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div id="messages"></div>
+                            </div>
+                        </fieldset>
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">Please enter your password to continue</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="inputEmail" class="col-lg-2 control-label">Password</label>
+                                            <div class="col-lg-10">
+                                                <asp:TextBox ID="inputPassword" TextMode="Password" Width="100%" class="form-control" placeholder="password..." runat="server"></asp:TextBox>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <asp:Button runat="server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn btn-default" />
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
 
                             </div>
-                            <div class="modal-footer">
-                                <asp:Button runat="server" ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" CssClass="btn btn-default" />
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            </div>
                         </div>
-
-                    </div>
+                    </form>
                 </div>
+            </div>
 
 
-            </form>
+
+
+
 
         </div>
     </div>
