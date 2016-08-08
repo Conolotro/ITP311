@@ -34,6 +34,7 @@ namespace ITP311
                         PatientBLL p = new PatientBLL();
                         PatientDAL pd = p.retrievePatientByNric(nric);
                         name.Text = pd.FirstName;
+                        name1.Text = pd.FirstName;
                     }
 
                 }

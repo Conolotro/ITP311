@@ -48,7 +48,7 @@
                                 <a href="PatientPortal_updateProfile.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
                             </li>
                             <li>
-                                <a href="patientportal_changepassword.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                                <a href="patientportal_changepassword.aspx"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Change Password</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-cog fa-fw" aria-hidden="true"></i>Settings</a>
