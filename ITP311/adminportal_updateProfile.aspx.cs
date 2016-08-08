@@ -31,15 +31,25 @@ namespace ITP311
                 else
                 {
 
-                    string nric = Session["userNric"].ToString();
-                    AccountBLL a = new AccountBLL();
-                    AccountDAL ad = a.retrieveAccountByNric(nric);
-                    name.Text = ad.firstName;
-                    tbNric.Text = nric;
-                    tbFname.Text = ad.firstName;
-                    tbLname.Text = ad.lastName;
-                    tbEmail.Text = ad.email;
-                    tbContact.Text = ad.contactNo;
+                    string user = Session["userDesignation"].ToString();
+                    if (user.Equals("a"))
+                    {
+                        string Nric = Session["userNric"].ToString();
+                        AccountBLL a = new AccountBLL();
+                        AccountDAL ad = a.retrieveAccountByNric(Nric);
+                        name.Text = ad.firstName;
+                        name.Text = ad.firstName;
+                        tbNric.Text = ad.nric;
+                        tbFname.Text = ad.firstName;
+                        tbLname.Text = ad.lastName;
+                        tbEmail.Text = ad.email;
+                        tbContact.Text = ad.contactNo;
+                    }
+                    else
+                    {
+                        Response.Redirect("adminlogin.aspx");
+                    }
+                    
                 }
             }
 

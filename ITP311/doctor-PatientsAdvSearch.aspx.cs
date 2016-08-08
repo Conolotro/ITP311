@@ -17,10 +17,18 @@ namespace ITP311
             }
             else
             {
-                string Nric = Session["userNric"].ToString();
-                AccountBLL a = new AccountBLL();
-                AccountDAL ad = a.retrieveAccountByNric(Nric);
-                name.Text = ad.firstName;
+                string user = Session["userDesignation"].ToString();
+                if (user.Equals("d"))
+                {
+                    string Nric = Session["userNric"].ToString();
+                    AccountBLL a = new AccountBLL();
+                    AccountDAL ad = a.retrieveAccountByNric(Nric);
+                    name.Text = ad.firstName;
+                }
+                else
+                {
+                    Response.Redirect("adminlogin.aspx");
+                }
             }
         }
     }

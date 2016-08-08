@@ -43,21 +43,35 @@ namespace ITP311
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["search"] == null)
+            if (Session["userNric"] == null)
             {
-                Response.Redirect("doctor-index.aspx");
+                Response.Redirect("adminlogin.aspx");
             }
-            if ((List<string>)ViewState["MyList"] == null)
+            else
+            {string user = Session["userDesignation"].ToString();
+            if (user.Equals("d"))
             {
-                MyList = symlist.ToList<string>();
-                gvSymptoms.DataSource = MyList;
-                gvSymptoms.DataBind();
+                if (Session["search"] == null)
+                {
+                    Response.Redirect("doctor-index.aspx");
+                }
+                if ((List<string>)ViewState["MyList"] == null)
+                {
+                    MyList = symlist.ToList<string>();
+                    gvSymptoms.DataSource = MyList;
+                    gvSymptoms.DataBind();
+                }
+                else
+                {
+                    MyList = (List<string>)ViewState["MyList"];
+                    gvSymptoms.DataSource = MyList;
+                    gvSymptoms.DataBind();
+                }
             }
             else
             {
-                MyList = (List<string>)ViewState["MyList"];
-                gvSymptoms.DataSource = MyList;
-                gvSymptoms.DataBind();
+                Response.Redirect("adminlogin.aspx");
+            }
             }
         }
         protected void gvSymptoms_SelectedIndexChanged(object sender, EventArgs e)

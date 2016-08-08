@@ -22,13 +22,21 @@ namespace ITP311
                 }
                 else
                 {
-                    string Nric = Session["userNric"].ToString();
-                    AccountBLL a = new AccountBLL();
-                    AccountDAL ad = a.retrieveAccountByNric(Nric);
-                    name.Text = ad.firstName;
-
-                    this.AsyncMode = true;
-                    Session["search"] = null;
+                    string user = Session["userDesignation"].ToString();
+                    if (user.Equals("d"))
+                    {
+                        string Nric = Session["userNric"].ToString();
+                        AccountBLL a = new AccountBLL();
+                        AccountDAL ad = a.retrieveAccountByNric(Nric);
+                        name.Text = ad.firstName;
+                        this.AsyncMode = true;
+                        Session["search"] = null;
+                    }
+                    else
+                    {
+                        Response.Redirect("adminlogin.aspx");
+                    }
+                    
                 }
             }
 

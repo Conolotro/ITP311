@@ -22,36 +22,47 @@ namespace ITP311
                 }
                 else
                 {
-                    string Nric = Session["userNric"].ToString();
-                    AccountBLL a = new AccountBLL();
-                    AccountDAL ad = a.retrieveAccountByNric(Nric);
-                    name.Text = ad.firstName;
-
-                    string queryId = Request.QueryString["id"];
-                    int id;
-                    EnquiryDAL ed = null;
-                    if (queryId != null)
+                    string user = Session["userDesignation"].ToString();
+                    if (user.Equals("a"))
                     {
-                        id = Int32.Parse(queryId);
+                        string Nric = Session["userNric"].ToString();
+                        AccountBLL a = new AccountBLL();
+                        AccountDAL ad = a.retrieveAccountByNric(Nric);
+                        name.Text = ad.firstName;
+
+                        string queryId = Request.QueryString["id"];
+                        int id;
+                        EnquiryDAL ed = null;
+                        if (queryId != null)
+                        {
+                            id = Int32.Parse(queryId);
+                        }
+                        else
+                        {
+                            id = 0;
+                        }
+
+                        if (id > 0)
+                        {
+                            EnquiryBLL eb = new EnquiryBLL();
+                            ed = eb.retrieveEnquiryByID(id);
+
+                            name.Text = ed.name;
+                            email.Text = ed.email;
+                            messageEnquiry.Text = ed.message;
+                        }
+                        else
+                        {
+
+                        }
                     }
                     else
                     {
-                        id = 0;
+                        Response.Redirect("adminlogin.aspx");
                     }
+                    
 
-                    if (id > 0)
-                    {
-                        EnquiryBLL eb = new EnquiryBLL();
-                        ed = eb.retrieveEnquiryByID(id);
 
-                        name.Text = ed.name;
-                        email.Text = ed.email;
-                        messageEnquiry.Text = ed.message;
-                    }
-                    else
-                    {
-
-                    }
                 }
 
             }

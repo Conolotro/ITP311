@@ -232,6 +232,18 @@
     <Content Include="resetpassword.aspx" />
     <Content Include="UpdateLogDT.asmx" />
     <Content Include="UpdatePatientsLog.aspx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Web References\NYPSMS\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <Content Include="Web References\NYPSMS\SMS.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\NYPSMS\sms.disco" />
     <Content Include="Xray.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -405,6 +417,11 @@
     <Compile Include="PatientPortal_updateProfile.aspx.designer.cs">
       <DependentUpon>PatientPortal_updateProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="resetpassword.aspx.cs">
       <DependentUpon>resetpassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -505,6 +522,11 @@
     <Compile Include="registered.aspx.designer.cs">
       <DependentUpon>registered.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\NYPSMS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Xray.aspx.cs">
       <DependentUpon>Xray.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -527,10 +549,7 @@
     <Content Include="bootstrap-datepicker-1.6.1-dist\css\bootstrap-datepicker3.min.css.map" />
     <Content Include="bootstrap-datepicker-1.6.1-dist\css\bootstrap-datepicker3.standalone.css.map" />
     <Content Include="bootstrap-datepicker-1.6.1-dist\css\bootstrap-datepicker3.standalone.min.css.map" />
-    <None Include="Web References\NYPSMS\sms.disco" />
     <Content Include="Web.config" />
-    <Content Include="Web References\NYPSMS\Reference.map" />
-    <Content Include="Web References\NYPSMS\SMS.datasource" />
     <None Include="Web References\NYPSMS\sms.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -544,6 +563,22 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://172.20.128.62/SMSWebService/sms.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\NYPSMS\</RelPath>
+      <UpdateFromURL>http://172.20.128.62/SMSWebService/sms.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>ITP311_NYPSMS_SMSService</CachedSettingsPropName>
+    </WebReferenceUrl>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

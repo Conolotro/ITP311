@@ -13,6 +13,18 @@ namespace ITP311
         public static int resetCounter;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["userNric"] != null)
+            {
+                string user = Session["userDesignation"].ToString();
+                if (user.Equals("a"))
+                {
+                    Response.Redirect("adminportal.aspx", false);
+                }
+                else if(user.Equals("d")){
+                    Response.Redirect("doctor-index.aspx", false);
+                }
+            }
+
             if (resetCounter == 1)
             {
                 Page.ClientScript.RegisterStartupScript(this.GetType(), "Scripts", "<script>alert('Dear User, you may now login using the pasword you have entered previously.');</script>");

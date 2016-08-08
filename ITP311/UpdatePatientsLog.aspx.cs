@@ -25,47 +25,60 @@ namespace ITP311
                 {
                     Response.Redirect("adminlogin.aspx");
                 }
-                string Nric = Session["userNric"].ToString();
-                AccountBLL a = new AccountBLL();
-                AccountDAL ad = a.retrieveAccountByNric(Nric);
-                name.Text = ad.firstName;
-                if (Session["caseNo"] != null)
-                {
-                    int caseNo = (int)Session["caseNo"];
-                    PatientsLogDAL plog = null;
-                    PatientsLogBLL plogbll = new PatientsLogBLL();
-                    PatientsLogDAL plogdal = new PatientsLogDAL();
-                    plog = plogbll.getPatientsLogByCaseNo(caseNo);
-                    Session["caseNo"] = caseNo;
-                    //decrypt
-                    string enkey = plog._enkey;
-                    string enIV = plog._enIV;
-                    SymmetricAlgorithm sa = new RijndaelManaged();
-                    sa.Key = Convert.FromBase64String(enkey);
-                    sa.IV = Convert.FromBase64String(enIV);
-
-                    ICryptoTransform cryptTransform = sa.CreateDecryptor();
-                    byte[] ciphertext = Convert.FromBase64String(plog._symptomsList);
-                    byte[] plaintext = cryptTransform.TransformFinalBlock(ciphertext, 0, ciphertext.Length);
-                    string decryptedSymList = Encoding.UTF8.GetString(plaintext);
-
-                    string[] strArray = decryptedSymList.Split(new char[] { ';' });
-                    symptomstbx.Text = strArray[0];
-                    for (int j = 1; j < (strArray.Length - 1); j++)
-                    {
-                        string text = strArray[j];
-                        symptomstbx.Text += ", " + text;
-                    }
-                    briefDescriptiontbx.Text = plog._briefDescription;
-                    pressuretbx.Text = plog._pressure.ToString();
-                    pulsetbx.Text = plog._pulse.ToString();
-                    temperaturetbx.Text = plog._temperature.ToString();
-                    formDoctorsNotes.Text = plog._doctorsNotes.ToString();
-                }
                 else
                 {
-                    Response.Redirect("PatientsLog.aspx");
+                    string user = Session["userDesignation"].ToString();
+                    if (user.Equals("d"))
+                    {
+                        string Nric = Session["userNric"].ToString();
+                        AccountBLL a = new AccountBLL();
+                        AccountDAL ad = a.retrieveAccountByNric(Nric);
+                        name.Text = ad.firstName;
+
+                        if (Session["caseNo"] != null)
+                        {
+                            int caseNo = (int)Session["caseNo"];
+                            PatientsLogDAL plog = null;
+                            PatientsLogBLL plogbll = new PatientsLogBLL();
+                            PatientsLogDAL plogdal = new PatientsLogDAL();
+                            plog = plogbll.getPatientsLogByCaseNo(caseNo);
+                            Session["caseNo"] = caseNo;
+                            //decrypt
+                            string enkey = plog._enkey;
+                            string enIV = plog._enIV;
+                            SymmetricAlgorithm sa = new RijndaelManaged();
+                            sa.Key = Convert.FromBase64String(enkey);
+                            sa.IV = Convert.FromBase64String(enIV);
+
+                            ICryptoTransform cryptTransform = sa.CreateDecryptor();
+                            byte[] ciphertext = Convert.FromBase64String(plog._symptomsList);
+                            byte[] plaintext = cryptTransform.TransformFinalBlock(ciphertext, 0, ciphertext.Length);
+                            string decryptedSymList = Encoding.UTF8.GetString(plaintext);
+
+                            string[] strArray = decryptedSymList.Split(new char[] { ';' });
+                            symptomstbx.Text = strArray[0];
+                            for (int j = 1; j < (strArray.Length - 1); j++)
+                            {
+                                string text = strArray[j];
+                                symptomstbx.Text += ", " + text;
+                            }
+                            briefDescriptiontbx.Text = plog._briefDescription;
+                            pressuretbx.Text = plog._pressure.ToString();
+                            pulsetbx.Text = plog._pulse.ToString();
+                            temperaturetbx.Text = plog._temperature.ToString();
+                            formDoctorsNotes.Text = plog._doctorsNotes.ToString();
+                        }
+                        else
+                        {
+                            Response.Redirect("PatientsLog.aspx");
+                        }
+                    }
+                    else
+                    {
+                        Response.Redirect("adminlogin.aspx");
+                    }
                 }
+                
             }
         }
 
